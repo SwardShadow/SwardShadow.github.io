@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-02T03:41:56.607Z</updated>
+  <updated>2017-09-02T03:47:36.635Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,14 +16,13 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="http://yoursite.com/2017/09/02/ECMAScript%E8%BF%AD%E4%BB%A3%E8%AF%AD%E5%8F%A5/"/>
-    <id>http://yoursite.com/2017/09/02/ECMAScript迭代语句/</id>
-    <published>2017-09-02T03:40:29.695Z</published>
-    <updated>2017-09-02T03:41:56.607Z</updated>
+    <title>ECMAScript迭代语句</title>
+    <link href="http://yoursite.com/2017/01/12/ECMAScript%E8%BF%AD%E4%BB%A3%E8%AF%AD%E5%8F%A5/"/>
+    <id>http://yoursite.com/2017/01/12/ECMAScript迭代语句/</id>
+    <published>2017-01-12T00:34:02.000Z</published>
+    <updated>2017-09-02T03:47:36.635Z</updated>
     
-    <content type="html"><![CDATA[<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">title: ECMAScript迭代语句</div><div class="line">date: 2017-1-12 08:34:02</div></pre></td></tr></table></figure>
-<p>迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。   </p>
+    <content type="html"><![CDATA[<p>迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。   </p>
 <h4 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do-while语句"></a>do-while语句</h4><p>do-while语句是后测试循环，即退出条件在执行循环内部的代码之后计算，这意味着在计算表达式之前，至少会执行循环主体一次。<br>它的语法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d0 &#123;sataement&#125; <span class="keyword">while</span> (expression);</div></pre></td></tr></table></figure></p>
 <p>例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> i=<span class="number">0</span>;</div><div class="line"><span class="keyword">do</span> &#123;i +=<span class="number">2</span>;&#125; <span class="keyword">while</span> (i&lt;<span class="number">10</span>);</div></pre></td></tr></table></figure></p>
 <h4 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h4><p>while语句是前测试循环。这意味着突出条件是在执行内部的代码之前计算的。因此，循环主体可能根本不背执行。<br>它的语法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> (expression) statement</div></pre></td></tr></table></figure></p>
@@ -41,7 +40,8 @@
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;c
+      &lt;p&gt;迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。   &lt;/p&gt;
+&lt;h4 id=&quot;do-while语句&quot;&gt;&lt;a href=&quot;#do-while语句&quot; class=&quot;headerlink&quot; t
     
     </summary>
     
