@@ -79,7 +79,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="迭代语句," />
 
 
 
@@ -98,19 +98,17 @@
 
 
 <meta name="description" content="迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。    do-while语句do-while语句是后测试循环，即退出条件在执行循环内部的代码之后计算，这意味着在计算表达式之前，至少会执行循环主体一次。它的语法如下：1d0 &amp;#123;sataement&amp;#125; while (expression); 例如:1">
+<meta name="keywords" content="迭代语句">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ECMAScript迭代语句">
 <meta property="og:url" content="http://yoursite.com/2017/01/12/ECMAScript迭代语句/index.html">
 <meta property="og:site_name" content="归墟">
 <meta property="og:description" content="迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。    do-while语句do-while语句是后测试循环，即退出条件在执行循环内部的代码之后计算，这意味着在计算表达式之前，至少会执行循环主体一次。它的语法如下：1d0 &amp;#123;sataement&amp;#125; while (expression); 例如:1">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="F:备用图片/jQuery遍历函数.png">
-<meta property="og:image" content="F:备用图片/jQuery遍历函数2.png">
-<meta property="og:updated_time" content="2017-09-02T03:47:36.635Z">
+<meta property="og:updated_time" content="2017-09-08T03:05:23.448Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ECMAScript迭代语句">
 <meta name="twitter:description" content="迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。    do-while语句do-while语句是后测试循环，即退出条件在执行循环内部的代码之后计算，这意味着在计算表达式之前，至少会执行循环主体一次。它的语法如下：1d0 &amp;#123;sataement&amp;#125; while (expression); 例如:1">
-<meta name="twitter:image" content="F:备用图片/jQuery遍历函数.png">
 
 
 
@@ -323,6 +321,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/总结/" itemprop="url" rel="index">
+                    <span itemprop="name">总结</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -363,7 +383,7 @@
 <p>这里，for-in语句用于显示window对象的所有属性。  </p>
 <h4 id="foreach语句"><a href="#foreach语句" class="headerlink" title="foreach语句"></a>foreach语句</h4><p>foreach语句用于循环遍历数组。<br>每进行一次循环，当前数组元素的值就会被赋值给value变量(数组指针会逐一地移动)，以此类推。<br>语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach (aray <span class="keyword">as</span> value)&#123;</div><div class="line">    code to be executed;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>例子:下面的例子示范了一个循环，这个循环可以呼出给定数组的值：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">&lt;?php</div><div class="line">$arr=array("one","two","three");</div><div class="line">foreach($arr as $value)</div><div class="line">&#123;</div><div class="line">    echo "Value:".$value."&lt;br/&gt;";</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h4><p>为jQuery对象进行迭代，为每个匹配元素执行函数。<br><img src="F:备用图片/jQuery遍历函数.png" alt="image"><br><img src="F:备用图片/jQuery遍历函数2.png" alt="image"></p>
+<h4 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h4><p>为jQuery对象进行迭代，为每个匹配元素执行函数。</p>
 
       
     </div>
@@ -394,6 +414,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/迭代语句/" rel="tag"><i class="fa fa-tag"></i> 迭代语句</a>
+          
+        </div>
       
 
       
@@ -506,7 +532,7 @@
             
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
@@ -517,7 +543,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

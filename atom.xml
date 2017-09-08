@@ -104,7 +104,7 @@
     <link href="http://yoursite.com/2017/03/08/CSS3%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D/"/>
     <id>http://yoursite.com/2017/03/08/CSS3简单介绍/</id>
     <published>2017-03-08T15:11:35.000Z</published>
-    <updated>2017-09-07T01:21:51.289Z</updated>
+    <updated>2017-09-08T03:02:27.900Z</updated>
     
     <content type="html"><![CDATA[<h1 id="CSS3"><a href="#CSS3" class="headerlink" title="CSS3"></a>CSS3</h1><p>css3就是css版本的一个升级，里面增加了一些新的样式，增强了一些样式。<br>css3现状：  </p>
 <ol>
@@ -258,6 +258,10 @@
     
     </summary>
     
+      <category term="CSS3" scheme="http://yoursite.com/categories/CSS3/"/>
+    
+    
+      <category term="CSS3" scheme="http://yoursite.com/tags/CSS3/"/>
     
   </entry>
   
@@ -266,7 +270,7 @@
     <link href="http://yoursite.com/2017/01/12/ECMAScript%E8%BF%AD%E4%BB%A3%E8%AF%AD%E5%8F%A5/"/>
     <id>http://yoursite.com/2017/01/12/ECMAScript迭代语句/</id>
     <published>2017-01-12T00:34:02.000Z</published>
-    <updated>2017-09-02T03:47:36.635Z</updated>
+    <updated>2017-09-08T03:05:23.448Z</updated>
     
     <content type="html"><![CDATA[<p>迭代语句又叫循环语句，声明一组要反复执行的命令，直到满足某些条件为止。循环通常用于迭代数组的值(因此而得名),或者执行重复的算数任务。   </p>
 <h4 id="do-while语句"><a href="#do-while语句" class="headerlink" title="do-while语句"></a>do-while语句</h4><p>do-while语句是后测试循环，即退出条件在执行循环内部的代码之后计算，这意味着在计算表达式之前，至少会执行循环主体一次。<br>它的语法如下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">d0 &#123;sataement&#125; <span class="keyword">while</span> (expression);</div></pre></td></tr></table></figure></p>
@@ -281,7 +285,7 @@
 <p>这里，for-in语句用于显示window对象的所有属性。  </p>
 <h4 id="foreach语句"><a href="#foreach语句" class="headerlink" title="foreach语句"></a>foreach语句</h4><p>foreach语句用于循环遍历数组。<br>每进行一次循环，当前数组元素的值就会被赋值给value变量(数组指针会逐一地移动)，以此类推。<br>语法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">foreach (aray <span class="keyword">as</span> value)&#123;</div><div class="line">    code to be executed;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>例子:下面的例子示范了一个循环，这个循环可以呼出给定数组的值：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">&lt;?php</div><div class="line">$arr=array("one","two","three");</div><div class="line">foreach($arr as $value)</div><div class="line">&#123;</div><div class="line">    echo "Value:".$value."&lt;br/&gt;";</div><div class="line">&#125;</div><div class="line">?&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<h4 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h4><p>为jQuery对象进行迭代，为每个匹配元素执行函数。<br><img src="F:备用图片/jQuery遍历函数.png" alt="image"><br><img src="F:备用图片/jQuery遍历函数2.png" alt="image"></p>
+<h4 id="each方法"><a href="#each方法" class="headerlink" title="each方法"></a>each方法</h4><p>为jQuery对象进行迭代，为每个匹配元素执行函数。</p>
 ]]></content>
     
     <summary type="html">
@@ -291,6 +295,10 @@
     
     </summary>
     
+      <category term="总结" scheme="http://yoursite.com/categories/%E6%80%BB%E7%BB%93/"/>
+    
+    
+      <category term="迭代语句" scheme="http://yoursite.com/tags/%E8%BF%AD%E4%BB%A3%E8%AF%AD%E5%8F%A5/"/>
     
   </entry>
   
@@ -299,7 +307,7 @@
     <link href="http://yoursite.com/2016/12/19/%E7%A7%BB%E5%8A%A8web%E5%BC%80%E5%8F%91/"/>
     <id>http://yoursite.com/2016/12/19/移动web开发/</id>
     <published>2016-12-18T16:34:14.000Z</published>
-    <updated>2017-08-31T16:40:42.530Z</updated>
+    <updated>2017-09-08T03:07:28.964Z</updated>
     
     <content type="html"><![CDATA[<h3 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h3><p>其实，流式布局就是百分百布局，通过把盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。这样的布局方式，就是移动web开发使用的常用布局方式。  </p>
 <h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport(视口)"></a>viewport(视口)</h3><p>在移动端用来承载网页的这个区域，就是视觉窗口，这个区域可以设置高度宽度，可以按比例缩放，而且能设置是否允许用户自行缩放。</p>
@@ -874,15 +882,19 @@
     
     </summary>
     
+      <category term="移动端开发" scheme="http://yoursite.com/categories/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="移动web" scheme="http://yoursite.com/tags/%E7%A7%BB%E5%8A%A8web/"/>
     
   </entry>
   
   <entry>
     <title>关于闭包的一些理解</title>
-    <link href="http://yoursite.com/2016/06/09/Line%20IN%20Wind/"/>
-    <id>http://yoursite.com/2016/06/09/Line IN Wind/</id>
+    <link href="http://yoursite.com/2016/06/09/%E9%97%AD%E5%8C%85%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/"/>
+    <id>http://yoursite.com/2016/06/09/闭包简单理解/</id>
     <published>2016-06-09T05:34:50.000Z</published>
-    <updated>2017-08-31T16:40:12.513Z</updated>
+    <updated>2017-09-08T03:07:07.183Z</updated>
     
     <content type="html"><![CDATA[<p>这个只是我个人学习的一些总结，如有不足欢迎补充。</p>
 <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>  闭包，是Javascript比较重要的一个概念。闭包是一个特别抽象的概念，特别是ECMAScript给的概念，所以我们来分析一下闭包的概念。</p>
@@ -928,15 +940,19 @@
     
     </summary>
     
+      <category term="闭包" scheme="http://yoursite.com/categories/%E9%97%AD%E5%8C%85/"/>
+    
+    
+      <category term="闭包" scheme="http://yoursite.com/tags/%E9%97%AD%E5%8C%85/"/>
     
   </entry>
   
   <entry>
     <title>寒窑赋</title>
-    <link href="http://yoursite.com/2016/01/19/HanYaoFu/"/>
-    <id>http://yoursite.com/2016/01/19/HanYaoFu/</id>
+    <link href="http://yoursite.com/2016/01/19/%E5%AF%92%E7%AA%91%E8%B5%8B/"/>
+    <id>http://yoursite.com/2016/01/19/寒窑赋/</id>
     <published>2016-01-18T16:34:14.000Z</published>
-    <updated>2017-08-31T16:38:58.514Z</updated>
+    <updated>2017-09-08T03:05:51.360Z</updated>
     
     <content type="html"><![CDATA[<h2 id="作者：吕蒙正"><a href="#作者：吕蒙正" class="headerlink" title="作者：吕蒙正"></a>作者：吕蒙正</h2><h3 id="个人很喜欢的一篇文章，分享一下"><a href="#个人很喜欢的一篇文章，分享一下" class="headerlink" title="个人很喜欢的一篇文章，分享一下"></a>个人很喜欢的一篇文章，分享一下</h3><p>天有不测风云，人有旦夕祸福。<br>蜈蚣百足，行不及蛇；<br>雄鸡两翼，飞不过鸦。<br>马有千里之程，无骑不能自往；<br>人有冲天之志，非运不能自通。<br>盖闻：人生在世，富贵不能淫，贫贱不能移。<br>文章盖世，孔子厄于陈邦；<br>武略超群，太公钓于渭水；<br>颜渊命短，殊非凶恶之徒；<br>盗跖年长，岂是善良之辈。<br>尧帝明圣，却生不肖之儿；<br>瞽叟愚顽，反生大孝之子。<br>张良原是布衣，萧何称谓县吏。<br>晏子身无五尺，封作齐国宰相；<br>孔明卧居草庐，能做蜀汉军师。<br>楚霸虽雄，败于乌江自刎；<br>汉王虽弱，竟有万里江山。<br>李广有射虎之威，到老无封；<br>冯唐有乘龙之才，一生不遇。<br>韩信未遇之时，无一日三餐，<br>及至遇行，腰悬三尺玉印，<br>一旦时衰，死于阴人之手。<br>有先贫而后富，有老壮而少衰。<br>满腹文章，白发竟然不中；<br>才疏学浅，少年及第登科。<br>深院宫娥，运退反为妓妾；<br>风流妓女，时来配做夫人。<br>青春美女，却招愚蠢之夫；<br>俊秀郎君，反配粗丑之妇。<br>蛟龙未遇，潜水于鱼鳖之间；<br>君子失时，拱手小人之下。<br>衣服虽破，常存仪礼之容；<br>面带忧愁，每抱怀安之量。<br>时运不遇，只宜安贫守份；<br>心若不欺，必然扬眉吐气。<br>初贫君子，天然骨骼生成；<br>乍富小人，不脱贫寒肌体。<br>天不得时，日月无光；<br>地不得时，草木不生；<br>水不得时，风浪不平；<br>人不得时，利运不同。<br>注福注禄，命里已安排定，<br>富贵谁不欲？人若不依据根基八字，岂能为卿为相？<br>吾昔居洛阳，朝求僧餐，暮宿破窑，<br>思衣不可遮其体，思食不可济其饥，<br>上人憎，下人厌，人道我贱，非我不弃也。<br>今居朝堂，官至极品，位置三公，<br>身虽鞠躬于一人之下，而列职于千万人之上，<br>有挞百僚之仗，有斩鄙吝之剑，<br>思衣而有罗锦千箱，思食而有珍馐百味，<br>出则壮士执鞭，入则佳人捧觞，<br>上人宠，下人拥。<br>人道我贵，非我只能也。<br>此乃时也，运也，命也。<br>嗟乎！<br>人生在世，富贵不可尽用，贫贱不可自欺，<br>听由天地循环，周而复始焉。  </p>
 <h2 id="欢迎点赞交流。"><a href="#欢迎点赞交流。" class="headerlink" title="欢迎点赞交流。"></a>欢迎点赞交流。</h2>]]></content>
@@ -947,6 +963,10 @@
     
     </summary>
     
+      <category term="文章" scheme="http://yoursite.com/categories/%E6%96%87%E7%AB%A0/"/>
+    
+    
+      <category term="寒窑赋" scheme="http://yoursite.com/tags/%E5%AF%92%E7%AA%91%E8%B5%8B/"/>
     
   </entry>
   
@@ -955,7 +975,7 @@
     <link href="http://yoursite.com/2015/08/19/hello-world/"/>
     <id>http://yoursite.com/2015/08/19/hello-world/</id>
     <published>2015-08-19T00:34:14.000Z</published>
-    <updated>2017-08-31T16:39:25.745Z</updated>
+    <updated>2017-09-08T03:06:13.417Z</updated>
     
     <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
@@ -974,6 +994,10 @@
     
     </summary>
     
+      <category term="fresh" scheme="http://yoursite.com/categories/fresh/"/>
+    
+    
+      <category term="初始化" scheme="http://yoursite.com/tags/%E5%88%9D%E5%A7%8B%E5%8C%96/"/>
     
   </entry>
   
