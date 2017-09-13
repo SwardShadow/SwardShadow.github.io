@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-08T02:58:39.358Z</updated>
+  <updated>2017-09-13T12:36:37.347Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,561 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面向对象进阶版本2.0</title>
+    <link href="http://yoursite.com/2017/05/12/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E8%BF%9B%E9%98%B6%E7%89%88%E6%9C%AC2.0/"/>
+    <id>http://yoursite.com/2017/05/12/面向对象进阶版本2.0/</id>
+    <published>2017-05-12T04:22:26.000Z</published>
+    <updated>2017-09-13T12:36:37.347Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="前端开发"><a href="#前端开发" class="headerlink" title="前端开发"></a>前端开发</h3><ul>
+<li>编写通用框架-可以使用jQuery。</li>
+<li>编写通用UI组件——可以选择使用jQuery UI插件。</li>
+<li>编写其他框架：验证，产品价格计算，可以使用jQuery插件。</li>
+<li>页面初始化：绑定，事件，性能，安全</li>
+<li>ajax交互：数据获取，数据提交</li>
+</ul>
+<h3 id="面向对象开发"><a href="#面向对象开发" class="headerlink" title="面向对象开发"></a>面向对象开发</h3><ul>
+<li>分析需要的对象</li>
+<li>分析每个对象需要的属性和方法</li>
+<li>一次实现每个对象</li>
+<li>面向对象编程(直接使用封装好的方法)</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><ul>
+<li>不要一口吃个胖子，分成小的，一个一个解决</li>
+<li>比如：绑定数据：我们用两个函数封装：<ul>
+<li>一个绑定基本信息</li>
+<li>一个绑定图片</li>
+</ul>
+</li>
+</ul>
+<h3 id="页面开发整体思路"><a href="#页面开发整体思路" class="headerlink" title="页面开发整体思路"></a>页面开发整体思路</h3><ul>
+<li>先思考页面初始化所需要做的使用：<ul>
+<li>绑定产品相关</li>
+<li>绑定购物车相关</li>
+</ul>
+</li>
+<li>然后思考页面在和用户交互过程需要做的事情<ul>
+<li>什么事交互</li>
+<li>如何实现交互</li>
+</ul>
+</li>
+</ul>
+<h3 id="基础知识汇总"><a href="#基础知识汇总" class="headerlink" title="基础知识汇总"></a>基础知识汇总</h3><ul>
+<li>数据存储在磁盘中。</li>
+<li>计算机的磁盘其实就是无数个0和1或者无数个开关，又叫二极管每个二极管有两个状体：开关。开表示1，关表示0。</li>
+<li>二进制(短除法)：比如7除以2等于3余1，再除以2等于1，余数1.那么他的二进制是111。倒回去就是最后一个1乘以2的0次方，倒数第二个1乘以2的1次方，第一个1乘以2的二次方，然后三者和相加则可以得到十进制的数字。指令也是01表示的，001表示加法，010表示减法，011表示乘法。三个二极管可以表示八个指令。指令越多，计算机就越牛逼，32位操作系统只能表示2的32次方个指令，64位操作系统可以识别2的64位操作系统。</li>
+<li>二进制图片的处理就是把图片描绘在一个一个帧点上来画出来。所以就有了分辨率的问题。</li>
+<li>CPU内部就是无数个二极管造成的。1纳米等于10的-9次方米。内存就是一个二进制存储器。</li>
+<li>代码执行的方式：系统会将我们编写的代码全部转换成对应的二进制，也就是01存放在内存中。CPU一行一行的从内存中读取这些01010，然后实现运算。</li>
+<li>汇编语言用于一些易于记住的符号来表示二进制指令。汇编语言用8进制，16进制等来表示二进制。<ul>
+<li>2进制：0，1</li>
+<li>8进制：0,1,2,3,4,5,6,7</li>
+<li>16进制：它由0-9，A-F组成</li>
+<li>8进制和16进制知识二进制的简化写法，归根到底还是二进制，就是一大坨二进制代码的简称而已，他们有一套法则的运算方式能够将2进制转换成8进制和16进制。当CPU运算的时候，再从8进制或者16进制转换成2进制再进行计算。</li>
+<li>编译原理就是将高级语言编程成汇编语言，然后编译成二进制语言的过程。由于计算机只认识0和1，所以我们使用的各种语言编码编写的代码最终都会编译成汇编语言，然后再编译成二进制语言，也有的语言跳过汇编，直接编译成二进制语言。</li>
+</ul>
+</li>
+</ul>
+<h3 id="C语言编程-面向对象编程"><a href="#C语言编程-面向对象编程" class="headerlink" title="C语言编程-面向对象编程"></a>C语言编程-面向对象编程</h3><h3 id="高级语言-面向对象语法"><a href="#高级语言-面向对象语法" class="headerlink" title="高级语言-面向对象语法"></a>高级语言-面向对象语法</h3><ul>
+<li>C++ 面向对象语言的鼻祖</li>
+<li>Java 面向对象发扬光大</li>
+<li>C# 结合java C++等多种面向对象语言的优点开发的一种语言</li>
+<li>PHP</li>
+<li>JavaScript 高级版本已经开始支持面向对象比如class关键字</li>
+<li>Object C:开发iphone，落后的语言</li>
+<li>Swift：法法iphone结合java C# C++等开发的一种更加优秀的语言</li>
+<li>Ruby</li>
+<li>python</li>
+<li>==总结：格式千变万化，但是本质都是一样的；属性和方法==  <h3 id="网络传输和二进制"><a href="#网络传输和二进制" class="headerlink" title="网络传输和二进制"></a>网络传输和二进制</h3></li>
+<li>互联网看到的数据都是通过01传递的。</li>
+<li>将汉字，拖欠，代码等数据翻译成01的过程称之为序列化。</li>
+<li>将10翻译成汉字，图片，diamante的过程称之为反序列化。</li>
+<li>wifi是一种以波的形式传输的能量场。信号波就有一定强度，彼此之间存在距离，以一定的速度传输。wifi波波长约为3到5英寸。波峰代表1，波谷代表0。</li>
+<li>光纤信号的琴调都是强度调制，发一束强光那就代表1，发一束弱光就代表0。</li>
+</ul>
+<h2 id="构造函数和属性"><a href="#构造函数和属性" class="headerlink" title="构造函数和属性"></a>构造函数和属性</h2><h3 id="构造函数和普通函数"><a href="#构造函数和普通函数" class="headerlink" title="构造函数和普通函数"></a>构造函数和普通函数</h3><h4 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h4><ul>
+<li>构造函数用来实例化一个对象</li>
+<li>就像是一道菜谱，按照这个菜谱炒了一盘菜。</li>
+<li>语法点：var product=new Product();</li>
+<li>构造函数和普通函数的区别<ul>
+<li>对象其实是使用函数实现的</li>
+<li>对象本身就是一个函数</li>
+<li>如果一个函数用于创建对象，我们一般称之为构造函数。</li>
+</ul>
+</li>
+<li>js创建对象的四种方式<ul>
+<li>参数传参</li>
+<li>默认值</li>
+<li>动态添加属性</li>
+<li>混合模式</li>
+</ul>
+</li>
+<li><p>构造语法规范</p>
+<ul>
+<li>成员(属性)定义规范</li>
+<li>this.name</li>
+<li>成员(方法)定义规范：<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">this</span>.buy=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"buy"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>属性访问： 点语法</p>
+<ul>
+<li>先实例化，再使用点语法访问<h4 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h4>如何判断某个实例是否是根据某个猴枣函数创建的<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(pl <span class="keyword">instanceof</span> Product)&#123;</div><div class="line">    clert(<span class="string">"true"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>高级语言构造函数是没有return的，而js比较特殊，js构造函数本省就是一个函数，所以拥有函数的一切的特性。 </p>
+</li>
+<li><strong>如果return是一个对象，则new的时候返回的是return的对象。</strong>  </li>
+</ul>
+<p><strong>万物皆属性</strong><br>一切数据都是通过变量来统一管理的。  </p>
+<ul>
+<li>如何避免重大损失<ul>
+<li>后台开发校验</li>
+<li>前端开发人员也校验</li>
+</ul>
+</li>
+<li>作用<ul>
+<li>对属性封装一些操作：比如判断，校验，默认值等等</li>
+<li>保护某些属性</li>
+</ul>
+</li>
+</ul>
+<h4 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h4><ul>
+<li>因为这些是ECMAScript 5新增属性，所以老版本浏览器都不一定支持</li>
+<li>如果不考虑兼容低端浏览器，可以使用</li>
+<li>支持浏览器：Chromre 32、IE 9、FireFox 28、Opera 19,Safari 5.1.7。</li>
+<li>设置属性读取权限<ul>
+<li>设置属性的访问权限</li>
+<li>Object.defineProperty(a,b,c)</li>
+<li>a. 必须要属性设置的对象</li>
+<li>b. 必须要设置的属性名，（键值）</li>
+<li>c. 是一个用于描述属性值得json数据，这个json数占领configurable，enmerable，writable，value构成。</li>
+<li>configurable<ul>
+<li><ol>
+<li>可否被删除</li>
+</ol>
+</li>
+<li><ol>
+<li>他的属性值可否被批改</li>
+</ol>
+</li>
+<li><ol>
+<li>可否把属性设置成接见器属性，默认值是true，可以删除，批改，设置</li>
+</ol>
+</li>
+<li>eumerable：可否被for-in轮回道</li>
+<li>writable默示属性值可否被批改</li>
+<li>value：属性值</li>
+</ul>
+</li>
+<li>团队合作中的使用：高级开发工程师编写一个对象，为了防止别人使用的时候限制某些权限，可以使用该方法。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="共有属性和私有属性"><a href="#共有属性和私有属性" class="headerlink" title="共有属性和私有属性"></a>共有属性和私有属性</h3><ul>
+<li>对象都是一个一个小工具包</li>
+<li>bindDOMDetail是私有，外界无法访问</li>
+<li>init是共有，外界可以访问，类似于接口。<ul>
+<li>好处是方便其他人使用，还可以防止其他人员访问核心代码。</li>
+</ul>
+</li>
+</ul>
+<h4 id="config对象"><a href="#config对象" class="headerlink" title="config对象"></a>config对象</h4><p>定义一个config对象保存当前对象的临时变量，这样其他所有成员都可以访问：  </p>
+<ul>
+<li>统一管理</li>
+<li>方便内存回收</li>
+<li>解决代码重复性问题：一定要保证你写的代码不要重复的</li>
+<li>如何避免重复：利用函数来解决代码的复用性</li>
+<li>重复性带来的危害：一旦需求改变，需要更改代码，那么所有重复的地方都需要更改。</li>
+</ul>
+<h4 id="实例化的本质"><a href="#实例化的本质" class="headerlink" title="实例化的本质"></a>实例化的本质</h4><ul>
+<li>一些数据通过变量来管理。定义变量的过程其实就是内存分配的过程，所以本质上一切数据都是存放在内存中的。</li>
+<li>数据通过变量来管理，不管是字符串，数字，还是复杂的对象，都是存放在变量中的。</li>
+</ul>
+<h5 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h5><ul>
+<li>对象也不例外，对象也是放在变量中管理的。</li>
+<li>一切数据都是保存在内存中的。</li>
+<li>当打开浏览器的时候，系统先把我们开发的代码放在内存中。然后解析成我们看到的绚丽的页面。</li>
+</ul>
+<h5 id="数据类型复习"><a href="#数据类型复习" class="headerlink" title="数据类型复习"></a>数据类型复习</h5><ol>
+<li>数值型(Number):包括整数，浮点数。</li>
+<li>布尔值(Boolean)</li>
+<li>字符串型(String)</li>
+<li>对象(Object)</li>
+<li>数组(Array)</li>
+<li>空值(Null)</li>
+<li>未定义(Undefined)</li>
+</ol>
+<ul>
+<li>typeof判断数据类型<ul>
+<li>在使用typeof运算符时采用引用类型存储值会出现一个问题，无论引用的是什么类型的对象，它都返回”object”。</li>
+</ul>
+</li>
+<li>第二种方式</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(toString.call(<span class="number">123</span>)) <span class="comment">//[object Number]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call(<span class="string">'123'</span>)) <span class="comment">//[object String]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call(<span class="literal">undefined</span>)) <span class="comment">//[object Undefined]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call(<span class="literal">true</span>)) <span class="comment">//[object Boolean]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call(&#123;&#125;)) <span class="comment">//[object Object]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call([])) <span class="comment">//[object Array]</span></div><div class="line"><span class="built_in">console</span>.log(toString.call(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;)) <span class="comment">//[object Function]</span></div></pre></td></tr></table></figure>
+<ul>
+<li>第三种方法<ul>
+<li>instanceof 数据类型判断</li>
+<li>判断已知对象类型的方法：instanceof</li>
+<li>注意：在instanceof后面一定要有对象类型，并且大小不能写错，该方法适合一些条件选择或者分支。</li>
+</ul>
+</li>
+<li>第四种方法<ul>
+<li>constructor判断</li>
+</ul>
+</li>
+</ul>
+<h5 id="jQuery中判断数据的方法"><a href="#jQuery中判断数据的方法" class="headerlink" title="jQuery中判断数据的方法"></a>jQuery中判断数据的方法</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//    jQuery提供一系列工具方法，用来判断数据类型，以弥补JavaScript原生的typeof运算符的不足。</span></div><div class="line"><span class="comment">//     以下方法对参数进行判断，返回一个布尔值。</span></div><div class="line"><span class="comment">//    jQuery.isArray()：是否为数组。</span></div><div class="line"><span class="comment">//    jQuery.isEmptyObject()：是否为空对象（不含可枚举的属性）。</span></div><div class="line"><span class="comment">//    jQuery.isFunction()：是否为函数。</span></div><div class="line"><span class="comment">//    jQuery.isNumeric()：是否为数字。</span></div><div class="line"><span class="comment">//    jQuery.isPlainObject()：是否为使用“&#123;&#125;”或“new Object”生成的对象，而不是浏览器原生提供的对象。</span></div><div class="line"><span class="comment">//    jQuery.isWindow()：是否为window对象。//    jQuery.isXMLDoc()：判断一个DOM节点是否处于XML文档之中。</span></div></pre></td></tr></table></figure>
+<h4 id="内存介绍"><a href="#内存介绍" class="headerlink" title="内存介绍"></a>内存介绍</h4><ul>
+<li>代码的执行过程：<ul>
+<li>系统先将我们写的diamante编译成二进制</li>
+<li>将二进制写进内存</li>
+<li>CPU读取内存中的保存的数据，通过一大堆复杂的程序让我们看到漂亮的页面。</li>
+</ul>
+</li>
+<li>数据最终都要放入到内存中 </li>
+<li><strong>指针</strong>：在定义一个变量的时候，有两个重要的量：值和地址。地址也就是指针。<ul>
+<li>指针的解释：指针就类似于门牌号，方便搜索，搜索引擎优化。</li>
+<li><strong>一个变量如果保存的是门牌号，就称其指向某个变量。</strong></li>
+</ul>
+</li>
+<li>内存和变量<ul>
+<li>一切数据都是保存在内存中</li>
+<li>变量定义：每个数据都会有一个地址(门牌号).</li>
+<li>因为数据可能很复杂，为了能够快速找到，对数字的搜索很快。</li>
+</ul>
+</li>
+</ul>
+<h4 id="对象实例在内存中的存储"><a href="#对象实例在内存中的存储" class="headerlink" title="对象实例在内存中的存储"></a>对象实例在内存中的存储</h4><ul>
+<li>实例拷贝原理：内存分配会自动拷贝构造对象的所有属性，并赋以实例的值。</li>
+<li>实例在内存中的保存：当你实例化一个对象，那么内存中会开辟两个内存区域：一个保存实例名称变量，其保存的只是地址。一个保存对象的真正的数据。</li>
+<li><strong>总结</strong><ul>
+<li>实例化的过程其实就是拷贝构造函数属性的过程</li>
+<li>==除了拷贝意外还会自动生成一个constructor属性，用于识别其实根据哪个构造函数创建的实例。==</li>
+</ul>
+</li>
+</ul>
+<h3 id="原型对象本质"><a href="#原型对象本质" class="headerlink" title="原型对象本质"></a>原型对象本质</h3><h4 id="原型对象的必要性——构造函数创建对象存在的问题"><a href="#原型对象的必要性——构造函数创建对象存在的问题" class="headerlink" title="原型对象的必要性——构造函数创建对象存在的问题"></a>原型对象的必要性——构造函数创建对象存在的问题</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//会拷贝一份</span></div><div class="line"><span class="keyword">var</span> p1=<span class="keyword">new</span> Product();</div><div class="line"><span class="keyword">var</span> p2=<span class="keyword">new</span> Product();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(p1.constructor);</div><div class="line"><span class="built_in">console</span>.log(p2.constructor);</div></pre></td></tr></table></figure>
+<p><strong>存在的问题</strong><br>每个实例的name，描述确实不一样，需要单独的空间存储，但是buy方法是所有实例都是一样的。我了避免内存浪费，所以就出现了原型帮我们解决这个问题。<br><strong>原型对象，不管你实例化多少次，都只生成一次。</strong>  </p>
+<ul>
+<li>只用构造函数创建对象存在的缺点<ul>
+<li>对象需要实例化</li>
+<li>每次实例化都需要分配内存存储这些数据</li>
+<li>如果实例很多，那就要分配很多内存存储</li>
+<li>一般每个实例的属性是不一样的，而行为一般都是一样的，所以我们希望每次实例化的方法，只分配内存保存不一样的数据。</li>
+<li>而像原型对象方法，可以非配一次空间，所有的实例共享这个方法，所以需要原型对象。</li>
+</ul>
+</li>
+<li>==原型对象中的工具被所有实例所共享==</li>
+<li>原型对象的本质：<strong>原型对象的属性和方法可以被所有实例共享</strong><ul>
+<li>这样，如果我们需要修改属性或者方法，就只需要修改一处，就能够影响到所有实例了。</li>
+<li>所以，一般大家将共有的东西放在原型独享中。每个实例独特的不一样的属性放在构造函数中。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//面试题</span></div><div class="line"><span class="comment">//题目三</span></div><div class="line"><span class="keyword">var</span> fun = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">fun.prototype = &#123;</div><div class="line">    info: &#123;</div><div class="line">    name: <span class="string">"peter"</span>,</div><div class="line">    age: <span class="number">25</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> a = <span class="keyword">new</span> fun();</div><div class="line"><span class="keyword">var</span> b = <span class="keyword">new</span> fun();</div><div class="line">a.info.name = <span class="string">"jack"</span>;</div><div class="line">b.info.name = <span class="string">"tom"</span>;</div><div class="line"><span class="built_in">console</span>.log(a.info.name); <span class="comment">//tom</span></div><div class="line"><span class="built_in">console</span>.log(b.info.name); <span class="comment">//tom</span></div></pre></td></tr></table></figure>
+<h4 id="术语总结：双对象法则"><a href="#术语总结：双对象法则" class="headerlink" title="术语总结：双对象法则"></a>术语总结：双对象法则</h4><ul>
+<li>通过原型创建对象，其实创建的是两个对象<ul>
+<li>构造函数对象</li>
+<li>原型对象</li>
+</ul>
+</li>
+<li>当我们实例化的时候，该实例自动拷贝构造函数的所有属性和方法，而对于原型对象，则不拷贝，而是通过一个属性“铁链”。</li>
+<li>双对象的名称<ul>
+<li>构造函数对象的名称：就是函数名称</li>
+<li>原型对象的名称：古怪点：函数名称.prototype。</li>
+</ul>
+</li>
+<li>双双对象第一个对象：构造函数(对象) <ul>
+<li>构造函数对象</li>
+<li>构造函数对象中的属性方法</li>
+<li>构造属性方法</li>
+</ul>
+</li>
+<li>双对象第一个对象：原型对象<ul>
+<li>原型</li>
+<li>原型对象</li>
+<li>原型属性 原型方法</li>
+</ul>
+</li>
+</ul>
+<h3 id="铁索连舟"><a href="#铁索连舟" class="headerlink" title="铁索连舟"></a>铁索连舟</h3><ul>
+<li>实例不拷贝原型中的属性方法，如何访问其他属性？</li>
+<li>隐藏的两个属性<ul>
+<li>任何实例都有一个隐藏的属性：contructor，其值是构造函数。</li>
+<li>此外还有一个隐藏的属性：prototype1，这就像一条铁链一样，将实例和原型对象连在一起，这样我们就可以访问到原型对象中的方法，而不用拷贝。</li>
+</ul>
+</li>
+<li>双隐藏属性法则<ul>
+<li>contructor</li>
+<li>prototype</li>
+</ul>
+</li>
+<li><strong>属性访问搜索原则</strong>  <ul>
+<li>首先遍历自己的属性(从构造函数拷贝过来的属性)，如果找到就返回。</li>
+<li>如果没找到，就根据铁链寻找到原型对象，一次遍历原型对象中的属性，如果找到同名的属性就返回。</li>
+</ul>
+</li>
+<li><strong>原型链定义</strong>：以上的链式访问形式有一个术语：原型链。</li>
+</ul>
+<h4 id="主体屏蔽理论"><a href="#主体屏蔽理论" class="headerlink" title="主体屏蔽理论"></a>主体屏蔽理论</h4><ul>
+<li>原型中也可以包含属性</li>
+<li>两种访问方式<ul>
+<li>访问原型对象中的属性 Product.prototype.buy() ;</li>
+</ul>
+</li>
+<li>属性屏蔽理论 </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">Product.prototype=&#123;</div><div class="line">    name:<span class="string">"zzz"</span>,</div><div class="line">    buy:<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">"原型对象"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> product=<span class="keyword">new</span> Product();</div><div class="line"><span class="comment">//原型属性屏蔽理论——乌云蔽日</span></div><div class="line"><span class="built_in">console</span>.log(product.buy());</div><div class="line"><span class="comment">//清除乌云</span></div><div class="line"><span class="keyword">delete</span> product.buy;</div><div class="line"><span class="built_in">console</span>.log(product.buy());</div><div class="line"></div><div class="line"><span class="comment">//被屏蔽之后如何获取</span></div><div class="line"><span class="built_in">console</span>.log(Product.prototype.buy());</div></pre></td></tr></table></figure>
+<h4 id="构造属性和原型属性判断"><a href="#构造属性和原型属性判断" class="headerlink" title="构造属性和原型属性判断"></a>构造属性和原型属性判断</h4><ul>
+<li>hasOwnProperty()方法<ul>
+<li>可以判断一个属性是存在于构造对象的实例上海市原型对象上，该方法继承自Object。</li>
+<li>如果是实例对象-true</li>
+<li>如果是原型对象-false</li>
+</ul>
+</li>
+</ul>
+<h4 id="引用类型和值类型"><a href="#引用类型和值类型" class="headerlink" title="引用类型和值类型"></a>引用类型和值类型</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//数值型</span></div><div class="line"><span class="keyword">var</span> str;<span class="comment">//这个时候不进行内存分配</span></div><div class="line"><span class="keyword">var</span> x=<span class="number">9</span>;<span class="comment">//分配内存</span></div><div class="line"><span class="keyword">var</span> y=x;<span class="comment">//不分配内存 y变量和x变量公用同一个地址</span></div><div class="line"><span class="built_in">console</span>.log(str);</div><div class="line"><span class="built_in">console</span>.log(x==y);<span class="comment">//比较的是指指针指向的内存空间中存储的值</span></div><div class="line"><span class="built_in">console</span>.log(x===y);<span class="comment">//比较的是地址和内存中存储的值</span></div><div class="line"><span class="comment">//字符串</span></div><div class="line"><span class="keyword">var</span> str1;<span class="comment">//这个时候不进行内存分配</span></div><div class="line"><span class="keyword">var</span> str2=<span class="string">"百事屋"</span>;<span class="comment">//分配内存</span></div><div class="line"><span class="keyword">var</span> str3=str2;</div><div class="line"><span class="built_in">console</span>.log(str2==str3);<span class="comment">//比较的是指针指向的内存空间中存储的量</span></div><div class="line"><span class="built_in">console</span>.log(str2===str3);<span class="comment">//比较的是地址和地址中存储的值</span></div><div class="line"><span class="comment">//数组</span></div><div class="line"><span class="keyword">var</span> arr1=[<span class="string">"你猜"</span>,<span class="string">"你再猜"</span>];<span class="comment">//分配内存</span></div><div class="line"><span class="comment">//引用类型其实指向同一个地址，也就是操作的其实是同一个位置。</span></div><div class="line"><span class="keyword">var</span> arr2=arr1;<span class="comment">//问题，这里arr2会会不会分配内存，答案不会</span></div><div class="line"><span class="built_in">console</span>.log(arr1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">console</span>.log(arr2[<span class="number">0</span>]);<span class="comment">//一样</span></div><div class="line"></div><div class="line"><span class="comment">//修改数组</span></div><div class="line">arr[<span class="number">0</span>]=<span class="string">"三国 水壶 西游记"</span>;</div><div class="line"><span class="built_in">console</span>.log(arr1[<span class="number">0</span>]);</div><div class="line"><span class="built_in">console</span>.log(arr2[<span class="number">0</span>]);</div><div class="line"><span class="comment">//一样，说明这里不是分配内存，其实arr变量中存的是地址，指向arr1内存</span></div><div class="line"></div><div class="line"><span class="comment">//函数</span></div><div class="line"><span class="comment">//系统都会在内存中生成两个区域：一个存储变量，一个用来存储函数</span></div><div class="line"><span class="comment">//而变量中存放的知识函数空间所在的地址(指针)</span></div><div class="line"><span class="comment">//由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</span></div><div class="line"><span class="comment">//由于函数名仅仅是指向函数的指针</span></div><div class="line"><span class="comment">//因此函数名与包含对象指针的其他变量没有什么不同</span></div><div class="line"><span class="comment">//换句话说，一个函数可能会有多个名字，例如：</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">num1,num2</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> num1+num2;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(sum(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//20</span></div><div class="line"><span class="keyword">var</span> anotherSum=sum;<span class="comment">//内能是如何分配的？这里不会在内存生成新的空间，存储函数。而是生成一个变量，变量中保存的是同一个地址</span></div><div class="line">sum=<span class="literal">null</span>;<span class="comment">//这里只是将sum变量中原来保存的是函数地址，然后赋值成null，这样做并不会影响到函数对象对象的内存空间</span></div><div class="line"><span class="built_in">console</span>.log(anotherSum(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//20</span></div><div class="line"><span class="built_in">console</span>.log(sum(<span class="number">10</span>,<span class="number">10</span>));<span class="comment">//20</span></div></pre></td></tr></table></figure>
+<p><strong>由于函数是对象，因此函数名实际上也是一个指向函数对象的指针，不会与某个函数绑定。</strong>  </p>
+<h3 id="对象-1"><a href="#对象-1" class="headerlink" title="对象"></a>对象</h3><h4 id="引用类型和值类型-1"><a href="#引用类型和值类型-1" class="headerlink" title="引用类型和值类型"></a>引用类型和值类型</h4><h5 id="值类型内存分配"><a href="#值类型内存分配" class="headerlink" title="值类型内存分配"></a>值类型内存分配</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">chainStore</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> store=<span class="string">"nihao"</span>;</div><div class="line">    <span class="keyword">var</span> store2=store1;</div><div class="line">    store1=<span class="string">"haoni"</span>;</div><div class="line">    alert(store2);<span class="comment">//nihao</span></div><div class="line">&#125;</div><div class="line">chainStore();</div><div class="line"><span class="comment">//把一个值类型(也可以叫基本类型)store2传递另一个变量(赋值)时，其实是分配了一块新的内存空间，因此改变store1的值对store2没有任何影响，因为它不像引用类型，变量的交换其实是交换了指向同一个内容的地址。</span></div></pre></td></tr></table></figure>
+<h5 id="对象是引用类型"><a href="#对象是引用类型" class="headerlink" title="对象是引用类型"></a>对象是引用类型</h5><p>对象是引用类型，赋值只是生成一个内存保存地址而已。<br>var y=x；<br>如果变量x表示一个对象，则通过复制后，y生成一个变量，变量包含一个地址，地址指向对象x。所以从本质上而言，不会生成新的变量，x，y指向内存中的同一个位置，当你通过y改变对象的值，这种变化也会反映到x上。<br><strong>Y不完全拷贝X对象，而只是生成一个变量，变量中存储的是x的地址。所以X其实是Y是一回事</strong>  </p>
+<h5 id="引用类型内存分配"><a href="#引用类型内存分配" class="headerlink" title="引用类型内存分配"></a>引用类型内存分配</h5><p>其实操作的就是地址，他们都指向同一片地址，所以修改任何一个变量都是修改自身。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">chainStore</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> store1=[<span class="string">"Nike China"</span>];</div><div class="line">    <span class="keyword">var</span> store2=store1;</div><div class="line">    store1[<span class="number">0</span>]=<span class="string">"Nike U.S.A"</span>;</div><div class="line">    alert(store2[<span class="number">2</span>]);<span class="comment">//Nike U.S.A</span></div><div class="line">&#125;</div><div class="line">chainStore();</div></pre></td></tr></table></figure></p>
+<p>在上面的代码中，store2只进行一次赋值，理论上它的值已经确定，但后面通过改写store1的值，发现store2的值也发生了改变，这正是引用类型的特征，也是我们要注意的地方。  </p>
+<h5 id="引用类型和值类型区别"><a href="#引用类型和值类型区别" class="headerlink" title="引用类型和值类型区别"></a>引用类型和值类型区别</h5><ul>
+<li>内存分配机制不一样<ul>
+<li>引用类型-创建一个变量——内存中保存的是变量真实入口的地址</li>
+<li>值类型-创建一个变量，内存创建一个区域。</li>
+<li>说白了就是==引用类型会分配两个区域：一个保存地址，一个保存内容==</li>
+</ul>
+</li>
+<li>变量赋值是否的区别<ul>
+<li>将一个值类型赋值给另一个变量，实际上就是创建一个区域</li>
+<li>引用类型，只是创建一个区域，保存另一个变量的入口地址。 </li>
+</ul>
+</li>
+</ul>
+<p><strong>总结</strong>  </p>
+<ul>
+<li>值类型赋值，会重新分配内存</li>
+<li>==引用类型赋值其实赋的是指针。==</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">show</span>(<span class="params">x</span>) </span>&#123;</div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>(x));    <span class="comment">// undefined 值类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="number">10</span>));   <span class="comment">// number 值类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>(‘abc’)); <span class="comment">// string 值类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="literal">true</span>));  <span class="comment">// Boolean 值类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; &#125;));  <span class="comment">//函数 引用类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span>([<span class="number">1</span>, ‘a’, <span class="literal">true</span>]));  <span class="comment">//数组  引用类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span> (&#123; <span class="attr">a</span>: <span class="number">10</span>, <span class="attr">b</span>: <span class="number">20</span> &#125;));  <span class="comment">//object 或者json  引用类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span> (<span class="literal">null</span>));  <span class="comment">//null  引用类型</span></div><div class="line">            <span class="built_in">console</span>.log(<span class="keyword">typeof</span> (<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>)));  <span class="comment">//内置对象 引用类型</span></div><div class="line">Var na；</div><div class="line">        &#125;</div><div class="line">        show();</div><div class="line">其中上面的四种（<span class="literal">undefined</span>, number, string, boolean）属于值类型，不是对象。</div><div class="line">函数、数组、对象、<span class="literal">null</span>、<span class="keyword">new</span> <span class="built_in">Number</span>(<span class="number">10</span>)都是对象。他们都是引用类型。</div></pre></td></tr></table></figure>
+<h5 id="值类型"><a href="#值类型" class="headerlink" title="值类型"></a>值类型</h5><ol>
+<li>undefined 值类型</li>
+<li>number 值类型</li>
+<li>string 值类型</li>
+<li>Boolean 值类型</li>
+</ol>
+<p>保存在栈内存中的简单数据段，栈是在内存中划分的固定内存。</p>
+<h5 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h5><p>函数，数组，json类型，null，数值对象。<br>目的将数值型转换成引用类型new Number(10);</p>
+<h4 id="堆内存空间和栈内存空间"><a href="#堆内存空间和栈内存空间" class="headerlink" title="堆内存空间和栈内存空间"></a>堆内存空间和栈内存空间</h4><p><strong>值类型都是存放在栈内存空间的</strong><br><strong>引用类型都是存放在堆内存空间的</strong>  </p>
+<ul>
+<li>栈：存放变量，变量中保存的只是对象所在的地址。</li>
+<li>堆：保存对象真正的数据。</li>
+</ul>
+<h4 id="内存使用生命周期"><a href="#内存使用生命周期" class="headerlink" title="内存使用生命周期"></a>内存使用生命周期</h4><p>js环境中分配的内存一般有如下生命周期：  </p>
+<ul>
+<li>内存分配：当我们申明变量、函数、对象的时候，系统会自动为他们分配内存。</li>
+<li>内存使用 var name=null;即读写内存，也就是使用变量，函数等。</li>
+<li>内存回收：使用完毕，由垃圾回收自动回收不再使用的内存。</li>
+</ul>
+<h5 id="两个概念"><a href="#两个概念" class="headerlink" title="两个概念"></a>两个概念</h5><p>一切数据通过变量来管理。<br>定义变量的过程其实就是内存分配的过程，所以本质上一切数据都是存放在内存中的。  </p>
+<h5 id="一切数据都是通过变量来存储的"><a href="#一切数据都是通过变量来存储的" class="headerlink" title="一切数据都是通过变量来存储的"></a>一切数据都是通过变量来存储的</h5><p>数据通过变量来管理，不管是字符串，数字，还是复杂的对象，都是存放在变量中的。有些时候系统会自动生成变量存储，即使我们看不到。总之一切数据都是通过变量存储的。</p>
+<h5 id="内存生命使用周期-定义变量的过程就是内存分配的过程"><a href="#内存生命使用周期-定义变量的过程就是内存分配的过程" class="headerlink" title="内存生命使用周期-定义变量的过程就是内存分配的过程"></a>内存生命使用周期-定义变量的过程就是内存分配的过程</h5><p>内存分配就是使用内存。<br>内存空间是有限的，4g内存，8g内存，使用完就要回收。<br>好的程序都会处理这一点。整个c语言编程就是针对内存编程。这就是内存使用生命周期，也就是变量的生命周期。</p>
+<h5 id="内存回收-自动释放篇"><a href="#内存回收-自动释放篇" class="headerlink" title="内存回收-自动释放篇"></a>内存回收-自动释放篇</h5><p>释放内存  </p>
+<ol>
+<li>系统自动释放</li>
+<li>释放定义的数组占用的空间</li>
+<li>释放对象的每个属性，方法占用的内存</li>
+<li>释放对象本身占用的内存。</li>
+</ol>
+<ul>
+<li>浏览器自动释放内存：IE在最小化和关闭时释放。  </li>
+<li>值类型内存自动释放：当函数执行的时候，会将参数，函数中定义的值的类型变量都保存在堆栈中。当函数执行结束，会自动释放和这个函数有关的存放在堆栈中的值类型变量。==闭包除外==  </li>
+<li>引用类型内存释放：引用类型通过引用计算器管理，实例化+1销毁(比如函数执行结束-1)，直到这个类的引用计数为0则系统自动释放内存。</li>
+</ul>
+<h5 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h5><ul>
+<li>定义：内存泄漏是指一块被分配的内存既不能使用，又不能回收，这样泄漏越多，最终导致占用内存越来越多，最终使得应用崩溃，甚至导致浏览器崩溃，最恶毒的就是导致系统也崩溃。  </li>
+<li>在C++中，因为是手动管理内存，内存泄漏是经常出现的事情。而现在流行的c#和java等语言采用了自动垃圾回收方法管理内存，正常使用的情况下几乎不会发生内存泄漏。浏览器中也是采用自动垃圾回收方法管理内存，但由于浏览器垃圾回收方法有bug，会产生内存泄漏。  </li>
+<li>为什么c语言易学难用：c语言编程在实际中都是自己负责内存的分配，回收等。而高级语言都是系统帮我们管理内存。</li>
+</ul>
+<ul>
+<li>如何解决内存泄漏：<ul>
+<li>高级语言的指针和内存管理<ul>
+<li>C语言，C++语言，JAVA语言，C#语言</li>
+<li>其他语言=也有指针这个概念</li>
+</ul>
+</li>
+<li>为什么C/C++语言相对Java等高级语言较为难学：因为需要程序员自己处理内存分配，内存泄漏，内存安全等问题。</li>
+<li>Java，C#，swift语言自动内存回收机制：引用计数器的原理，函数的回收原理。</li>
+</ul>
+</li>
+</ul>
+<h4 id="其他方式创建对象"><a href="#其他方式创建对象" class="headerlink" title="其他方式创建对象"></a>其他方式创建对象</h4><p>总结创建对象的几种方式：  </p>
+<ul>
+<li>字面量</li>
+<li>Object<ul>
+<li>获取对象的值：通过.或者[]操作符 </li>
+<li>缺点：重复太多</li>
+</ul>
+</li>
+<li>内置对象</li>
+<li>构造函数<ul>
+<li>方法是所有实例都一样的，每次实例都重新分配内存，造成内存浪费。 </li>
+</ul>
+</li>
+<li>原型对象<ul>
+<li>有些属性，比如name并非是所有实例共享的</li>
+<li>比如每个手机名称是不一样的</li>
+<li>如果是值类型能正常显示</li>
+<li>但是如果是引用类型就会出错</li>
+<li>解决方式<ul>
+<li>使用构造函数+原型对象方式</li>
+<li>也就是混合模式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//混合模式</span></div><div class="line"><span class="keyword">var</span> Role=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=&#123;<span class="attr">nickName</span>:<span class="string">"Jack"</span>,<span class="attr">accountName</span>:<span class="string">"12345@qq.com"</span>&#125;;</div><div class="line">&#125;</div><div class="line"><span class="comment">//姓名</span></div><div class="line"><span class="comment">//生命值</span></div><div class="line">Role.prototype.HP=<span class="number">100</span>;</div><div class="line"><span class="comment">//魔法值</span></div><div class="line">Role.prototype.MP=<span class="number">100</span>;</div><div class="line"><span class="comment">//技能</span></div><div class="line">Role.prototype.technologys=[<span class="string">"普攻"</span>,<span class="string">"变成白痴"</span>,<span class="string">"变成Sb"</span>,<span class="string">"变成猪头"</span>];</div><div class="line"><span class="comment">//跑起来</span></div><div class="line">Role.prototype.run=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">"run"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>拷贝<ul>
+<li>原理：遍历A对象的每个属性，以此赋值给另一个空对象。</li>
+<li>使用场景：<ul>
+<li>默认值场景(默认值和自定义值，模版)</li>
+<li>拓展功能(框架)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>工厂<ul>
+<li>本质<ul>
+<li>其实就是封装性</li>
+<li>其实就是隐藏细节</li>
+<li>让我们可以拿来即用</li>
+<li>就像现实的工厂一样，生产出手机，我们可以直接使用</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第三方<ul>
+<li>基本方法</li>
+<li>使用第三方框架改造案例</li>
+</ul>
+</li>
+</ul>
+<p>面向对象的一切思维都是来源于生活  </p>
+<ul>
+<li>生活场景<ul>
+<li>工厂模式也不例外</li>
+<li>工厂模式就是将物品生产交给工厂来做</li>
+<li>同样的，我们可以实例看做一个具体的产品。产品创建的工作交给工厂，我们直接做事</li>
+</ul>
+</li>
+<li>与构造函数创建区别<ul>
+<li>没有显式的创建对象——不需要new</li>
+<li>没有return语句</li>
+</ul>
+</li>
+<li>传参的方式实现数据修改：<ul>
+<li>适用于不用修改任何对象内部的任何值的情况</li>
+<li>虽然避免了重复，但是使用范围较窄。</li>
+</ul>
+</li>
+</ul>
+<h4 id="各种术语总结"><a href="#各种术语总结" class="headerlink" title="各种术语总结"></a>各种术语总结</h4><ul>
+<li>双对象法则：构造函数对象，原型对象</li>
+<li>构造函数</li>
+<li>原型对象</li>
+<li>构造对象属性和方法</li>
+<li>原型属性和方法</li>
+<li>OOP</li>
+<li>OO</li>
+<li>高阶：继承 多态 接口 抽象 重载 覆写<ul>
+<li>继承：一般构造函数对象中防止属性，原型对象中放置所有实例共享的方法<ul>
+<li>构造函数黄建的实例能访问原型对象的方法属性是因为继承</li>
+<li>两个对象的本质关系：原型对象继承了构造函数对象，因而可以访问构造函数对象的一切方法，属性。</li>
+</ul>
+</li>
+<li>重载——overload<ul>
+<li>function Add(a,b){};</li>
+<li>function Add(a,b,c){};</li>
+<li>function Add(a,b,c,d){};</li>
+<li>function Add(a,b,c,d,e){};</li>
+</ul>
+</li>
+<li>覆写：重写——override<ul>
+<li>重写表示重写父对象的同名方法或者属性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="comment">//    重写 重载 - override</span></div><div class="line"><span class="comment">//重写表示重写父对象的同名方法或者属性</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name, sex</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.sex = sex;</div><div class="line">    <span class="keyword">this</span>.test=<span class="string">'构造函数定义的属性'</span></div><div class="line">    <span class="keyword">this</span>.add=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="string">'构造函数对象中定义的方法'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">Person.prototype = &#123;</div><div class="line">    test:<span class="string">'原型中定义的属性'</span>,</div><div class="line">    getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.name;</div><div class="line">    &#125;,</div><div class="line">    getSex: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.sex;</div><div class="line">    &#125;,</div><div class="line">    add:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="string">'原型对象中定义的方法'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> shukui=<span class="keyword">new</span> Person(<span class="string">'wangshukui'</span>,<span class="string">'nan'</span>)</div><div class="line">shukui.add();<span class="comment">//构造函数对象继承原型对象 方法被重写</span></div><div class="line">alert(shukui.test); <span class="comment">//构造函数对象继承原型对象 属性被重写</span></div><div class="line">Person.prototype.add();</div><div class="line">Person.add();<span class="comment">//报错</span></div><div class="line">person.prototype.add(); <span class="comment">//报错</span></div><div class="line"><span class="comment">//    高级语言的中的覆写 - 重写 - override</span></div><div class="line"><span class="comment">//</span></div><div class="line"><span class="comment">//    //声明一个超类的</span></div><div class="line"><span class="comment">//    public class Parent&#123;</span></div><div class="line"><span class="comment">//        public void kick()&#123;</span></div><div class="line"><span class="comment">//            System.out.println(“kick football beeline.”);</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//    //声明一个子类</span></div><div class="line"><span class="comment">//    public class Child extends Parent&#123;</span></div><div class="line"><span class="comment">//        public void kick()&#123;</span></div><div class="line"><span class="comment">//            System.out.println(“kick football arc.”);</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//    //执行代码</span></div><div class="line"><span class="comment">//    public class test&#123;</span></div><div class="line"><span class="comment">//        public static void mian(String[] args)&#123;</span></div><div class="line"><span class="comment">//        Child cld=new Child();</span></div><div class="line"><span class="comment">//        cld.kick();//print kick football arc.</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="面向对象定义"><a href="#面向对象定义" class="headerlink" title="面向对象定义"></a>面向对象定义</h4><p>面型过程就是使用函数包装好一个一个工具。<br>常用的三个过程：init，binddom，bindevents。<br><strong>面向对象编程原则：单一功能原则——一个函数尽量包含一个功能。</strong></p>
+<h4 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h4><p>==原则：单一职责==  </p>
+<h5 id="绑定进阶"><a href="#绑定进阶" class="headerlink" title="绑定进阶"></a>绑定进阶</h5><p>数据绑定：在开发中，数据一般是从后台开发人员从数据库读取出来，封装成一个json字符串返回给你，然后我们需要将前端写的假数据编程真数据，这个过程就是数据绑定。  </p>
+<ul>
+<li>数据绑定的几种形式<ul>
+<li>简单绑定方法</li>
+<li>动态创建标签绑定方式<ul>
+<li>使用场景：状态不同，显示内同不一样。</li>
+<li>比如登录有三个状态：未登录，登录失败，登录成功</li>
+<li>每种状态显示的内容时不一样的，这个时候就需要动态创建标签。</li>
+<li>使用技术：innerHTML append</li>
+<li>备注：议案用于动态生成的代码量少的时候，如果需要动态生成很多代码，一般用模版技术。</li>
+</ul>
+</li>
+<li>模版技术<ul>
+<li>王者：art template(完美融合node.js)</li>
+<li>doT.js</li>
+<li>Juicer.js(支持node.js)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="art模版语法"><a href="#art模版语法" class="headerlink" title="art模版语法"></a>art模版语法</h3><p>编写模版，使用一个type=”text/html”的script便签存放模版<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;script id=<span class="string">"test"</span> type=<span class="string">"text/html"</span>&gt;</div><div class="line"> &lt;h1&gt;&#123;&#123;title&#125;&#125;&lt;<span class="regexp">/h1&gt; </span></div><div class="line"><span class="regexp">&lt;ul&gt; </span></div><div class="line"><span class="regexp">&#123;&#123;each list as value i&#125;&#125; </span></div><div class="line"><span class="regexp">&lt;li&gt;索引 &#123;&#123;i + 1&#125;&#125; ：&#123;&#123;value&#125;&#125;&lt;/</span>li&gt; </div><div class="line">&#123;&#123;/each&#125;&#125; </div><div class="line">&lt;<span class="regexp">/ul&gt; </span></div><div class="line"><span class="regexp">&lt;/</span>script&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>数据模版绑定<br>Test是模版名称，Data是数据名称  </li>
+<li><p>两种绑定语法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> data = &#123; </div><div class="line">title: <span class="string">'标签'</span>, </div><div class="line">list: [<span class="string">'文艺'</span>, <span class="string">'博客'</span>, <span class="string">'摄影'</span>, <span class="string">'电影'</span>, <span class="string">'民谣'</span>, <span class="string">'旅行'</span>, <span class="string">'吉他'</span>] </div><div class="line">&#125;; </div><div class="line"></div><div class="line"><span class="keyword">var</span> html = template(<span class="string">'test'</span>, data); <span class="built_in">document</span>.getElementById(<span class="string">'content'</span>).innerHTML = html;</div></pre></td></tr></table></figure>
+</li>
+<li><p>条件表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;<span class="keyword">if</span> admin&#125;&#125; </div><div class="line">&lt;p&gt;admin&lt;<span class="regexp">/p&gt;</span></div><div class="line"><span class="regexp"> &#123;&#123;else if code &gt; 0&#125;&#125; </span></div><div class="line"><span class="regexp">	&lt;p&gt;master&lt;/</span>p&gt;</div><div class="line"> &#123;&#123;<span class="keyword">else</span>&#125;&#125; </div><div class="line">      &lt;p&gt;error!<span class="xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></div><div class="line"> &#123;&#123;/<span class="keyword">if</span>&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>遍历表达式</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//无论数组或者对象都可以用each进行遍历</span></div><div class="line">&#123;&#123;each list <span class="keyword">as</span> value index&#125;&#125; </div><div class="line">&lt;li&gt;</div><div class="line">	&#123;&#123;index&#125;&#125; - &#123;&#123;value.user&#125;&#125;</div><div class="line">&lt;<span class="regexp">/li&gt; </span></div><div class="line"><span class="regexp">&#123;&#123;/</span>each&#125;&#125; </div><div class="line">亦可以被简写：</div><div class="line">&#123;&#123;each list&#125;&#125; </div><div class="line">&lt;li&gt;</div><div class="line">	&#123;&#123;$index&#125;&#125; - &#123;&#123;$value.user&#125;&#125;</div><div class="line">&lt;<span class="regexp">/li&gt; </span></div><div class="line"><span class="regexp">&#123;&#123;/</span>each&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>子模版<ul>
+<li>模版包含表达式，用于嵌套子模版<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;&#123;include <span class="string">'template_name'</span>&#125;&#125; </div><div class="line">子模板默认共享当前数据，亦可以指定数据：</div><div class="line">&#123;&#123;include <span class="string">'template_name'</span> news_list&#125;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>子模版好处：模块化组装页面，将复杂页面分成几个模块，携程模版，之后通过一个容器模版组装整个网页。这代表一种未来新兴开发技术。基于node.js+arttemplate技术，已经实现动态加载模版技术。 </p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;前端开发&quot;&gt;&lt;a href=&quot;#前端开发&quot; class=&quot;headerlink&quot; title=&quot;前端开发&quot;&gt;&lt;/a&gt;前端开发&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;编写通用框架-可以使用jQuery。&lt;/li&gt;
+&lt;li&gt;编写通用UI组件——可以选择使用jQuery UI插件。
+    
+    </summary>
+    
+      <category term="面向对象" scheme="http://yoursite.com/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+    
+      <category term="面向对象" scheme="http://yoursite.com/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>面向对象进阶版本1.0</title>
