@@ -1981,7 +1981,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ad6330;
+  background: #0811ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3065,6 +3065,8 @@ hr {
 body {
   background: url("/images/background.jpg");
   background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }
 * {
   cursor: url("http://om8u46rmb.bkt.clouddn.com/sword2.ico"), auto !important;
