@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="面向对象," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="面向对象的三大特征继承 编程世界的继承：两层含义 含义1:拥有父类的属性方法(特性) 含义2:拥有自己的属性和方法   继承的简单理解 继承可以减少代码重复  我们一般将相同的属性放在父类中 然后子类定义自己独特的属性   继承术语 子类 父类 派生类 基类    面向对象三大特性九重境界 Object中的继承-最简单的继承 内置对象的继承 自定义对象的继承 多种继承实现方式 第三方框架实现继承">
+<meta name="keywords" content="面向对象">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象的三大特征">
+<meta property="og:url" content="http://yoursite.com/2017/08/31/面向对象的三大特征/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="面向对象的三大特征继承 编程世界的继承：两层含义 含义1:拥有父类的属性方法(特性) 含义2:拥有自己的属性和方法   继承的简单理解 继承可以减少代码重复  我们一般将相同的属性放在父类中 然后子类定义自己独特的属性   继承术语 子类 父类 派生类 基类    面向对象三大特性九重境界 Object中的继承-最简单的继承 内置对象的继承 自定义对象的继承 多种继承实现方式 第三方框架实现继承">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-18T01:31:47.305Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象的三大特征">
+<meta name="twitter:description" content="面向对象的三大特征继承 编程世界的继承：两层含义 含义1:拥有父类的属性方法(特性) 含义2:拥有自己的属性和方法   继承的简单理解 继承可以减少代码重复  我们一般将相同的属性放在父类中 然后子类定义自己独特的属性   继承术语 子类 父类 派生类 基类    面向对象三大特性九重境界 Object中的继承-最简单的继承 内置对象的继承 自定义对象的继承 多种继承实现方式 第三方框架实现继承">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/31/面向对象的三大特征/"/>
+
+
+
+
+
+  <title>面向对象的三大特征 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/31/面向对象的三大特征/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">面向对象的三大特征</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-31T14:11:31+08:00">
+                2017-08-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/面向对象/" itemprop="url" rel="index">
+                    <span itemprop="name">面向对象</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="面向对象的三大特征"><a href="#面向对象的三大特征" class="headerlink" title="面向对象的三大特征"></a>面向对象的三大特征</h1><h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li>编程世界的继承：两层含义<ul>
+<li>含义1:拥有父类的属性方法(特性)</li>
+<li>含义2:拥有自己的属性和方法</li>
+</ul>
+</li>
+<li>继承的简单理解<ul>
+<li>继承可以减少代码重复 </li>
+<li>我们一般将相同的属性放在父类中</li>
+<li>然后子类定义自己独特的属性</li>
+</ul>
+</li>
+<li>继承术语<ul>
+<li>子类</li>
+<li>父类</li>
+<li>派生类</li>
+<li>基类</li>
+</ul>
+</li>
+</ul>
+<h3 id="面向对象三大特性九重境界"><a href="#面向对象三大特性九重境界" class="headerlink" title="面向对象三大特性九重境界"></a>面向对象三大特性九重境界</h3><ol>
+<li>Object中的继承-最简单的继承</li>
+<li>内置对象的继承</li>
+<li>自定义对象的继承</li>
+<li>多种继承实现方式</li>
+<li>第三方框架实现继承</li>
+<li>面向对象三大特性和继承</li>
+<li>面向未来变化编程和继承</li>
+<li>面向接口编程和继承</li>
+<li>设计模式 忘记模式 无招胜有招</li>
+</ol>
+<h4 id="第一层（从继承的角度理解原型创建对象）"><a href="#第一层（从继承的角度理解原型创建对象）" class="headerlink" title="第一层（从继承的角度理解原型创建对象）"></a>第一层（从继承的角度理解原型创建对象）</h4><ul>
+<li>继承就是定义一个新的对象，继承另一个对象的属性和方法。</li>
+<li>千年通过原型方式创建一个对象A，其可以使用Object中的所有属性和方法，这里我们就说A对象继承了Object对象。</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个对象，继承Object</span></div><div class="line"><span class="keyword">var</span> <span class="number">0</span>=<span class="keyword">new</span> objecct();</div><div class="line"><span class="comment">//这里其实就是继承，我们新创建的一个对象，然后继承Object所有属性和方法</span></div><div class="line">alert(<span class="number">0.</span>toString);</div></pre></td></tr></table></figure>
+<ul>
+<li>内部实现机制<ul>
+<li>继承的本质就是通过<strong>proto</strong>指针指向某个对象，系统能够自动 链式访问所指向的对象的属性方法。</li>
+<li><strong>proto</strong>是函数的属性之一，对象都是函数。说白了其实就是地址。</li>
+</ul>
+</li>
+<li>继承中的定义：基类和子类<ul>
+<li>我们称0对象为儿子，又称子类，派生类Object为付清，又称分类，基类。</li>
+</ul>
+</li>
+<li>祖先<ul>
+<li>整个js世界都继承自Object，都可以访问Object中的属性和方法。</li>
+<li>所以，Object是所有对象的祖先，是生命诞生的鼻祖</li>
+</ul>
+</li>
+<li>继承第一层的特性<ul>
+<li>在不破坏原有代码结构情况下重写基类</li>
+<li>在不破坏原有代码结构情况下扩展基类</li>
+</ul>
+</li>
+</ul>
+<h4 id="第二层（内置对象的继承关系）"><a href="#第二层（内置对象的继承关系）" class="headerlink" title="第二层（内置对象的继承关系）"></a>第二层（内置对象的继承关系）</h4><ul>
+<li>所有的内置对象都继承在Object，除了拥有自身的方法和属性之外，还拥有Object的所有属性和方法。</li>
+<li>万物皆继承自Object</li>
+<li>更准确的说：万物皆继承自Object.prototype</li>
+</ul>
+<h4 id="第三层（自定义对象的继承）"><a href="#第三层（自定义对象的继承）" class="headerlink" title="第三层（自定义对象的继承）"></a>第三层（自定义对象的继承）</h4><ul>
+<li>继承的本质就是通过<strong>proto</strong>指针指向某个对象，系统能够自动链式访问所指向的对象的属性方法。</li>
+<li>那么对于自定义对象的继承，只需要让第二个对象的<strong>proto</strong>指向另一个对象即可。</li>
+</ul>
+<p>用js实现上述继承<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//父类</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">SuperParent</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=<span class="string">"jack"</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//子类继承父亲</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Parent</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.age=<span class="number">12</span>;</div><div class="line">&#125;</div><div class="line">Parent.prototype=<span class="keyword">new</span> SuperParent();</div><div class="line"><span class="comment">//付清继承爷爷，通过原型，形成链条</span></div><div class="line"><span class="keyword">var</span> test=<span class="keyword">new</span> Parent();</div><div class="line">alert(test.age);</div><div class="line"><span class="comment">//得到被继承的属性</span></div><div class="line">alert(test.name);</div><div class="line"><span class="comment">//单词击沉继续原型链继承</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Child</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.weight=<span class="number">60</span>;</div><div class="line">&#125;</div><div class="line">Child.prototype=<span class="keyword">new</span> Parent();</div><div class="line"><span class="comment">//继续原型链继承</span></div><div class="line"><span class="keyword">var</span> child=<span class="keyword">new</span> Child();</div><div class="line">alert(child.name);</div><div class="line"><span class="comment">//继承了Parent和Child，弹出jack</span></div><div class="line">alert(child.age);<span class="comment">//弹出12</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>爷爷使用所有人祖先Object中属性方法</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> test=<span class="keyword">new</span> SuperParent();</div><div class="line">alert(test.name);</div><div class="line">alert(test.toString());</div></pre></td></tr></table></figure>
+<ul>
+<li>访问链：——&gt;SuperParent构造对象——&gt;SuperParent原型对象——&gt;Object对象——&gt;Object原型对象(找到toString)——&gt;null</li>
+<li><strong>儿子使用爷爷中的属性</strong></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> child=<span class="keyword">new</span> Child();</div><div class="line">alert(child.name);</div></pre></td></tr></table></figure>
+<ul>
+<li>var child=new Child();</li>
+<li>alert(child.name);</li>
+</ul>
+<h3 id="继承中的原型链-核心知识点-链式搜索机制"><a href="#继承中的原型链-核心知识点-链式搜索机制" class="headerlink" title="==继承中的原型链==核心知识点-链式搜索机制"></a>==继承中的原型链==核心知识点-链式搜索机制</h3><ul>
+<li>首先访问child构造函数，返现没有name属性</li>
+<li>寻找<strong>proto</strong>，判断其指针是否为空</li>
+<li>指向Child原型函数，寻找有没有name属性</li>
+<li>没有找到，则判断其<strong>proto</strong>属性是否为null，如果不是null，继续搜索。</li>
+<li>找到parent实例对象，检查是否有name属性，没有的话继续找。</li>
+<li>继承和面向对象编程<ul>
+<li>将重复的代码放在基类 </li>
+</ul>
+</li>
+</ul>
+<h4 id="第四层-多种继承方式"><a href="#第四层-多种继承方式" class="headerlink" title="第四层(多种继承方式)"></a>第四层(多种继承方式)</h4><ul>
+<li><strong>原型继承</strong><ul>
+<li>存在的问题：无法传参，==无法通过参数定义对象==，在Student的构造方法中，无法使用new Student(“00001”,”张三”,12);</li>
+<li>创建对象，并初始化name和age属性，必须stu.name,stu.age进行赋值</li>
+</ul>
+</li>
+<li><strong>构造函数继承</strong><ul>
+<li>使用call方法，第一个参数为上下文</li>
+<li>存在的问题：无法继承原型中的方法</li>
+<li>如何解决问题：二者合二为一</li>
+</ul>
+</li>
+<li><strong>组合继承(实现了继承属性和方法)</strong><ul>
+<li>组合继承-最佳组合 （混合模式）</li>
+<li>这种方式的缺点：无论什么情况，都会调用两次超类构造函数。一次是在创建子类原型时，另一次是在子类构造函数内部。</li>
+<li>解决方法就是下面的方法</li>
+</ul>
+</li>
+<li><strong>继承组合继承(了解)</strong><ul>
+<li>继承的固定函数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//继承的固定函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">inheritPrototype</span>(<span class="params">subType,superType</span>)</span>&#123;...&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>)</span>&#123;...&#125;;</div><div class="line">Person.prototype.say=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Student</span>(<span class="params">name,age</span>)</span>&#123;...&#125;;</div><div class="line">inheritPrototype(student,Person);</div><div class="line"><span class="keyword">var</span> xiaozhang=<span class="keyword">new</span> Student(<span class="string">"小张"</span>,<span class="number">20</span>);</div><div class="line"><span class="built_in">console</span>.log(xiaozhang,name);</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>拷贝继承</strong> </li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> Chinese=&#123;</div><div class="line">    nation:<span class="string">"中国"</span>;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">var</span> Doctor=&#123;</div><div class="line">    career:<span class="string">"医生"</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>请问怎样才能让“医生”去继承“中国人”，也就是说，我怎样才能成为一个“中国医生”的对象？<br>这里要注意，这两个对象都是普通对象，不是构造函数，无法使用构造函数方法实现“继承”。<br><strong>除了使用“prototype链”以外，还有另一种思路：把父对象的属性，全部拷贝给子对象，也能实现继承</strong>  </p>
+<h4 id="第五层（第三方框架实现继承）"><a href="#第五层（第三方框架实现继承）" class="headerlink" title="第五层（第三方框架实现继承）"></a>第五层（第三方框架实现继承）</h4><ul>
+<li>Class.js</li>
+<li>Canvas 第三方框架</li>
+<li>Extend()</li>
+<li>我们真正开发的时候用的就是第三方框架</li>
+<li><strong>多继承</strong></li>
+<li>一种以下还可以再分，比如动物可以分为鱼和马，鱼可以分为咸水鱼和淡水鱼，马可以分为公马和母马。  </li>
+</ul>
+<h4 id="第六层（封装性，多态性和继承的关系）"><a href="#第六层（封装性，多态性和继承的关系）" class="headerlink" title="第六层（封装性，多态性和继承的关系）"></a>第六层（封装性，多态性和继承的关系）</h4><ul>
+<li>生活中一切事物皆对象，面向对象就是模拟现实</li>
+<li>和现实一样，面向对象有三大特征：封装性，继承性和多态性</li>
+<li>现实生活中人，山河湖海等都可以理解为一个对象，我们可以把和人相关的而一些属性，动作封装在人这个对象里面，比如人的属性：年龄，性别。人的动作：吃饭，睡觉，打豆豆。</li>
+<li>机器：为我所用。</li>
+<li>继承：祖先，父亲，儿子</li>
+<li>多态：动物的多态性和植物的多态性</li>
+</ul>
+<h5 id="封装性"><a href="#封装性" class="headerlink" title="封装性"></a>封装性</h5><ul>
+<li>先形成对象</li>
+<li>思维转变：函数思维到面向对象思维<ul>
+<li>第一种方式：函数，将所有的功能放在一个函数里面</li>
+<li>第二种方式，面向对象思维</li>
+</ul>
+</li>
+<li>封装性的好处<ul>
+<li>将属性方法归类，调理清晰</li>
+<li>当出现错误，容易发现问题，先找到其属于哪个对象隔离作用，当代码出现错误，不会影响其他对象</li>
+<li>封装变化，对于一个需求经常变动的地方，封装起来，这样当代码需要经常修改，只需要修改单一方法。</li>
+<li>封装复杂：将一些复杂的功能封装起来，方便使用</li>
+</ul>
+</li>
+<li>面向对象和搭积木<ul>
+<li>就类似盖房子，先把盖房子需要的各种对象实现出来或者制造出来，然后再用这些对象组装房子 </li>
+<li>函数式编程：将所有功能放在一个函数里面—浆糊编程</li>
+<li>面向对象编程：优雅编程</li>
+</ul>
+</li>
+<li><strong>狭义封装性</strong><ul>
+<li>定义：封装就是保护内容，保证类的某些属性或者是方法不背外部看见。</li>
+<li>封装的实现<ul>
+<li>为属性封装：peivate 属性类型 属性名称</li>
+<li>为方法封装：private 方法返回值 方法名称(参数列表){};</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>如何实现共有私有</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="comment">//定义一个共有变量</span></div><div class="line">    <span class="keyword">this</span>.name=name;</div><div class="line">    <span class="comment">//定义一个共有函数</span></div><div class="line">    <span class="keyword">this</span>.show=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">       alert(<span class="string">"name:"</span>+name+<span class="string">";age:"</span>+age); </div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> bill=<span class="keyword">new</span> Person(<span class="string">"Bill"</span>,<span class="number">20</span>);</div><div class="line"><span class="comment">//通过bill.name可以访问证明其公有性</span></div><div class="line">alert(bill.name);</div><div class="line">bill.show();</div></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>广义封装性</strong><ul>
+<li>封装某些功能成一个函数，对象。</li>
+<li>将一个系统拆分成不同的模块，然后组成系统，比如计算机分成cpu和硬盘</li>
+<li>==原则==<ul>
+<li>封装变化点</li>
+<li>封装单个功能-单一职责功能</li>
+<li>封装复杂点</li>
+<li>封装功能成多个模块——模块化编程<ul>
+<li>框架设计中命名空间，闭包，对象和函数等都可以实现模块</li>
+</ul>
+</li>
+<li>封装成组件-框架<ul>
+<li>幻灯片组件，tab组件，瀑布流组件——基于框架</li>
+</ul>
+</li>
+<li>封装业务逻辑：基于框架，组件，比如幻灯片和ajax结合</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h5><ul>
+<li>多态是一种思想：多态不是一种技术，是你解决问题的方针，知道思想。</li>
+<li>通俗定义：同类事物，多种形态</li>
+<li>世界之所以多彩，诗意，源于多态。</li>
+<li>官方定义：多态(Polymorphism)，是指面向对象程序运行时，相同的消息可能会送给多个不同的类之对象，而系统可依据对象所属类，引发对应类的方法，而有不同的行为。</li>
+<li>js中的多态世界<ul>
+<li>多态和观察者模式实现一处变化，所有皆变。 </li>
+</ul>
+</li>
+<li>继承实现多态<ul>
+<li>继承本身就是多态的一种实现</li>
+<li>同类事物-多态</li>
+<li>重载也是多态的一种体现</li>
+</ul>
+</li>
+</ul>
+<h5 id="重载和多态"><a href="#重载和多态" class="headerlink" title="重载和多态"></a>重载和多态</h5><ul>
+<li>一个方法，名称相同，通过参数个数不同或者参数的类型不同执行不同的功能。</li>
+<li>高级语言是支持重载多态的，但是Javascript不支持</li>
+<li>在.Net中有方法的重载，方法名称相同，参数不同或者参数类型 不同，被视为不同的方法</li>
+<li>但是在Javascript中，如果函数名称相同，无论参数怎么不相同，调用的时候始终会以最后一个函数为有效函数，怎么解决这个问题呢。</li>
+<li>函数重载实现<ul>
+<li>通过函数参数个数区分<ul>
+<li>重载实现方式-类型不同</li>
+<li>通过函数的arguments属性实现重载</li>
+<li>jQuery框架中的重载</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第七层-面向对象接口编程，面向抽象编程，面向未来编程"><a href="#第七层-面向对象接口编程，面向抽象编程，面向未来编程" class="headerlink" title="第七层 面向对象接口编程，面向抽象编程，面向未来编程"></a>第七层 面向对象接口编程，面向抽象编程，面向未来编程</h4><ul>
+<li>现实生活中的接口：<ul>
+<li>接口的定义：接口就是一个协议，规定大家都必须遵守的协议 </li>
+</ul>
+</li>
+<li>接口连接整个世界</li>
+<li>采用接口(协议)的好处<ul>
+<li>实现模块化制造，各个模块通过接口联系起来</li>
+<li>由于模块化，导致分工明细，从而保证大规模项目团队化制造，多团队制造</li>
+<li>面向接口制造，灵活组装，替换容易</li>
+</ul>
+</li>
+<li>接口遍布整个世界</li>
+<li>接口的重要性：整个世界都是通过接口连接在一起的。是万物联系的根本，很难用语言描述其重要性</li>
+<li>编程世界中的接口<ul>
+<li>协议类型1 前后台通信协议<ul>
+<li>json xml </li>
+<li>前后台开发人员通过接口来合作</li>
+</ul>
+</li>
+<li>协议类型2 不同开发人员之间的协议<ul>
+<li>多人开发项目中，一般都是每个人负责编写不同的模块(对象)，当别人需要使用你写的对象的时候，你们可以坐下来沟通下接口，让对方先去使用你写的功能，至少有没有实现，如何实现，对方不关心，最简单的方法就是定义一个对象，定义一个空方法。或者方法中暂时返回假数据。先让其他人能够使用。</li>
+</ul>
+</li>
+<li>不用系统之间的协议<ul>
+<li>多系统开发一般使用web Service作为沟通桥梁，代理模式或者中介模式处理不同系统之间的通信</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>面向对象接口思维<ul>
+<li>接口一般用于规定某个对象必须实现的方法</li>
+<li>对于大型网站开发，如果采用面向对象开发。将系统分成多个模块（对象），我们可以像搭积木一样构建整个功能。</li>
+<li>构建的时候我们面向接口编程。</li>
+<li>首先每个模块提供一个接口。这个接口是恒定的，不变的。我们不关心内部是如何实现的，只是关心这个接口如何使用的。</li>
+</ul>
+</li>
+<li>面向接口编程步骤<ul>
+<li>1.规定接口</li>
+<li>2.按照接口编写子模块</li>
+<li>3.面向接口编程</li>
+</ul>
+</li>
+</ul>
+<h5 id="面向未来编程"><a href="#面向未来编程" class="headerlink" title="面向未来编程"></a>面向未来编程</h5><ul>
+<li>面向对象解决的问题：封装世界，应对变化。</li>
+<li>应对变化：需求变化，代码需要不断的改善，每次变化差的架构需要改动很多代码，而号的代码只需要修改最少的代码</li>
+<li>面向未来编程的定义：由于用户的需求时刻变化，导致我们开发好的代码也不是一成不变的，也是需要不断修改的。为了应对这些可能的变化，必须让代码模块化。这样就算变化也只会影响某个模块而不会影响全局。</li>
+<li>如何更好的应对变化<ul>
+<li>一群软件大事根据建筑学等理论得出了如下几个原则：</li>
+<li>开放封装原则(有变化，尽量不修改原来的代码，扩充功能)单一职责原则-这样变化了，容易找到问题</li>
+<li>通俗的讲：单一职责原则：每个兑现只有一个引起他变化的原因，这样需求变化的时候，很快定位到是那个对象需要修改，而不是修改多个对象，如果刚开始架构合理，是可以完美应对需求变化的</li>
+</ul>
+</li>
+<li>好的架构师<ul>
+<li>从容应对需求变化<ul>
+<li>封装变化</li>
+<li>分离算法</li>
+<li>分层-设计 前端 后台 数据库 服务</li>
+<li>好的架构师可以让新人写的代码再差，也不会影响全局，因为采用了模块化，低耦合，让你写的代码尽量和别人写的联系少，或者通过中间桥梁来沟通，你写的再差，顶多会影响到桥梁。</li>
+</ul>
+</li>
+<li>学习思维而不是代码，重点是你要有这种解决问题的思维</li>
+<li>继承和开放封闭原则：共性放在基类中，特性通过继承的方式继承的对象只含有某产品的方法属性。</li>
+</ul>
+</li>
+<li><strong>总结继承作用</strong><ul>
+<li>继承不是一种技术，是你解决问题的方针，指导思想。</li>
+<li>定义一个新的对象，使得其拥有另一个对象的功能(属性和方法)</li>
+<li>减少拷贝和代码相同(如果一个地方出错，代码相同的话，需要修改很多地方，可以将一样的地方用函数封装)</li>
+<li>模块化-降低系统之间的耦合，从而更好应对未来需求变化带来的代码修改，有经验的人知道，很多项目失败是因为架构差，到了最后，用户随便一个不满意，都会导致代码全部改动，进而加班疯狂改动。</li>
+<li><strong>继承的好处</strong><ul>
+<li>核心<ul>
+<li>模块化编程，降低耦合</li>
+<li>应对需求变化，随着时间流逝，产品需求可能对你类的行为有更多的要求</li>
+</ul>
+</li>
+<li>其他好处<ul>
+<li>拓展功能</li>
+<li>修改功能</li>
+<li>通过继承实现代码重用</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="第八层-设计模式和继承"><a href="#第八层-设计模式和继承" class="headerlink" title="第八层 设计模式和继承"></a>第八层 设计模式和继承</h4><ul>
+<li>独孤九剑：23中设计模式招式</li>
+<li>易筋经：面向对象编程思维 艺术</li>
+</ul>
+<h4 id="第九层-忘记模式-挥洒自如-无照胜有招"><a href="#第九层-忘记模式-挥洒自如-无照胜有招" class="headerlink" title="第九层 忘记模式 挥洒自如 无照胜有招"></a>第九层 忘记模式 挥洒自如 无照胜有招</h4><ul>
+<li>随着开发经验提高，很自然的就会根据需求，场景创造适合当前开发场景的最佳模式。</li>
+<li>基础：必须修炼完成前四层</li>
+<li>中级：第五层，第六层，第七层</li>
+<li>高级：第八层，第九层</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/面向对象/" rel="tag"><i class="fa fa-tag"></i> 面向对象</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/20/canvas/" rel="next" title="canvas">
+                <i class="fa fa-chevron-left"></i> canvas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#面向对象的三大特征"><span class="nav-number">1.</span> <span class="nav-text">面向对象的三大特征</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#继承"><span class="nav-number">1.1.</span> <span class="nav-text">继承</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象三大特性九重境界"><span class="nav-number">1.1.1.</span> <span class="nav-text">面向对象三大特性九重境界</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第一层（从继承的角度理解原型创建对象）"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">第一层（从继承的角度理解原型创建对象）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第二层（内置对象的继承关系）"><span class="nav-number">1.1.1.2.</span> <span class="nav-text">第二层（内置对象的继承关系）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三层（自定义对象的继承）"><span class="nav-number">1.1.1.3.</span> <span class="nav-text">第三层（自定义对象的继承）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承中的原型链-核心知识点-链式搜索机制"><span class="nav-number">1.1.2.</span> <span class="nav-text">==继承中的原型链==核心知识点-链式搜索机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第四层-多种继承方式"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">第四层(多种继承方式)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第五层（第三方框架实现继承）"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">第五层（第三方框架实现继承）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第六层（封装性，多态性和继承的关系）"><span class="nav-number">1.1.2.3.</span> <span class="nav-text">第六层（封装性，多态性和继承的关系）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#封装性"><span class="nav-number">1.1.2.3.1.</span> <span class="nav-text">封装性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#多态"><span class="nav-number">1.1.2.3.2.</span> <span class="nav-text">多态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#重载和多态"><span class="nav-number">1.1.2.3.3.</span> <span class="nav-text">重载和多态</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第七层-面向对象接口编程，面向抽象编程，面向未来编程"><span class="nav-number">1.1.2.4.</span> <span class="nav-text">第七层 面向对象接口编程，面向抽象编程，面向未来编程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#面向未来编程"><span class="nav-number">1.1.2.4.1.</span> <span class="nav-text">面向未来编程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第八层-设计模式和继承"><span class="nav-number">1.1.2.5.</span> <span class="nav-text">第八层 设计模式和继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第九层-忘记模式-挥洒自如-无照胜有招"><span class="nav-number">1.1.2.6.</span> <span class="nav-text">第九层 忘记模式 挥洒自如 无照胜有招</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
