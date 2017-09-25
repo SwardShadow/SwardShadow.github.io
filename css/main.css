@@ -1981,7 +1981,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5bbfd7;
+  background: #fb3958;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2102,7 +2102,7 @@ img:hover {
 }
 .footer {
   font-size: 14px;
-  color: #999;
+  color: #222;
 }
 .footer img {
   border: none;
