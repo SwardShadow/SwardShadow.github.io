@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-09-19T02:50:52.346Z</updated>
+  <updated>2017-10-28T02:41:57.820Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/09/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     <id>http://yoursite.com/2017/09/11/正则表达式/</id>
     <published>2017-09-11T13:21:51.000Z</published>
-    <updated>2017-09-19T02:50:52.346Z</updated>
+    <updated>2017-10-28T02:41:57.820Z</updated>
     
     <content type="html"><![CDATA[<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>正则表达式(regular expression)描述了一种字符串匹配的模式（pattern)，可以用来检查一个串是否含有某种字串，将匹配的字串替换或者从某个串中取出符合某个条件的字符串等。<br>构造正则表达式的方法和创建数学表达式的方法一样。也就是用多种==元字符==与运算符可以将小的表达式结合在一起来创建更大的表达式。正则表达式的组件可以是单个的字符，字符的集合，字符范围，字符间的选择或者所有这些组件的任意组合。<br>正则表达式是由普通字符（例如数字0-9）以及特殊字符（称为“元字符”）组成的文字模式。模式描述在搜索文本时要匹配的一个或多个字符串。正则表达式作为一个末班，将某个字符模式与所搜索的字符串进行匹配。</p>
 <h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>普通字符包括没有显示指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母，所有数字，所有标点符号和一些其他符号。  </p>
