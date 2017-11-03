@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML5," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="HTML5一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。html5是专门为承接丰富的web内容而设计的，并且无需额外插件。html5中默认的字符编码是UTF-8。html5是跨平台的，被设计为在">
+<meta name="keywords" content="HTML5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML5">
+<meta property="og:url" content="http://yoursite.com/2016/07/10/12.HTML5/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="HTML5一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。html5是专门为承接丰富的web内容而设计的，并且无需额外插件。html5中默认的字符编码是UTF-8。html5是跨平台的，被设计为在">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="F:备用图片\有无语义化.jpg">
+<meta property="og:image" content="F:备用图片\标签语义化1.jpg">
+<meta property="og:image" content="F:备用图片\表单输入类型.jpg">
+<meta property="og:image" content="F:备用图片\表单输入类型1.jpg">
+<meta property="og:image" content="F:备用图片\表单输入类型2.jpg">
+<meta property="og:image" content="F:备用图片\表单元素.jpg">
+<meta property="og:image" content="F:备用图片\表单元素1.jpg">
+<meta property="og:image" content="F:备用图片\表单属性.jpg">
+<meta property="og:image" content="F:备用图片\地理定位.jpg">
+<meta property="og:updated_time" content="2017-11-03T09:09:45.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML5">
+<meta name="twitter:description" content="HTML5一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。html5是专门为承接丰富的web内容而设计的，并且无需额外插件。html5中默认的字符编码是UTF-8。html5是跨平台的，被设计为在">
+<meta name="twitter:image" content="F:备用图片\有无语义化.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/07/10/12.HTML5/"/>
+
+
+
+
+
+  <title>HTML5 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/07/10/12.HTML5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML5</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-07-10T11:33:21+08:00">
+                2016-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HTML5/" itemprop="url" rel="index">
+                    <span itemprop="name">HTML5</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h1><h3 id="一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5-css3-js合成的一个开发平台）"><a href="#一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5-css3-js合成的一个开发平台）" class="headerlink" title="一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）"></a>一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）</h3><h4 id="二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。"><a href="#二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。" class="headerlink" title="二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。"></a>二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。</h4><p>html5是专门为承接丰富的web内容而设计的，并且无需额外插件。html5中默认的字符编码是UTF-8。html5是跨平台的，被设计为在不同类型的硬件（pc，平板，手机，电视机等等）之上运行。html拥有新的语义（新元素，新语义标签，智能表单，多媒体标签等），图形以及多媒体元素。html5提供的新元素和新的API简化了web应用程序的搭建（如地理定位，重力感应）。<br>html5在语法规范上的特点为更简洁，更宽松，但是我们在实际开发中应该规范书写，不建议太随意！并且现在基本所有网站都采用了html5的语法规范。</p>
+<h3 id="三、优点："><a href="#三、优点：" class="headerlink" title="三、优点："></a>三、优点：</h3><ol>
+<li>提供可用性和改进用户的友好体验。</li>
+<li>有几个新的标签，这将有助于开发人员定义重要的内容</li>
+<li>可以给站点带来更多的多媒体元素（视频和音频）</li>
+<li>可以更好的替代FLASH和Silverlight。</li>
+<li>当涉及到网站的抓取和索引的时候，对于SEO很友好。  </li>
+<li>将被大量应用于移动应用程序和游戏。 </li>
+<li>可移植性很好。<h4 id="四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。"><a href="#四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。" class="headerlink" title="四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。"></a>四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。</h4><h5 id="五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。-类似网站有http-www-filldisk-com-。"><a href="#五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。-类似网站有http-www-filldisk-com-。" class="headerlink" title="五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。(类似网站有http://www.filldisk.com)。"></a>五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。(类似网站有<a href="http://www.filldisk.com)。" target="_blank" rel="external">http://www.filldisk.com)。</a></h5><h3 id="六、语法规范"><a href="#六、语法规范" class="headerlink" title="六、语法规范"></a>六、语法规范</h3>所有浏览器都支持&lt;!DOCTYPE&gt;声明。&lt;!DOCTYPE&gt;声明必须是html文档的第一行，位于<html>标签之前。<br>&lt;!DOCTYPE&gt;声明不是HTML标签，他是指示web浏览器关于页面使用哪个HTML版本进行编写的指令。<br>总结：&lt;!DOCTYPE&gt;不一样；meta标签后面有/不一样的(严格模式有/,其他模式没有/).<br>script标签中 type=“text/javascript” 可以省略(严格模式不能省略)。<br>但标签后面可以没有结束的/ 如:img标签后面可以没有/(h5的标准中可以省略)<br>&lt;!DOCTYPE html&gt;<br>&lt;!doctype html&gt;<br>两种写法都可以,个人推荐:大写<br>html5允许在元素名中使用混合大小写字母，但是还是推荐小写元素名，因为混合大小写名称并不好，而且开发者习惯使用小写，而且小写更易书写，写起来更纯净。<br>在html中，可以不必关闭所有元素（如<p>元素），建议关闭所有html元素。<br>类名推荐小写，属性推荐加双引号。<br>等号两边的空格是合法的，但是W3C中提示精简空格更容易阅读代码。<br>请勿毫无理由地增加空行，为了提高可读性，请增加空格来分隔大型或者逻辑代码块。<br>为了提高可读性，请增加两个空格的缩进。请勿使用tab。请勿使用没有必要的空格和缩进，没有必要在短的和相关项目之间使用空行，也没有必要缩进每个元素。<br>在html5标准中，能够省略<html>标签和<body>标签，但是不推荐这样做。html文件名应该使用扩展名.html(而不是.htm)。CSS文件应该使用拓展名.css，javascript文件应该使用扩展名.js。  <h3 id="H5的语义化"><a href="#H5的语义化" class="headerlink" title="H5的语义化"></a>H5的语义化</h3>==语义元素==：语义元素清楚地向浏览器和开发者描述其意义。<br>非语义元素的例子：<div> 和 <span> - 无法提供关于其内容的信息。<br>语义元素的例子：<form>、<table> 以及 <img> - 清晰地定义其内容。<br>优点:有利于搜索引擎和辅助设备来理解html页面内容<br>根据 W3C，语义网：“允许跨应用程序、企业和团体对数据进行分享和重用”<br><img src="F:备用图片\有无语义化.jpg" alt="image"><br><img src="F:备用图片\标签语义化1.jpg" alt="image"><br>尽量避免全局使用header、footer、aside等语义标签。  <h4 id="兼容处理"><a href="#兼容处理" class="headerlink" title="兼容处理"></a>兼容处理</h4>在不支持HTML5新标签的浏览器里，会将这些新的标签解析成行内元素(inline)对待，所以我们只需要将其转换成块元素(block)即可使用，但是在IE9版本以下，并不能正常解析这些新标签，但是却可以识别通过document.createElement(‘tagName’)创建的自定义标签，于是我们的解决方案就是将HTML5的新标签全部通过document.createElement(‘tagName’)来创建一遍，这样IE低版本也能正常解析HTML5新标签了，但在实际开发中我们更多采用的是通过检测IE浏览器的版本来加载第三方的一个JS库来解决兼容问题，这个库文件会帮自动通过document.createElement(‘tagName’)创建所有HTML5的新标签。<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">&lt;script&gt;  </span></div><div class="line"><span class="comment">;(function()&#123;    </span></div><div class="line"><span class="comment">var elements =['section','header','footer','article'];    </span></div><div class="line"><span class="comment">var i;    </span></div><div class="line"><span class="comment">for(i in elements)&#123;      document.createElement(elements[i]);    &#125;  &#125;)();</span></div><div class="line"><span class="comment">&lt;/script&gt;</span></div><div class="line"><span class="comment">&lt;![endif]--&gt;</span></div></pre></td></tr></table></figure>
+</table></form></span></div></body></html></p></html></li>
+</ol>
+<h4 id="微数据"><a href="#微数据" class="headerlink" title="微数据"></a>微数据</h4><p>微数据是在如 span、div 的标签内添加属性，让机器（如搜索引擎）识别其含义，某些特定类型的信息，例如评论、人物信息或事件都有相应的属性，用来描述其含义，可以理解成新语义标签的一种补充。微数据的固定语法：在一项微数据的最外层div，需要用itemscope表示，并用itemtype指定微数据类型，itemtype的值是一个url用于引入一个微数据词汇表（即各种微数据的类型定义）。  </p>
+<h4 id="WAI-ARIA-针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。"><a href="#WAI-ARIA-针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。" class="headerlink" title="WAI-ARIA:针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。"></a>WAI-ARIA:针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。</h4><p><img src="F:备用图片\表单输入类型.jpg" alt="image"><br><img src="F:备用图片\表单输入类型1.jpg" alt="image"><br><img src="F:备用图片\表单输入类型2.jpg" alt="image"><br><img src="F:备用图片\表单元素.jpg" alt="image"><br><img src="F:备用图片\表单元素1.jpg" alt="image"><br><img src="F:备用图片\表单属性.jpg" alt="image">  </p>
+<h2 id="新增API"><a href="#新增API" class="headerlink" title="新增API"></a>新增API</h2><p>1.1网络状态<br>属性：window.onLine用户当前的网络状况，返回一个布尔值。<br>事件：<br>window.online用户网络连接时被调用<br>winodw.offline用户网络断开时被调用<br>1.2文件读取<br>通过FileReader对象可以读取本地存储的文件，使用File对象来指定索要读取的文件或数据。File对象可以是来自用户在一个<input type="file">元素上选择文件后返回的FileList对象，也可以来自自由拖放操作生成的DataTransfer。<br>1.2.1 FileList对象<br>HTML5中通过为表单元素添加multiple属性实现文件多选，因此通过<input type="file">上传文件后得到的FileList对象是以伪数组的形式存在。<br>1.2.2 FileReader对象<br>HTML5新增内建对象，用以读取本地文件。<br>属性：result文件读取的结果<br>事件：onload文件读取结果<br>方法：readAsDataURL()、readAsText()<br>1.3 地理定位<br>在HTML规范中，增加了获取用户地理信息的API，这样使得我们可以基于用户位置开发互联网应用，即基于位置服务(Location Base Service)。<br>1.3.1获取方式<br>通过IP地址、三维坐标、GPS、Wi-Fi、手机信息等多种方式获取地址信息，如下图对不同获取方式的优缺点进行了比较，浏览器会自动以最优方式去获取用户地理信息。<br><img src="F:备用图片\地理定位.jpg" alt="image"><br>1.3.2 隐私<br>HTML5 Geolocation 规范提供了一套保护用户隐私的机制。必须先得到用户明确许可，才能获取用户的位置信息。<br>1.3.3 方法<br>1、获取当前地理信息<br>    navigator.geolocation.getCurrentPosition(successCallback, errorCallback)<br>2、获取实时地理信息<br>    navigator.geolocation.watchPosition(successCallback, errorCallback)<br>当成功获取地理信息后，会调用succssCallback，并返回一个包含位置信息的对象。<br>获取地理信息失败后，会调用errorCallback，并返回一个包含错误信息的对象。<br>position.coords.latitude纬度<br>position.coords.longitude经度<br>position.coords.accuracy精度<br>position.coords.altitude海拔高度<br>1.3.4 应用<br>在现实开发中，通过调用第三方API（如百度地图）来实现地理定位信息，这些API都是基于用户当前位置的，并将用位置位置（经/纬度）当做参数传递，就可以实现相应的功能。<br>1.4 Web存储<br>随着互联网的快速发展，基于网页的应用越来越普遍，同时也变的越来越复杂，为了满足各种各样的需求，会经常性在本地存储大量的数据，传统方式我们以document.cookie来进行存储的，但是由于其存储大小只有4k左右，并且解析也相当的复杂，给开发带来诸多不便，HTML5规范则提出解决方案，使用sessionStorage和localStorage存储数据。<br>1.4.1 特性<br>    1、设置、读取方法<br>    2、容量较大<br>    3、只能存储字符串，可以将对象JSON.stringify() 编码后存储<br>1.4.2  差异<br>sessionStorage：<br>    1、生命周期为关闭浏览器窗口<br>    2、在同一个窗口下数据可以共享<br>    3、容量约5M<br>localStorage：<br>    1、永久生效，除非手动删除(在chrome浏览器下需要以服务器方式)<br>    2、可以多窗口共享<br>    3、容量约20M<br>1.4.3  方法<br>    setItem(key, value) 设置存储内容<br>    getItem(key) 读取存储内容<br>    removeItem(key) 删除键值为key的存储内容<br>    clear() 清空所有存储内容<br>    key(n) 以索引值来获取存储内容<br>1.4.4   其他<br>    WebSQL、IndexDB、Application Cache  </p>
+<h4 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h4><p>概念：就是自己加的属性<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"> <span class="comment">//如果可以一个属性就能获取所有的自定义属性的值---(标准的写法的自定义属性)</span></div><div class="line"><span class="keyword">var</span> dvObj=<span class="built_in">document</span>.getElementById(<span class="string">"dv"</span>);</div><div class="line"> <span class="comment">//console.log(dvObj.dataset);//所有的自定义属性及值</span></div><div class="line">  <span class="keyword">var</span> dt=dvObj.dataset;<span class="comment">//h5中新增的</span></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> dt)&#123;</div><div class="line">    <span class="built_in">console</span>.log(key,dt[key]);</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">var</span> dvObj=<span class="built_in">document</span>.getElementById(<span class="string">"dv"</span>);</div><div class="line"> <span class="comment">//设置自定义属性---规范,名字必须是驼峰命名法,否则就出事了</span></div><div class="line">  dvObj.dataset[<span class="string">"height"</span>]=<span class="string">"199"</span>;  dvObj.dataset[<span class="string">"myWeight"</span>]=<span class="string">"199"</span>;    dvObj.dataset.myFace=<span class="string">"太帅了"</span>;</div></pre></td></tr></table></figure></p>
+<h5 id="json格式的数据"><a href="#json格式的数据" class="headerlink" title="json格式的数据"></a>json格式的数据</h5><p>就是一个键值对对象，是一个特殊格式的字符串。<br>json格式的数据—》字符串<br>字符串的数据—–》json</p>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML5/" rel="tag"><i class="fa fa-tag"></i> HTML5</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/15/11.jsonp的原理/" rel="next" title="JSONP原理">
+                <i class="fa fa-chevron-left"></i> JSONP原理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/10/13.CSS3简单介绍/" rel="prev" title="CSS3简单介绍">
+                CSS3简单介绍 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML5"><span class="nav-number">1.</span> <span class="nav-text">HTML5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5-css3-js合成的一个开发平台）"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、html的版本升级。h5可以看成是标记语言，也可以看成是一个平台。（html5+css3+js合成的一个开发平台）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">二、html5多用于移动端的开发。HTML5手机应用的最大优势就是可以直接调试和修改。html的设计目的是为了在移动设备上支持多媒体。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、优点："><span class="nav-number">1.0.2.</span> <span class="nav-text">三、优点：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。"><span class="nav-number">1.0.2.1.</span> <span class="nav-text">四、缺点：该标准未能很好的被浏览器所支持，因新标签的引入，各浏览器之间将缺少一种统一的数据描述格式，造成用户体验不佳。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。-类似网站有http-www-filldisk-com-。"><span class="nav-number">1.0.2.1.1.</span> <span class="nav-text">五、漏洞：在浏览网页的时候总是会将cookie等小部分文件下载在本地硬盘上，这些文件都不大，控制在5-10kb之间。但是如果你在访问HTML5的网页的时候下载的文件就会顺便放大1000倍，容量可能在5mb或者以上，一些而已程序甚至能够通过这个漏洞不断在网页上下载一些无用文件直到填满你的硬盘。(类似网站有http://www.filldisk.com)。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、语法规范"><span class="nav-number">1.0.3.</span> <span class="nav-text">六、语法规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#H5的语义化"><span class="nav-number">1.0.4.</span> <span class="nav-text">H5的语义化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#兼容处理"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">兼容处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#微数据"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">微数据</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#WAI-ARIA-针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。"><span class="nav-number">1.0.4.3.</span> <span class="nav-text">WAI-ARIA:针对残障人士开发应用，role指定相应的属性为残障人士使用。太难了，想看查资料吧。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#新增API"><span class="nav-number">1.1.</span> <span class="nav-text">新增API</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义属性"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">自定义属性</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#json格式的数据"><span class="nav-number">1.1.0.1.1.</span> <span class="nav-text">json格式的数据</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

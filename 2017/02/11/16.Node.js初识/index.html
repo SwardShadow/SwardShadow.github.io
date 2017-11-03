@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Node.js初识学习Node.js时候的建议 前端和后端的知识体系不同！不要使用前端的思维方式去学习后端开发！ 学习Node.js阶段，把自己当作后端开发人员！ 课堂上对重点的知识做笔记，利用一切时间练习课堂代码；晚上抽半个小时梳理总结今天所学知识点；整理今天的笔记！ 每天吃饭睡觉走大街上，都要在脑海中闪现今天学习的知识点 学习方式：×××知识点是什么，怎么用，为什么要用它，它解决了什么问题，这">
+<meta name="keywords" content="Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node-初识">
+<meta property="og:url" content="http://yoursite.com/2017/02/11/16.Node.js初识/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="Node.js初识学习Node.js时候的建议 前端和后端的知识体系不同！不要使用前端的思维方式去学习后端开发！ 学习Node.js阶段，把自己当作后端开发人员！ 课堂上对重点的知识做笔记，利用一切时间练习课堂代码；晚上抽半个小时梳理总结今天所学知识点；整理今天的笔记！ 每天吃饭睡觉走大街上，都要在脑海中闪现今天学习的知识点 学习方式：×××知识点是什么，怎么用，为什么要用它，它解决了什么问题，这">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-03T09:12:09.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node-初识">
+<meta name="twitter:description" content="Node.js初识学习Node.js时候的建议 前端和后端的知识体系不同！不要使用前端的思维方式去学习后端开发！ 学习Node.js阶段，把自己当作后端开发人员！ 课堂上对重点的知识做笔记，利用一切时间练习课堂代码；晚上抽半个小时梳理总结今天所学知识点；整理今天的笔记！ 每天吃饭睡觉走大街上，都要在脑海中闪现今天学习的知识点 学习方式：×××知识点是什么，怎么用，为什么要用它，它解决了什么问题，这">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/11/16.Node.js初识/"/>
+
+
+
+
+
+  <title>Node-初识 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/11/16.Node.js初识/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node-初识</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-11T15:33:21+08:00">
+                2017-02-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Node-js初识"><a href="#Node-js初识" class="headerlink" title="Node.js初识"></a>Node.js初识</h1><h2 id="学习Node-js时候的建议"><a href="#学习Node-js时候的建议" class="headerlink" title="学习Node.js时候的建议"></a>学习Node.js时候的建议</h2><ol>
+<li>前端和后端的知识体系不同！不要使用前端的思维方式去学习后端开发！</li>
+<li><strong>学习Node.js阶段，把自己当作后端开发人员！</strong></li>
+<li>课堂上对重点的知识做笔记，利用一切时间练习课堂代码；晚上抽半个小时梳理总结今天所学知识点；整理今天的笔记！</li>
+<li>每天吃饭睡觉走大街上，都要在脑海中闪现今天学习的知识点</li>
+<li>学习方式：×××知识点是什么，怎么用，为什么要用它，它解决了什么问题，这个问题如果在公司项目开发中遇到了，我能不能根据自己的理解使用出来</li>
+</ol>
+<h2 id="什么是前端和后端"><a href="#什么是前端和后端" class="headerlink" title="什么是前端和后端"></a>什么是前端和后端</h2><ol>
+<li>前端主要工作：写页面、样式、JS特效、和后端的数据交互、借助于一些前端的框架实现SPA应用；<ul>
+<li>前端主要负责页面展示性的东西，用户所能看到的任何东西，都是前端的工作；</li>
+</ul>
+</li>
+<li>后端主要工作：操作数据库、给前端暴露数据接口、</li>
+<li>前后端协作流程：后端为我们暴露接口、前端根据后端提供的数据接口API和【文档】、进行页面数据的渲染；</li>
+</ol>
+<p>在公司中配环境：自己用的顺手的编辑器、安装下Node和NPM、安装Git或SVN、浏览器<br>下载代码到本地；<br>3天左右的时间熟悉项目（后端架构（Java、.NET、PHP）、前端的架构（NG、Vue、React、Jquery+AJax+模板引擎）、业务（熟悉业务、如果不熟悉，就要问相关负责人）、技术）</p>
+<h2 id="Javascript-的起源"><a href="#Javascript-的起源" class="headerlink" title="Javascript 的起源"></a>Javascript 的起源</h2><p>语言能直接运行吗？？<br>语言只是一个写代码的规范，其实我们写的任何代码，只是一坨字符串而已；<br>语言如果想要发挥作用，必须有有个对应的解析器</p>
+<p>Java  C#  PHP</p>
+<ol>
+<li>诞生：JS的诞生和一个公司有关，有一个网景公司；当时网速只有20~30KB（电话线），当时，就是为了进行客户端验证，为了减少不必要的网络请求，提高网络效率，网景公司决定研究一门语言，来解决这个问题；JS作者在10天之内，就把这门语言写出来了，叫做LiveScript，为了搭上Java这般顺风车，就把LiveScript改名为Javascript；</li>
+<li>浏览器中的一战：微软发现浏览器市场很火，然后就自己开发了一款浏览器【IE】；为了推广自己的IE浏览器，把IE捆绑到了Windows操作系统中；JScript<ul>
+<li>一战胜利的果实：ECMAScript标准的确立；就是一个语言规范；只规定了如何进行分支判断、如何定义变量、如何定义方法…..</li>
+</ul>
+</li>
+<li>短暂的和平期：IE6【微软发现自己已经天下无敌了，然后就把IE6的开发团队给解散了！】在和平期间，JS这门语言主要做什么：表单验证、简单的特效、狗皮膏药（当时被称为脚本语言）</li>
+<li>二战：【主角：谷歌、IE、火（浴火重生）狐】谷歌在2008年，借助于AJax，开始火起来了！一方面提升渲染引擎的效率、另一方面，提升JS解析引擎的效率，最终，二战以谷歌的胜利结束；谷歌有了一款世界上效率最快的JS解析引擎，叫做chrome V8引擎；</li>
+<li>注意：谷歌的 v8 引擎是用来解析执行JS代码的；</li>
+</ol>
+<h2 id="Node-js-的起源"><a href="#Node-js-的起源" class="headerlink" title="Node.js 的起源"></a>Node.js 的起源</h2><p><a href="http://blog.csdn.net/u012028371/article/details/54884056" target="_blank" rel="external">nodejs的历史由来</a></p>
+<ul>
+<li>作者，之前主要是做高性能服务器维护的；高性能的服务器有哪些<strong>必要的条件</strong>；必须要是<strong>异步非阻塞的</strong>、<strong>基于事件驱动的</strong>；</li>
+<li>作者在分析了上面两条基本条件之后，就开始研发高性能服务器！</li>
+<li><code>C,C++</code>,<code>Java,C#</code>,<code>Javascript</code>，前三种是同步的，而javascript天生就是异步的</li>
+<li>对于程序员来说，如果同时提供了同步和异步两种编程方式，程序员肯定会选择同步；</li>
+<li>作者选择<code>Javascript</code>最主要的原因，就是这门语言是<code>单线程的</code></li>
+<li>多线程：程序员能主动开启子线程的语言，就叫做多线程的语言；<code>Thread td = new Thread();</code></li>
+<li>作者最终，选择的语言是Javascript、解析引擎是V8；免费、开源、由谷歌团队进行维护更新</li>
+<li>刚开始，作者写出来的这个东西叫做<code>web.js</code>;后来，随着项目扩大和功能的完善，作者发现这款产品，不仅能做高性能的服务器，还能做许多事情，比如可以用这个东西去做前端包管理；于是就改名叫做<code>Node.js</code>;</li>
+<li>像前端需要好用的工具，都是使用<code>node.js</code>开发出来的！</li>
+</ul>
+<h2 id="ECMAScript、浏览器中的Javascript、Node中的Javascript"><a href="#ECMAScript、浏览器中的Javascript、Node中的Javascript" class="headerlink" title="ECMAScript、浏览器中的Javascript、Node中的Javascript"></a>ECMAScript、浏览器中的Javascript、Node中的Javascript</h2><ul>
+<li>ECMAScript：语言规范；定义了如何定义变量、分支语句、函数、对象、内置对象；（ECMAScript语言规范就是一本书，这本书中，通过详细的规范，定义了这门语言中一些必要的特性；）</li>
+<li>浏览器中的Javascript：<ul>
+<li>浏览器中的Javascript组成部分：DOM +  BOM + ECMAScript核心</li>
+</ul>
+</li>
+<li>Node中的Javascript：Node中的JS，剔除了浏览器中扩展的DOM和BOM这两套API；在Node中，没有浏览器的概念，所以Node不需要DOM 和 BOM， Node中只有一个V8JS解析引擎；<ul>
+<li>Node中的Javascript组成部分：ECMAScript核心 + 核心API模块 + 一些第三方API模块</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>思考：为什么经常听说JS有兼容性，而很少听说Java或C#有兼容性？<br>答：总的来说就是解析引擎的问题，java或者c#只有一种解析引擎，所以不存在兼容性问题，而JS的兼容性出现在各个解析引擎上了，不同厂商的解析引擎不一样。</p>
+</blockquote>
+<h2 id="什么是Node-js"><a href="#什么是Node-js" class="headerlink" title="什么是Node.js"></a>什么是Node.js</h2><ul>
+<li><strong>Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。</strong><ul>
+<li>我们使用JS写的Node代码，说白了，只是单纯的字符串而已；</li>
+<li>如果想要执行这些写好的代码，必须要有一个解析执行环境，这个环境就是chrome 的 V8 引擎；</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Node.js 使用了一个事件驱动、非阻塞式 I/O （input and output 输入和输出）的模型，使其轻量又高效。</strong><ul>
+<li>事件驱动：当触发某个事件的时候，执行事件中指定的代码！</li>
+<li>非阻塞式 I/O 的模型：采用非阻塞的操作，能够提高CPU处理的效率！代码表现形式是：会经常写回调函数。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><strong>Node.js 的包管理器 npm，是全球最大的开源库生态系统。</strong><ul>
+<li>npm由两层含义：首先它表示NPM的官网；其次，表示NPM这个包管理工具，能够方便我们从官网下载包；</li>
+<li>先使用<code>npm init -y</code>初始化一下包管理文件<code>package.json</code>，将来所有安装的包，都会记录到这个文件中</li>
+<li>使用<code>npm install 包名 --save/--save-dev</code>去安装包；其中，<code>install</code>可以简写成<code>i</code>;</li>
+<li><code>--save</code>表示把包安装到部署依赖中（在开发和部署上线都需要使用的包）； <code>--save-dev</code>表示安装到开发依赖（只在项目开发阶段需要用到的包）；</li>
+<li><code>--save</code>可以简写成<code>-S</code>；<code>--save-dev</code>可以简写成<code>-D</code>;</li>
+<li><code>npm uninstall 包名 --save/--save-dev</code>或者<code>npm remove 包名 --save/--save-dev</code></li>
+<li><code>npm i webpack -g</code>,其中，<code>-g</code>表示全局安装某些包，通过<code>-g</code>安装的包都在<code>C:\Users\用户名\AppData\Roaming\npm</code>下面</li>
+<li>使用 -g 安装的包都存放到了<code>C:\Users\自己的用户名\AppData\Roaming\npm</code>目录中；全局安装的包可以通过 cmd 命令行在任何地方使用；</li>
+<li>如果只需要安装项目运行的依赖，可以运行<code>npm i --production</code></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>NPM 和 （Github、码云） 和 Git之间的关系<ul>
+<li>NPM是包管理平台（里面托管了各种各样的第三方包）</li>
+<li>Github、码云 代码托管平台（托管了各种各样的代码仓库）</li>
+<li>Git是用来对代码进行分支版本管理</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>总结：Node.js 就是一个Javascript的服务端运行环境（依赖于Chrome 的V8引擎解析执行JS代码），为Javascript提供了服务器端编程的能力！</p>
+</blockquote>
+<h2 id="Node-js-可以做哪些事情"><a href="#Node-js-可以做哪些事情" class="headerlink" title="Node.js 可以做哪些事情"></a>Node.js 可以做哪些事情</h2><ul>
+<li>【★】Node可以作为前端的一个工具去使用，通过NPM安装好用的工具；Node可以开发一些前端的工具【i5ting_toc】</li>
+<li>【★】Node能做服务器</li>
+<li>【★】Node还可以操作数据库并对外提供数据接口</li>
+</ul>
+<h2 id="【★★】为什么要学习Node-js"><a href="#【★★】为什么要学习Node-js" class="headerlink" title="【★★】为什么要学习Node.js"></a>【★★】为什么要学习Node.js</h2><ul>
+<li>从企业角度分析：<ul>
+<li>企业对<code>一专多能</code>人才的需求：怎么才能最大限度的压榨员工；省钱</li>
+<li>多高性能服务器的需求：怎么才能最大限度的压榨服务器；</li>
+<li>Node适合做快速的网络请求，但是不适合做大数据业务逻辑的处理；（因为node是多线程的，太多的逻辑处理会导致线程阻塞）</li>
+</ul>
+</li>
+<li>从自身角度分析：<ul>
+<li>挣钱；</li>
+<li>对将来职业生涯有好处：学了Node之后，为我们构建了后端的知识体系，无论将来你会不会做后端的Node开发，但是，起码你已经构建了完整的前后端知识体系！</li>
+<li>后面学到的任何新技术：Vue.js，React,React-Native都是基于Node的！包括后面要学的一个构建工具<code>webpack</code>！</li>
+</ul>
+</li>
+</ul>
+<h2 id="在Node中执行相关的JS代码的两种方式"><a href="#在Node中执行相关的JS代码的两种方式" class="headerlink" title="在Node中执行相关的JS代码的两种方式"></a>在Node中执行相关的JS代码的两种方式</h2><ol>
+<li><p>直接在命令行中输入<code>node</code>，进入Node的<code>REPL</code>运行环境：</p>
+<ul>
+<li>R：Read：读取用户输入的字符串内容</li>
+<li>E：Evaluate：把用户输入的字符串，当作JS代码去解析执行</li>
+<li>P：Print：打印输出Evaluate解析的结果</li>
+<li>L：Loop：进入下一次循环</li>
+</ul>
+</li>
+<li><p>将Node代码写入到一个js文件中，然后通过<code>node 要执行的JS文件路径</code>去运行Node代码</p>
+</li>
+</ol>
+<h2 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h2><p>为什么可以通过命令行形式，直接启动<code>node</code>或者<code>notepad</code>呢？？？<br>注意：每当修改了环境变量之后，需要重新启动命令窗口！</p>
+<h3 id="什么是环境变量"><a href="#什么是环境变量" class="headerlink" title="什么是环境变量"></a>什么是环境变量</h3><p>Path环境变量的作用：能够让我们通过  命令行的形式  快速启动一个应用程序；</p>
+<h3 id="用户变量和系统变量的区别"><a href="#用户变量和系统变量的区别" class="headerlink" title="用户变量和系统变量的区别"></a>用户变量和系统变量的区别</h3><p>用户变量：用户变量是属于每一个用户的，用户之间的用户变量是私有的，不共享的；<br>系统变量：系统变量是共享的，只能用户能够登录这台电脑，那么就能访问系统变量中的任何东西！【将来在配置环境变量的时候，推荐大家配置到系统变量中！】</p>
+<h3 id="配置环境变量的两种方式"><a href="#配置环境变量的两种方式" class="headerlink" title="配置环境变量的两种方式"></a>配置环境变量的两种方式</h3><ol>
+<li>第一种方式：直接把路径添加到path环境变量中；</li>
+<li>第二种方式：先在环境变量中创建一个新变量，名字类似于：<code>ZOOM_HOME</code>这样，值是我们程序的根目录；然后，再把这个变量名，引用到 <code>Path</code>环境变量中，类似于：<code>%ZOOM_HOME%</code></li>
+</ol>
+<h2 id="Path变量的查找规则"><a href="#Path变量的查找规则" class="headerlink" title="Path变量的查找规则"></a>Path变量的查找规则</h2><ol>
+<li>先从当前的目录中查找有没有这个应用程序，如果有，则直接运行，如果没有，则去系统环境变量中，path环境变量下挨个查找对应的文件夹，如果在对应文件夹中能找到，则直接运行，如果找不到，最终报错！</li>
+</ol>
+<h2 id="【★★】使用fs模块来操作文件"><a href="#【★★】使用fs模块来操作文件" class="headerlink" title="【★★】使用fs模块来操作文件"></a>【★★】使用fs模块来操作文件</h2><ol>
+<li><p>fs.readFile</p>
+</li>
+<li><p>fs.writeFile</p>
+</li>
+<li><p>fs.appendFile</p>
+</li>
+</ol>
+<h2 id="【★★★】fs模块中路径问题"><a href="#【★★★】fs模块中路径问题" class="headerlink" title="【★★★】fs模块中路径问题"></a>【★★★】fs模块中路径问题</h2><h2 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h2><h2 id="Node中的使用http模块创建最基本的web服务器"><a href="#Node中的使用http模块创建最基本的web服务器" class="headerlink" title="Node中的使用http模块创建最基本的web服务器"></a>Node中的使用http模块创建最基本的web服务器</h2><p>之前有没有接触过Web服务器？？？<br>其实，PHPStudy中集成了一个叫做<code>Apache</code>的软件；这个软件就是一个服务器软件，能够托管一个网站；<br>其实在Node中，并没有类似于<code>Apache</code>这样软件；我们可以通过简单的几行代码，写出一个Web服务器！</p>
+<h2 id="【★★★】HTTP协议中的-请求-处理-响应-模型"><a href="#【★★★】HTTP协议中的-请求-处理-响应-模型" class="headerlink" title="【★★★】HTTP协议中的 请求 - 处理 - 响应 模型"></a>【★★★】HTTP协议中的 <code>请求 - 处理 - 响应</code> 模型</h2><h2 id="【★★】step-by-step-构建HTTP服务器"><a href="#【★★】step-by-step-构建HTTP服务器" class="headerlink" title="【★★】step by step 构建HTTP服务器"></a>【★★】step by step 构建HTTP服务器</h2><h3 id="升级1：根据不同的URL地址响应不同HTML消息"><a href="#升级1：根据不同的URL地址响应不同HTML消息" class="headerlink" title="升级1：根据不同的URL地址响应不同HTML消息"></a>升级1：根据不同的URL地址响应不同HTML消息</h3><h3 id="升级2：根据不同URL地址-响应不同的页面"><a href="#升级2：根据不同URL地址-响应不同的页面" class="headerlink" title="升级2：根据不同URL地址 - 响应不同的页面"></a>升级2：根据不同URL地址 - 响应不同的页面</h3><h3 id="升级3：在响应不同页面的同时响应静态资源（css、图片、js）"><a href="#升级3：在响应不同页面的同时响应静态资源（css、图片、js）" class="headerlink" title="升级3：在响应不同页面的同时响应静态资源（css、图片、js）"></a>升级3：在响应不同页面的同时响应静态资源（css、图片、js）</h3><h3 id="【★★★】【难点】升级4：根据不同URL地址-响应不同文件的改造"><a href="#【★★★】【难点】升级4：根据不同URL地址-响应不同文件的改造" class="headerlink" title="【★★★】【难点】升级4：根据不同URL地址 - 响应不同文件的改造"></a>【★★★】【难点】升级4：根据不同URL地址 - 响应不同文件的改造</h3><h3 id="【★★】【难点】网页中资源请求路径问题"><a href="#【★★】【难点】网页中资源请求路径问题" class="headerlink" title="【★★】【难点】网页中资源请求路径问题"></a>【★★】【难点】网页中资源请求路径问题</h3><ol>
+<li>资源请求路径（html,css,js,image），对于后端来说，<strong>只一个标识符而已</strong>，<strong>并不一定</strong>非要对应实际的文件物理路径</li>
+<li>但是，为了开发方便（说白了就是为了写HTML的时候有路径只能提示），我们一般都期望把资源的请求路径和实际文件的物理路径对应上</li>
+<li>一定要区分html中书写的路径标识符 <code>../</code>    <code>./</code>  和 <code>/</code> <strong>在浏览器中</strong>代表含义！</li>
+</ol>
+<h3 id="在Node中执行相关的js代码的两种方式"><a href="#在Node中执行相关的js代码的两种方式" class="headerlink" title="在Node中执行相关的js代码的两种方式"></a>在Node中执行相关的js代码的两种方式</h3><ol>
+<li>直接在命令行中输入”node”,进入Node的”REPL”运行环境：<ul>
+<li>R：Read：读取用户输入的字符串内容</li>
+<li>E：Evaluate：把用户输入的字符串，当做JS代码去解析执行</li>
+<li>P：Print：打印输出Evaluate解析的结果</li>
+<li>L: Loop: 进入下一次循环</li>
+</ul>
+</li>
+<li>将Node代码写入到一个js文件中，然后通过’node 要执行的JS文件路径’去运行Node代码 </li>
+<li>安装node会在本地根目录下生成一个node_modules文件夹，这个文件夹里面有很多的包，占了项目的大部分空间。而解决的方法是在package.json(在项目目录中线生成这个文件再安装其他的包)文件中记录所安装过的包，这样发送项目的时候就直接发送其他文件就可以了(除了nodemodules）文件夹，这样在其他ten运行的代码的时候只需要根据package.json安装包就可以运行了。</li>
+<li>package.json一定要先运行，然后在安装包。如果没运行的话，在安装包的时候会默认安装到管理员目录的nodemodules文件夹中。npm在使用的时候不要直接拷贝，要用npm先初始化<h3 id="代码总结"><a href="#代码总结" class="headerlink" title="代码总结"></a>代码总结</h3></li>
+</ol>
+<ul>
+<li>node中的中括号代表参数可选</li>
+<li>npm i gulp –save-dev 简写形式是npm i gulp -D,这个的意思是把它安装到项目的开发依赖，因为这个是工具，上线之后就不需要了，dev的意思是develop</li>
+<li>npm i gulp –save 可以简写为-S</li>
+<li>npm i 简写，这样没有指定，npm会先去package中去找，然后下载所有package记录的包</li>
+<li>npm remove jquery -S 删除包</li>
+<li>npm uninstall gulp -D 卸载</li>
+<li>只想安装上线所需要的包的话可以使用命令npm i –production 安装到产品模式中去</li>
+</ul>
+<h4 id="使用fs系统模版读取文件"><a href="#使用fs系统模版读取文件" class="headerlink" title="使用fs系统模版读取文件"></a>使用fs系统模版读取文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.导入核的OS模块</span></div><div class="line"><span class="keyword">var</span> os=<span class="built_in">require</span>(<span class="string">"os"</span>);</div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">require中给定核心模块哦的标识符，就能导入我们需要引用的核心模块了</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="comment">// 2. 调用os的cpus方法查看cpu信息</span></div><div class="line"><span class="keyword">var</span> result=os.cpus;</div><div class="line"><span class="built_in">console</span>.log(result);</div><div class="line"><span class="comment">// 在Node中，如果要使用核心模块，实现某些功能，总共分为</span></div><div class="line"><span class="comment">// 1.使用require("核心模块标识符")</span></div><div class="line"><span class="comment">// 2.荣国官方提供的API，调用模块中对应的方法，实现我们的功能</span></div></pre></td></tr></table></figure>
+<h4 id="使用os模块查看cpu信息"><a href="#使用os模块查看cpu信息" class="headerlink" title="使用os模块查看cpu信息"></a>使用os模块查看cpu信息</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.使用require导入fs系统模块</span></div><div class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="comment">// 2.调用fs 模块中相关的方法读取(read)文件(file)</span></div><div class="line"><span class="comment">/* fs.readFile("./info.txt",function(err,buf)&#123;</span></div><div class="line"><span class="comment">	console.log(buf.toString());</span></div><div class="line"><span class="comment">&#125;)*/</span></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">使用fs.readFile可以读取指定的文件，它接受三个参数</span></div><div class="line"><span class="comment">参数1：要读取文件的路径[string]</span></div><div class="line"><span class="comment">参数2：可选，执行要以哪种编码格式读取指定的文件内容[string]</span></div><div class="line"><span class="comment">参数3：回调函数，表示当文件读取OK之后，执行什么进一步操作</span></div><div class="line"><span class="comment">*/</span> </div><div class="line">&lt;!--fs.readFile(<span class="string">"./info1.txt"</span>,<span class="string">"utf-8"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,dataStr</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(err.instanceOf <span class="built_in">Error</span>);</div><div class="line">    &lt;!--这里输出是<span class="literal">true</span>，err可以看成是<span class="built_in">Error</span>的实例属性--&gt;</div><div class="line">&#125;)--&gt;</div><div class="line">fs.readFile(__dirname+<span class="string">"/info.txt"</span>,<span class="string">"utf-8"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,dataStr</span>)</span>&#123;</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * if(err)&#123;</span></div><div class="line"><span class="comment">	 *  报错了</span></div><div class="line"><span class="comment">	 * console.log("读取文件失败，错误信息为："+err.message);</span></div><div class="line"><span class="comment">	 * &#125;else&#123;</span></div><div class="line"><span class="comment">	 * 成功了</span></div><div class="line"><span class="comment">	 * console.log(dataStr);</span></div><div class="line"><span class="comment">	 * &#125;</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="keyword">if</span>(err) <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">"读物文件失败，错误信息为:"</span>+err.message);</div><div class="line">	<span class="built_in">console</span>.log(dataStr);</div><div class="line">&#125;)</div><div class="line"><span class="built_in">console</span>.log(__filename);</div></pre></td></tr></table></figure>
+<h4 id="使用fs系统模版写入文件"><a href="#使用fs系统模版写入文件" class="headerlink" title="使用fs系统模版写入文件"></a>使用fs系统模版写入文件</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fa=<span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment"> * 调用fs.writeFile写入文件</span></div><div class="line"><span class="comment"> * 参数1：要写入的文件路径</span></div><div class="line"><span class="comment"> * 参数2：要写入的内容</span></div><div class="line"><span class="comment"> * 参数3：可选的options，默认的写入，编码格式是utf-8</span></div><div class="line"><span class="comment"> * 参数4：写入完成后的回调，只有一个err对象作为参数</span></div><div class="line"><span class="comment"> * fs.write("./info2.text","卡牌大师",function(err)&#123;</span></div><div class="line"><span class="comment"> * 	if(err) return </span></div><div class="line"><span class="comment"> * 	console.log("报错了！");</span></div><div class="line"><span class="comment"> *  console.log("写入OK");</span></div><div class="line"><span class="comment"> * &#125;)</span></div><div class="line"><span class="comment"> */</span> </div><div class="line">fs.writeFile(<span class="string">"./info2.txt"</span>,<span class="string">"卡牌大师"</span>,(err)=&gt;&#123;</div><div class="line">	<span class="keyword">if</span>(err) <span class="keyword">return</span> <span class="built_in">console</span>.log(<span class="string">"报错了！"</span>);</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"写入OK"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">fs.readFile(path[,options],callback);</div><div class="line"><span class="comment">// 这里中括号内的参数代表参数可有可无</span></div></pre></td></tr></table></figure>
+<ul>
+<li>在Node中，如果要使用核心模块，实现某些功能，总共分为<ul>
+<li>1.使用require(“核心模块标识符”)</li>
+<li>通过官方提供的API，调用模块中对应的方法，实现我们的功能</li>
+</ul>
+</li>
+<li>注意：今后在使用fs模块中的<strong>任何</strong>方法的时候，<strong>只要涉及到路径操作了，一定要用__dirname做一层拼接</strong>，防止操作文件的时候，相对路径随着执行Node命令的目录而改变</li>
+<li>writeFile 特点：如果文件不存在则先创建再写入；如果文件存在，则直接覆盖之前的内容；</li>
+</ul>
+<h4 id="箭头函数-1"><a href="#箭头函数-1" class="headerlink" title="箭头函数"></a>箭头函数</h4><ul>
+<li>// 箭头函数的标准形式：   () =&gt; {}<br>  // 变形1：如果箭头函数，左侧参数列表中，只有一个参数，可以省略 () ,    x =&gt; {}<br>  // 变形2：如果箭头函数右侧函数体中，只有一句代码，那么， {} 可以省略   () =&gt; console.log(123)<br>  // 变形3：根据上面两条规范，可以得到变形3，左侧只有一个参数，右侧只有一行代码    x =&gt; console.log(x)<br>  // 注意：如果省略了函数体的 {} ， 则 函数体中代码执行的结果，会被默认的 当作返回值 return 出去，当作此箭头函数的调用返回值</li>
+</ul>
+<p><html></html></p>
+<head><br>  <meta charset="UTF-8"><br>  <meta name="viewport" content="width=device-width, initial-scale=1.0"><br>  <meta http-equiv="X-UA-Compatible" content="ie=edge"><br>  <title>Document</title><br></head>
+
+<p><body><br>  <input type="button" value="戳我" id="btn"></body></p>
+<p>  <script><br>    onload = function () {<br>      var btn = document.getElementById(‘btn’);<br>      btn.onclick = function () {<br>        // var _this = this;<br>        // 箭头函数内部的this，永远和 箭头函数 外部的this保持一致<br>        // setTimeout(() =&gt; {<br>        //   this.style.backgroundColor = ‘red’;<br>        // }, 1000);</p>
+<pre><code>    myclick = myclick.bind(this);
+
+    window.setTimeout(myclick, 1000);
+  }
+}
+
+function myclick() {
+  console.log(this)
+  this.style.backgroundColor = &apos;red&apos;;
+}
+
+
+// 箭头函数的标准形式：   () =&gt; {}
+// 变形1：如果箭头函数，左侧参数列表中，只有一个参数，可以省略 () ,    x =&gt; {}
+// 变形2：如果箭头函数右侧函数体中，只有一句代码，那么， {} 可以省略   () =&gt; console.log(123)
+// 变形3：根据上面两条规范，可以得到变形3，左侧只有一个参数，右侧只有一行代码    x =&gt; console.log(x)
+// 注意：如果省略了函数体的 {} ， 则 函数体中代码执行的结果，会被默认的 当作返回值 return 出去，当作此箭头函数的调用返回值
+
+function a(x) {
+  return x + 1;
+}
+
+x =&gt; x + 1
+
+// 拉姆达表达式   Lambda
+</code></pre><p>  </script><br><br></p>
+<h4 id="使用fs的appendFile向已有文件追加内容"><a href="#使用fs的appendFile向已有文件追加内容" class="headerlink" title="使用fs的appendFile向已有文件追加内容"></a>使用fs的appendFile向已有文件追加内容</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> fs=<span class="built_in">require</span>(<span class="string">"fs"</span>);</div><div class="line">fs.appendFile(<span class="string">"./info3.txt"</span>,<span class="string">"\n啥子呦"</span>,(err)=&gt;&#123;</div><div class="line">	<span class="keyword">if</span>(err) <span class="keyword">return</span> <span class="built_in">console</span>.log(err.message);</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"追加OK"</span>);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="使用http模版创建基本的web服务器"><a href="#使用http模版创建基本的web服务器" class="headerlink" title="使用http模版创建基本的web服务器"></a>使用http模版创建基本的web服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1.导入http核心模块</span></div><div class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">"http"</span>);</div><div class="line"><span class="comment">// 2.调用http.createServer方法，创建服务器</span></div><div class="line"><span class="keyword">var</span> server = http.createServer();</div><div class="line"><span class="comment">// 3.通过on方法，给刚创建的server服务器，绑定request事件处理函数</span></div><div class="line"><span class="comment">// request事件处理函数，有两个参数</span></div><div class="line"><span class="comment">// 第一个参数是req请求对象，包含了和请求有关的数据，比如url地址，请求的query查询字符串，提交的form表单，cookie</span></div><div class="line"><span class="comment">// 第二个参数是res响应对象，可以将服务器处理好的数据，响应给客户端去渲染；</span></div><div class="line">server.on(<span class="string">"request"</span>, (req, res) =&gt; &#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">"OK"</span>);</div><div class="line">	<span class="comment">/**</span></div><div class="line"><span class="comment">	 * res.write("hello");</span></div><div class="line"><span class="comment">	 * res.write("world");</span></div><div class="line"><span class="comment">	 * res.write("hello world");</span></div><div class="line"><span class="comment">	 * 调用res.end()结束当前响应</span></div><div class="line"><span class="comment">	 * 这种方式，表示向客户端发送内容，并立即结束响应</span></div><div class="line"><span class="comment">	 * res.end("hello world");</span></div><div class="line"><span class="comment">	 */</span></div><div class="line">	<span class="comment">// res.writeHeader 第一个参数是状态码，第二个参数是响应头对象；</span></div><div class="line">	res.writeHeader(<span class="number">200</span>, &#123;</div><div class="line">		<span class="comment">// text/plain 是普通文本</span></div><div class="line">		<span class="string">"Content-Type"</span>: <span class="string">"text/html;charset=utf-8"</span></div><div class="line">		<span class="comment">// text/css image/png</span></div><div class="line">	&#125;);</div><div class="line">	<span class="comment">// res.end("拳四郎");</span></div><div class="line">	res.end(<span class="string">"&lt;h1&gt;拳四郎&lt;/h1&gt;"</span>)</div><div class="line">	<span class="comment">// 注意，不能再end之后继续调用write</span></div><div class="line">	<span class="comment">// 这样会报错</span></div><div class="line">	<span class="comment">// res.write("123");</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
+<li><a href="http://www.cnblogs.com/ghost-xyx/p/4035615.html" target="_blank" rel="external">JavaScript——历史与简介</a></li>
+<li><a href="http://www.infoq.com/cn/articles/what-is-nodejs/" target="_blank" rel="external">深入浅出Node.js（一）：什么是Node.js</a></li>
+<li><a href="http://www.cnblogs.com/eric-nirnava/p/IO.html" target="_blank" rel="external">I/O事件概述</a></li>
+<li><a href="http://www.cnblogs.com/lua5/archive/2011/02/01/1948760.html" target="_blank" rel="external">理解Node.js事件驱动编程</a></li>
+<li><a href="http://nodejs.cn/api/documentation.html" target="_blank" rel="external">Node.js 中文网</a></li>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js 英文官网</a></li>
+<li><a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank" rel="external">Node.js 菜鸟教程</a></li>
+<li><a href="https://cnodejs.org/" target="_blank" rel="external">CNode：Node.js专业中文社区</a></li>
+<li><a href="http://download.csdn.net/download/u010733705/9555797" target="_blank" rel="external">深入浅出Node.js(朴灵)完整扫描版.pdf</a></li>
+<li><a href="http://www.nowamagic.net/academy/detail/23350305" target="_blank" rel="external">HTTP Keep-Alive是什么？如何工作？</a></li>
+<li><a href="http://www.nowamagic.net/librarys/veda/detail/2576" target="_blank" rel="external">浏览器User-agent String里的历史故事</a></li>
+<li><a href="https://aui.github.io/art-template/docs/api.html" target="_blank" rel="external">art-template API</a></li>
+<li><a href="http://www.jb51.net/article/95199.htm" target="_blank" rel="external">yarn与npm的命令行小结</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"><i class="fa fa-tag"></i> Node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/12/19/15.移动web开发/" rel="next" title="移动web开发">
+                <i class="fa fa-chevron-left"></i> 移动web开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/20/17.Node.js投缘/" rel="prev" title="Node-投缘">
+                Node-投缘 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js初识"><span class="nav-number">1.</span> <span class="nav-text">Node.js初识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习Node-js时候的建议"><span class="nav-number">1.1.</span> <span class="nav-text">学习Node.js时候的建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是前端和后端"><span class="nav-number">1.2.</span> <span class="nav-text">什么是前端和后端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Javascript-的起源"><span class="nav-number">1.3.</span> <span class="nav-text">Javascript 的起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-的起源"><span class="nav-number">1.4.</span> <span class="nav-text">Node.js 的起源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ECMAScript、浏览器中的Javascript、Node中的Javascript"><span class="nav-number">1.5.</span> <span class="nav-text">ECMAScript、浏览器中的Javascript、Node中的Javascript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是Node-js"><span class="nav-number">1.6.</span> <span class="nav-text">什么是Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-js-可以做哪些事情"><span class="nav-number">1.7.</span> <span class="nav-text">Node.js 可以做哪些事情</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【★★】为什么要学习Node-js"><span class="nav-number">1.8.</span> <span class="nav-text">【★★】为什么要学习Node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Node中执行相关的JS代码的两种方式"><span class="nav-number">1.9.</span> <span class="nav-text">在Node中执行相关的JS代码的两种方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量"><span class="nav-number">1.10.</span> <span class="nav-text">环境变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是环境变量"><span class="nav-number">1.10.1.</span> <span class="nav-text">什么是环境变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户变量和系统变量的区别"><span class="nav-number">1.10.2.</span> <span class="nav-text">用户变量和系统变量的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置环境变量的两种方式"><span class="nav-number">1.10.3.</span> <span class="nav-text">配置环境变量的两种方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Path变量的查找规则"><span class="nav-number">1.11.</span> <span class="nav-text">Path变量的查找规则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【★★】使用fs模块来操作文件"><span class="nav-number">1.12.</span> <span class="nav-text">【★★】使用fs模块来操作文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【★★★】fs模块中路径问题"><span class="nav-number">1.13.</span> <span class="nav-text">【★★★】fs模块中路径问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#箭头函数"><span class="nav-number">1.14.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node中的使用http模块创建最基本的web服务器"><span class="nav-number">1.15.</span> <span class="nav-text">Node中的使用http模块创建最基本的web服务器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【★★★】HTTP协议中的-请求-处理-响应-模型"><span class="nav-number">1.16.</span> <span class="nav-text">【★★★】HTTP协议中的 请求 - 处理 - 响应 模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【★★】step-by-step-构建HTTP服务器"><span class="nav-number">1.17.</span> <span class="nav-text">【★★】step by step 构建HTTP服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#升级1：根据不同的URL地址响应不同HTML消息"><span class="nav-number">1.17.1.</span> <span class="nav-text">升级1：根据不同的URL地址响应不同HTML消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级2：根据不同URL地址-响应不同的页面"><span class="nav-number">1.17.2.</span> <span class="nav-text">升级2：根据不同URL地址 - 响应不同的页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#升级3：在响应不同页面的同时响应静态资源（css、图片、js）"><span class="nav-number">1.17.3.</span> <span class="nav-text">升级3：在响应不同页面的同时响应静态资源（css、图片、js）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【★★★】【难点】升级4：根据不同URL地址-响应不同文件的改造"><span class="nav-number">1.17.4.</span> <span class="nav-text">【★★★】【难点】升级4：根据不同URL地址 - 响应不同文件的改造</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【★★】【难点】网页中资源请求路径问题"><span class="nav-number">1.17.5.</span> <span class="nav-text">【★★】【难点】网页中资源请求路径问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Node中执行相关的js代码的两种方式"><span class="nav-number">1.17.6.</span> <span class="nav-text">在Node中执行相关的js代码的两种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码总结"><span class="nav-number">1.17.7.</span> <span class="nav-text">代码总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用fs系统模版读取文件"><span class="nav-number">1.17.7.1.</span> <span class="nav-text">使用fs系统模版读取文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用os模块查看cpu信息"><span class="nav-number">1.17.7.2.</span> <span class="nav-text">使用os模块查看cpu信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用fs系统模版写入文件"><span class="nav-number">1.17.7.3.</span> <span class="nav-text">使用fs系统模版写入文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#箭头函数-1"><span class="nav-number">1.17.7.4.</span> <span class="nav-text">箭头函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用fs的appendFile向已有文件追加内容"><span class="nav-number">1.17.7.5.</span> <span class="nav-text">使用fs的appendFile向已有文件追加内容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用http模版创建基本的web服务器"><span class="nav-number">1.17.7.6.</span> <span class="nav-text">使用http模版创建基本的web服务器</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">1.18.</span> <span class="nav-text">相关文章</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

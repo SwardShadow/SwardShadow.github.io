@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Node.js 投缘并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。 在vscode中每次修改js代码都要ctrl+c先关掉服务器，然后再启动  同步和异步的对比【非阻塞I/O和阻塞I/O】异步读取文件网络传输中的所碰到的问题12345fs.readFile(__dirname+&quot;/views/index.html">
+<meta name="keywords" content="Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node-投缘">
+<meta property="og:url" content="http://yoursite.com/2017/02/20/17.Node.js投缘/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="Node.js 投缘并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。 在vscode中每次修改js代码都要ctrl+c先关掉服务器，然后再启动  同步和异步的对比【非阻塞I/O和阻塞I/O】异步读取文件网络传输中的所碰到的问题12345fs.readFile(__dirname+&quot;/views/index.html">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-03T09:12:03.156Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node-投缘">
+<meta name="twitter:description" content="Node.js 投缘并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。 在vscode中每次修改js代码都要ctrl+c先关掉服务器，然后再启动  同步和异步的对比【非阻塞I/O和阻塞I/O】异步读取文件网络传输中的所碰到的问题12345fs.readFile(__dirname+&quot;/views/index.html">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/20/17.Node.js投缘/"/>
+
+
+
+
+
+  <title>Node-投缘 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/20/17.Node.js投缘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node-投缘</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-20T22:33:11+08:00">
+                2017-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Node-js-投缘"><a href="#Node-js-投缘" class="headerlink" title="Node.js 投缘"></a>Node.js 投缘</h1><h2 id="并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。"><a href="#并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。" class="headerlink" title="并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。"></a>并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。</h2><ul>
+<li>在vscode中每次修改js代码都要ctrl+c先关掉服务器，然后再启动</li>
+</ul>
+<h2 id="同步和异步的对比【非阻塞I-O和阻塞I-O】"><a href="#同步和异步的对比【非阻塞I-O和阻塞I-O】" class="headerlink" title="同步和异步的对比【非阻塞I/O和阻塞I/O】"></a>同步和异步的对比【非阻塞I/O和阻塞I/O】</h2><h3 id="异步读取文件"><a href="#异步读取文件" class="headerlink" title="异步读取文件"></a>异步读取文件</h3><h3 id="网络传输中的所碰到的问题"><a href="#网络传输中的所碰到的问题" class="headerlink" title="网络传输中的所碰到的问题"></a>网络传输中的所碰到的问题</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fs.readFile(__dirname+<span class="string">"/views/index.html"</span>,(err,buf)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span> res.end(<span class="string">"404 Not found"</span>);</div><div class="line">    res.end(buf);</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 这里没有加utf-8的话拿到的就是一个二进制的buff字符串，就是一个二进制的buf字符串，但是这种事合法的。因为，无论什么内容，HTML，CSS，JS，图片，音乐，视频。。。在进行网络传输的时候，都是以二进制形式传输的。</span></div></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"/aaa"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--这个路径一看就是不存在的路径，但是这个路径对于后端来说这里只是一个标识符，并不一定是真正的文件地址。但是在实际开发中，为了方便开发和智能提示的原因，所以一般都会使用真实对应的路径--&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>这个路径一看就是不存在的路径，但是这个路径对于后端来说这里只是一个标识符，并不一定是真正的文件地址。但是在实际开发中，为了方便开发和智能提示的原因，所以一般都会使用真实对应的路</strong><br><strong>在网页中图片地址必须和网页地址拼接才能进行二次请求，为了避免这个问题，建议之家使用/开头，而不用../的形式开头</strong></p>
+<h3 id="异步嵌套读取文件"><a href="#异步嵌套读取文件" class="headerlink" title="异步嵌套读取文件"></a>异步嵌套读取文件</h3><ul>
+<li>在异步读取的时候，根据谁读取的块谁就先输出，但是我们并不知道它啥时候就读取完了。异步读取文件的方法无法保证读取顺序。</li>
+<li>但是为了保证程序的执行顺序，可以选择<strong>异步嵌套</strong>的方式保证，这种方式的好处是不阻塞CPU，保证运行顺序，保持代码执行的流畅性。</li>
+<li>在调用Node中的异步方法的时候，无法使用try…catch捕获异步错误，只能使用异步代码回调函数中提供的err对象来判断程序执行是否出错。</li>
+</ul>
+<h3 id="同步读取文件"><a href="#同步读取文件" class="headerlink" title="同步读取文件"></a>同步读取文件</h3><ul>
+<li>同步的代码，严格按照编写顺序执行，但是同步代码效率最低</li>
+<li>同步中可以应用try–&gt;catch–&gt;finally 的方法来保证代码的顺利运行。只要有try的话执行就一定会执行finally。而错误的时候会执行catch内的代码，而finally始终都是最后执行。</li>
+</ul>
+<h3 id="异步和同步操作中，捕获错误的方式"><a href="#异步和同步操作中，捕获错误的方式" class="headerlink" title="异步和同步操作中，捕获错误的方式"></a>异步和同步操作中，捕获错误的方式</h3><h2 id="Node-中的模块化"><a href="#Node-中的模块化" class="headerlink" title="Node 中的模块化"></a>Node 中的模块化</h2><ul>
+<li>生活中的模块化例如活动板房，笔记本电脑的设备结构等都可以理解为模块化。</li>
+</ul>
+<h3 id="什么是程序开发中的模块及好处"><a href="#什么是程序开发中的模块及好处" class="headerlink" title="什么是程序开发中的模块及好处"></a>什么是程序开发中的模块及好处</h3><ul>
+<li>什么是程序开发中的模块化：把一些功能类似的代码，封装到一个单独的文件中去，这些单独抽离出来的代码文件，就能够提供各种各样好用的功能；这种通过代码功能分割文件的方式，叫做程序中的模块化；</li>
+<li>好处：保证了每个文件的功能（职能）单一；需要什么特定的功能，直接调用某一个特定的模块；对将来程序开发和维护都有好处！同时也解决了全局变量污染的问题，因为每个模块都有独立的作用域；</li>
+<li>require 的模块化开发是基于是AMD，异步地去加载JS文件</li>
+<li>Node 的模块化开发是基于CMD，CommomJS同步的去加载JS文件</li>
+</ul>
+<h3 id="模块包装器"><a href="#模块包装器" class="headerlink" title="模块包装器"></a>模块包装器</h3><ul>
+<li>在执行模块代码之前，Node.js会使用一个如下的函数包装器将其包装:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">exports,require,module,__filename,__dirname</span>)</span>&#123;</div><div class="line">    <span class="comment">// 模块的代码实际上在这里</span></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<p>通过这样做，Node.js实现了一下几点:  </p>
+<ul>
+<li>它保持了顶层的变量(用var、const或let定义)作用在模块范围内，而不是全局对象。</li>
+<li>它有助于提供一些看似全局的但实际上是模块特定的变量，例如：<ul>
+<li>实现者可以用于从模块中到处置的module和exports对象。</li>
+<li>包含模块绝对文件名和目录路径的快捷变量 <strong>filename 和 </strong>dirname。</li>
+</ul>
+</li>
+</ul>
+<h3 id="【★★】Node-中如何实现模块化"><a href="#【★★】Node-中如何实现模块化" class="headerlink" title="【★★】Node 中如何实现模块化"></a>【★★】Node 中如何实现模块化</h3><p>在Node中基于CommonJS规范，通过三个东西实现模块化：</p>
+<ul>
+<li>module：表示一个模块，在Node中，最常见的模块，就是一个个的JS文件！</li>
+<li>require：作用是加载其他模块用的；在一个JS文件中，如何引用其他JS文件中的成员呢？就是用require</li>
+<li>exports：在Node的模块中，如果这个模块需要向外暴露一些成员，供其他JS模块使用，那么，需要使用exports向外暴露这些成员！</li>
+</ul>
+<blockquote>
+<p>注意：Node 中的模块化，主要解决的JS文件之间的相互依赖关系！</p>
+</blockquote>
+<h3 id="【理解】Node-中的模块的分类"><a href="#【理解】Node-中的模块的分类" class="headerlink" title="【理解】Node 中的模块的分类"></a>【理解】Node 中的模块的分类</h3><p>node由三部分组成：ECMAScript + 核心API + 第三方等API</p>
+<h4 id="核心模块"><a href="#核心模块" class="headerlink" title="核心模块"></a>核心模块</h4><ul>
+<li>什么是核心模块：官方，发现一些功能模块使用非常频繁，然后，官方把这些模块，编译成了二进制可执行文件，然后打包到了Node的安装包中；所以，这些核心模块就已经随着安装Node时候，被安装到了本地；</li>
+<li>如何使用核心模块<br>　使用require（‘核心模块的名称’）；  require(‘fs/os/http’)</li>
+</ul>
+<h4 id="第三方模块"><a href="#第三方模块" class="headerlink" title="第三方模块"></a>第三方模块</h4><ul>
+<li>什么是第三方模块：出了官方提供的好用的核心模块之外，我们程序员发现，还有一些使用也很频繁的代码和方法，一些牛逼的团体、个人、公司，开发出了好用的模块，通过NPM官网，托管出去，供其他人下载使用的这些模块；统称为第三方模块；</li>
+<li>如何使用第三方模块<br>　－　通过moment这个第三方模块，来介绍如何使用一个第三方模块；</li>
+<li>第三方模块的使用方式：<ol>
+<li>先使用npm下载这个模块！【注意：在安装第三方模块的时候，安装的名字，就是你在require时候导入的名字】</li>
+<li>使用require导入这个第三方模块！</li>
+<li>通过官方文档，试着去使用这个第三方模块！</li>
+<li>注意：无论是核心模块、还是第三方模块，都是通过 <code>标识符名称</code>来引用这个模块的！</li>
+</ol>
+</li>
+</ul>
+<h4 id="用户模块"><a href="#用户模块" class="headerlink" title="用户模块"></a>用户模块</h4><ul>
+<li>什么是用户模块：程序员自己定义的JS文件，统统数据用户模块！</li>
+<li>用户模块向外导出成员的两种方式：<ul>
+<li>第一种方式：使用global对象，相当于浏览器中的window对象<ul>
+<li><ol>
+<li>全局变量污染，</li>
+</ol>
+</li>
+<li><ol>
+<li>不知道成员是从哪个模块中暴露 出去的</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>推荐使用Node提供的exports方式向外暴露成员</li>
+<li>模块外暴露成员的第一种方式为global<ul>
+<li>缺点： <ul>
+<li>全局变量的污染问题</li>
+<li>无法知道成员是从哪个模块暴露出来的,解决的方法是global.m1.a</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="exports-和-module-exports-的区别"><a href="#exports-和-module-exports-的区别" class="headerlink" title="exports 和 module.exports 的区别"></a>exports 和 module.exports 的区别</h3><ol>
+<li><p>通过 module.exports 可以使用 . 的形式追加属性，也可以使用 等号 直接赋值的形式导出成员；</p>
+</li>
+<li><p>exports 只能通过 . 的形式追加属性；不能使用 等号 直接赋值的形式！</p>
+</li>
+<li><p>注意： 在一个 module 中，最终向外暴露的成员，以 module.exports 指向的对象为准！</p>
+</li>
+<li><p>在一个模块中，尽量不要混合使用 <code>module.exports</code> 和 <code>exports</code></p>
+</li>
+</ol>
+<h3 id="【了解】模块加载规则"><a href="#【了解】模块加载规则" class="headerlink" title="【了解】模块加载规则"></a>【了解】模块加载规则</h3><ol>
+<li>优先从缓存中加载<ul>
+<li>使用 <code>delete require.cache[__filename]</code> 来防止模块被缓存，但是一般不建议这么用，因为模块的缓存能够提高运行效率；</li>
+</ul>
+</li>
+<li>加载核心模块:优先从缓存中加载；如果缓存中没有的话，再去执行加载核心模块！</li>
+<li><p>自己的模块:优先从缓存中加载；如果缓存中没有的话，再去执行加载用户模块！</p>
+<ul>
+<li>用户模块的查找规则：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">用户模块的查找规则：</div><div class="line">如果不写后缀名，则先严格按照给定的文件名去查找模块并加载执行；</div><div class="line">index   -&gt;  index.js  -&gt;   index.json    -&gt;  index.node</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>第三方模块查找规则：</p>
+<ol>
+<li>node首先，查看项目根目录中有没有 <code>node_modules</code> 文件夹</li>
+<li>查找 <code>node_modules</code> 文件夹中，有没有和第三方模块名称一致的文件夹</li>
+<li>在模块对应的文件夹中，查找有没有 <code>package.json</code> 这个文件</li>
+<li>在 <code>package.json</code> 文件中，查找有没有 <code>main</code> 属性</li>
+<li>如果有 <code>main</code> 属性，并且 <code>main</code> 属性指向的路径存在，那么就尝试加载这个路径指定的文件！</li>
+<li>如果 <code>package.json</code> 文件中，没有 <code>main</code> 属性，或者 <code>main</code> 属性指向的路径不存在，或者没有<code>package.json</code> 文件， 那么，Node尝试加载 模块根目录中 <code>index</code> 相关文件：<code>index.js</code> -&gt; <code>index.json</code> -&gt; <code>index.node</code></li>
+<li>如果在<code>node_modules</code>文件夹中，找不到对应的模块文件夹，或者在项目根目录中根本没有<code>node_modules</code>文件夹，则向上一层文件夹中去查找，查找规则同上！</li>
+<li>如果上一层目录中也没有查找到，则再向上翻一层去查找，直到找到当前项目所在的盘符根目录为止！</li>
+<li>如果找到了盘符根目录还找不到，则报错：<code>cannot find module ***</code></li>
+</ol>
+</li>
+</ol>
+<h2 id="结合art-template模板引擎在服务器端渲染页面"><a href="#结合art-template模板引擎在服务器端渲染页面" class="headerlink" title="结合art-template模板引擎在服务器端渲染页面"></a>结合art-template模板引擎在服务器端渲染页面</h2><p><a href="https://aui.github.io/art-template/docs/" target="_blank" rel="external">art-template官方文档</a></p>
+<h2 id="【了解】服务端渲染和客户端渲染的对比"><a href="#【了解】服务端渲染和客户端渲染的对比" class="headerlink" title="【了解】服务端渲染和客户端渲染的对比"></a>【了解】服务端渲染和客户端渲染的对比</h2><p><a href="https://www.cnblogs.com/" target="_blank" rel="external">博客园官网</a></p>
+<ol>
+<li>服务器端渲染<ul>
+<li>特点：Node服务器先读取模板页面，再获取要渲染的数据，然后直接在服务器端把完整的页面渲染拼接好，然后通过网络一次性的把结果发送给浏览器去显示！【注意：通过服务器端渲染，在网络中传输的是一个真正页面】</li>
+<li>优点：请求次数少，速度快，对SEO友好</li>
+<li>缺点：服务器渲染压力大【在后端可以通过缓存机制去解决】</li>
+</ul>
+</li>
+<li>客户端渲染<ul>
+<li>特点：先访问服务器获取到模板页面，然后再通过Ajax获取要渲染的数据，拿到这两者之后，再客户端调用模板引擎，渲染得到模板字符串，然后通过JS的方式，把结果展示到页面上！【真正的页面是在客户端浏览器中怼出来的，在进行网络传输的时候，第一次传输的是模板页面，第二次传输的是数据】</li>
+<li>优点：减轻了服务器端的渲染压力</li>
+<li>缺点：请求次数多，用户体验可能没有服务器端渲染好（白屏效果）；对SEO不友好</li>
+</ul>
+</li>
+</ol>
+<h2 id="使用nodemon来自动重启Node服务"><a href="#使用nodemon来自动重启Node服务" class="headerlink" title="使用nodemon来自动重启Node服务"></a>使用<code>nodemon</code>来自动重启Node服务</h2><ol>
+<li>运行<code>npm i nodemon -g</code>全局安装模块</li>
+<li>使用方式 和 <code>node</code> 完全一样：<ul>
+<li><code>node 要执行文件的路径</code></li>
+<li><code>nodemon 要执行文件的路径</code></li>
+</ul>
+</li>
+</ol>
+<h2 id="文件列表小案例"><a href="#文件列表小案例" class="headerlink" title="文件列表小案例"></a>文件列表小案例</h2><h2 id="获取文件的属性"><a href="#获取文件的属性" class="headerlink" title="获取文件的属性"></a>获取文件的属性</h2><h2 id="【重点】在优化前-先封装一个根据指定路径读取文件内容的方法"><a href="#【重点】在优化前-先封装一个根据指定路径读取文件内容的方法" class="headerlink" title="【重点】在优化前, 先封装一个根据指定路径读取文件内容的方法"></a>【重点】在优化前, 先封装一个<code>根据指定路径读取文件内容</code>的方法</h2><h2 id="【重点】将读取文件夹的方法抽离出来，同时对error进行处理"><a href="#【重点】将读取文件夹的方法抽离出来，同时对error进行处理" class="headerlink" title="【重点】将读取文件夹的方法抽离出来，同时对error进行处理"></a>【重点】将读取文件夹的方法抽离出来，同时对error进行处理</h2><h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ol>
+<li><a href="https://aui.github.io/art-template/" target="_blank" rel="external">art-template 官方文档</a></li>
+<li><a href="http://www.infoq.com/cn/articles/es6-in-depth-template-string" target="_blank" rel="external">ES6 - 模板字符串</a></li>
+<li><a href="http://www.cnblogs.com/xljzlw/p/3694861.html" target="_blank" rel="external">js中的数组对象排序</a></li>
+<li><a href="https://github.com/i5ting/tocmd.npm" target="_blank" rel="external">i5ting/tocmd.npm 将MD转换为HTML</a></li>
+<li><a href="https://www.zhihu.com/question/20298345" target="_blank" rel="external">JavaScript 语句后应该加分号么？</a></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"><i class="fa fa-tag"></i> Node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/11/16.Node.js初识/" rel="next" title="Node-初识">
+                <i class="fa fa-chevron-left"></i> Node-初识
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/11/18.Node.js-挥别/" rel="prev" title="Node-挥别">
+                Node-挥别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js-投缘"><span class="nav-number">1.</span> <span class="nav-text">Node.js 投缘</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。"><span class="nav-number">1.1.</span> <span class="nav-text">并不是所有的回调函数都是异步调用的，在Node中，一般所有的回调函数，都是异步执行的；但是在浏览器中，有的回调函数，也是同步执行的。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#同步和异步的对比【非阻塞I-O和阻塞I-O】"><span class="nav-number">1.2.</span> <span class="nav-text">同步和异步的对比【非阻塞I/O和阻塞I/O】</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步读取文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">异步读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络传输中的所碰到的问题"><span class="nav-number">1.2.2.</span> <span class="nav-text">网络传输中的所碰到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步嵌套读取文件"><span class="nav-number">1.2.3.</span> <span class="nav-text">异步嵌套读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步读取文件"><span class="nav-number">1.2.4.</span> <span class="nav-text">同步读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步和同步操作中，捕获错误的方式"><span class="nav-number">1.2.5.</span> <span class="nav-text">异步和同步操作中，捕获错误的方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Node-中的模块化"><span class="nav-number">1.3.</span> <span class="nav-text">Node 中的模块化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是程序开发中的模块及好处"><span class="nav-number">1.3.1.</span> <span class="nav-text">什么是程序开发中的模块及好处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#模块包装器"><span class="nav-number">1.3.2.</span> <span class="nav-text">模块包装器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【★★】Node-中如何实现模块化"><span class="nav-number">1.3.3.</span> <span class="nav-text">【★★】Node 中如何实现模块化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【理解】Node-中的模块的分类"><span class="nav-number">1.3.4.</span> <span class="nav-text">【理解】Node 中的模块的分类</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#核心模块"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">核心模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第三方模块"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">第三方模块</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户模块"><span class="nav-number">1.3.4.3.</span> <span class="nav-text">用户模块</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports-和-module-exports-的区别"><span class="nav-number">1.3.5.</span> <span class="nav-text">exports 和 module.exports 的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#【了解】模块加载规则"><span class="nav-number">1.3.6.</span> <span class="nav-text">【了解】模块加载规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#结合art-template模板引擎在服务器端渲染页面"><span class="nav-number">1.4.</span> <span class="nav-text">结合art-template模板引擎在服务器端渲染页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【了解】服务端渲染和客户端渲染的对比"><span class="nav-number">1.5.</span> <span class="nav-text">【了解】服务端渲染和客户端渲染的对比</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用nodemon来自动重启Node服务"><span class="nav-number">1.6.</span> <span class="nav-text">使用nodemon来自动重启Node服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件列表小案例"><span class="nav-number">1.7.</span> <span class="nav-text">文件列表小案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取文件的属性"><span class="nav-number">1.8.</span> <span class="nav-text">获取文件的属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【重点】在优化前-先封装一个根据指定路径读取文件内容的方法"><span class="nav-number">1.9.</span> <span class="nav-text">【重点】在优化前, 先封装一个根据指定路径读取文件内容的方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#【重点】将读取文件夹的方法抽离出来，同时对error进行处理"><span class="nav-number">1.10.</span> <span class="nav-text">【重点】将读取文件夹的方法抽离出来，同时对error进行处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">1.11.</span> <span class="nav-text">相关文章</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

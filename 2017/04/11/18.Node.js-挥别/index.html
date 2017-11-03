@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Node.js - 挥别express中使用art-template 先安装相关的包： 12npm install --save art-templatenpm install --save express-art-template  使用 app.engine 自定义一个模板引擎 1app.engine(&amp;apos;art&amp;apos;, require(&amp;apos;express-art-tem">
+<meta name="keywords" content="Node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node-挥别">
+<meta property="og:url" content="http://yoursite.com/2017/04/11/18.Node.js-挥别/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="Node.js - 挥别express中使用art-template 先安装相关的包： 12npm install --save art-templatenpm install --save express-art-template  使用 app.engine 自定义一个模板引擎 1app.engine(&amp;apos;art&amp;apos;, require(&amp;apos;express-art-tem">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-03T09:12:36.924Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node-挥别">
+<meta name="twitter:description" content="Node.js - 挥别express中使用art-template 先安装相关的包： 12npm install --save art-templatenpm install --save express-art-template  使用 app.engine 自定义一个模板引擎 1app.engine(&amp;apos;art&amp;apos;, require(&amp;apos;express-art-tem">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/04/11/18.Node.js-挥别/"/>
+
+
+
+
+
+  <title>Node-挥别 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/11/18.Node.js-挥别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Node-挥别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T15:33:21+08:00">
+                2017-04-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Node-js-挥别"><a href="#Node-js-挥别" class="headerlink" title="Node.js - 挥别"></a>Node.js - 挥别</h1><h2 id="express中使用art-template"><a href="#express中使用art-template" class="headerlink" title="express中使用art-template"></a>express中使用art-template</h2><ol>
+<li><p>先安装相关的包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install --save art-template</div><div class="line">npm install --save express-art-template</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用 <code>app.engine</code> 自定义一个模板引擎</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.engine(&apos;art&apos;, require(&apos;express-art-template&apos;));</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>app.set</code>把自定义的模板引擎，设置为express 默认的模板引擎：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.set(&apos;view engine&apos;, &apos;art&apos;);</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="数据库介绍"><a href="#数据库介绍" class="headerlink" title="数据库介绍"></a>数据库介绍</h2><ol>
+<li>之前的数据是怎么存储的：存储在文本文件中<code>data.json</code><ul>
+<li>缺点1：数据存取不方便，不利于维护和扩展，当数据量大了之后，无法直接通过打开文件的形式对数据进行操作；</li>
+<li>缺点2：数据存储比较分散，无法进行集中式管理；</li>
+<li>缺点3：安全性较低，由于数据是直接存储在文本文件中的，所有无法进行数据的加密，存在安全隐患；</li>
+</ul>
+</li>
+<li>Sql（Structured Query Language）数据库：提供了安全机制、便于通过<strong>Sql语句</strong>对数据直接进行操作。<ul>
+<li>支持 结构化查询语言（Sql）的数据库，叫做 <code>Sql数据库</code></li>
+<li><code>Sql</code>是一种查询语言，能够很方便的对数据进行CRUD；</li>
+</ul>
+</li>
+<li>常见的数据库的分类<ul>
+<li>传统的关系型数据库（Sql数据库）：Oracle（甲骨文 Java）、DB2、MySql、MS SQL Server、Sqlite【关系型数据库，对于大量数据的存取效率很高】</li>
+<li>现在比较流行的非关系型数据库（No-Sql数据库）：Redis(内部以键值对形式存储数据，是内存数据库)、Memcached、MongoDb（可以把数据对应到实际的物理磁盘，MongoDB使用JS来操作数据）</li>
+</ul>
+</li>
+</ol>
+<h2 id="关系型数据库的整体介绍"><a href="#关系型数据库的整体介绍" class="headerlink" title="关系型数据库的整体介绍"></a>关系型数据库的整体介绍</h2><ul>
+<li>MySql中的数据库服务是什么</li>
+<li>MySql中的数据库是什么：一个数据服务中通常包含一个或多个数据库。每个数据库由名字来进行区分；</li>
+<li>MySql中的数据库表是什么：一个数据库通常包含一个或多个表。每个表由一个名字标识（例如“客户”或者“订单”）。表包含带有数据的记录（行）。</li>
+<li>数据库服务就相当于是一台电脑；</li>
+<li>数据库相当于是这台电脑中的每个Excel；</li>
+<li>数据库表相当于是Excel中每个Sheet页签；</li>
+<li>数据库字段相当于Sheet中的每一列；</li>
+<li>数据库字段有自己的字段类型；</li>
+</ul>
+<h2 id="安装配置PHPStudy、navicat"><a href="#安装配置PHPStudy、navicat" class="headerlink" title="安装配置PHPStudy、navicat"></a>安装配置<code>PHPStudy</code>、<code>navicat</code></h2><ol>
+<li>PHPStudy傻瓜式安装：默认的用户名是<code>root</code>，默认的密码也是<code>root</code></li>
+<li>大家也可以使用WAMP中集成的MySql，WAMP中mySql的用户名是<code>root</code>，默认没有密码</li>
+<li>navicat傻瓜式安装、一键激活（建议安装navicat时候选择默认安装路径，方便一键激活）</li>
+</ol>
+<h2 id="数据库可视化工具navicat的基本使用"><a href="#数据库可视化工具navicat的基本使用" class="headerlink" title="数据库可视化工具navicat的基本使用"></a>数据库可视化工具<code>navicat</code>的基本使用</h2><ol>
+<li>打开和关闭数据库连接</li>
+<li>创建用户、设置用户权限</li>
+<li>新建数据库、新建表、设计表（设置字段类型）、设置Id自增<ul>
+<li>新建<code>users</code>用户表，表字段为：id、name、age、gender、address、isdel</li>
+<li>Id自增：设置为主键，勾选<code>自动递增</code></li>
+<li>主键：是用来标识数据表中每一行数据的唯一性的，确保独一无二性。</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据库中常见的字段类型"><a href="#数据库中常见的字段类型" class="headerlink" title="数据库中常见的字段类型"></a>数据库中常见的字段类型</h2><table>
+<thead>
+<tr>
+<th>Sql类型</th>
+<th>JS类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Int</td>
+<td>整数Number</td>
+</tr>
+<tr>
+<td>char</td>
+<td>非可变长度的String</td>
+</tr>
+<tr>
+<td>varchar</td>
+<td>可变长度的String</td>
+</tr>
+<tr>
+<td>tinyint</td>
+<td>Boolean</td>
+</tr>
+<tr>
+<td>NULL</td>
+<td>空字符串</td>
+</tr>
+<tr>
+<td>dateTime</td>
+<td>时间字符串</td>
+</tr>
+<tr>
+<td>Text</td>
+<td>大量文本</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>创建表并添加字段：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">新建一张 Users 表</div><div class="line">表中有 6 个 字段【注意：在JS中每个对象身上有很多属性，当这个对象的数据，存储到数据中之后，这些属性，就被叫做 字段】</div><div class="line"></div><div class="line">id  用户 id</div><div class="line">number   -&gt;  Int(整数类型)</div><div class="line">Id必须要有，同时不能重复</div><div class="line">主键：是用来唯一标识一条数据的，标识数据具有唯一性，不能重复</div><div class="line">注意：在一个表中，一般只有一个主键来标识唯一性</div><div class="line">如果勾选了Int 类型的 Id为 自动增长，则每次写入数据的时候，可以不提供id，数据库会自动写入一个Id</div><div class="line"></div><div class="line">name  用户名</div><div class="line">string   -&gt;    varchar(可变长度的字符)</div><div class="line">不能为空</div><div class="line"></div><div class="line">age  年龄</div><div class="line">number  -&gt;  Int</div><div class="line"></div><div class="line">gender  性别</div><div class="line">string    -&gt;    varchar</div><div class="line"></div><div class="line">address 地址</div><div class="line">string    -&gt;    varchar</div><div class="line"></div><div class="line">isdel   是否被删除</div><div class="line">bool   -&gt;   boolean    tinyint</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Sql语句的基本学习"><a href="#Sql语句的基本学习" class="headerlink" title="Sql语句的基本学习"></a>Sql语句的基本学习</h2><table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>语义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>insert</td>
+<td>插入</td>
+</tr>
+<tr>
+<td>update</td>
+<td>更新</td>
+</tr>
+<tr>
+<td>delete</td>
+<td>删除</td>
+</tr>
+<tr>
+<td>where</td>
+<td>条件</td>
+</tr>
+<tr>
+<td>select</td>
+<td>查询</td>
+</tr>
+<tr>
+<td>select *</td>
+<td>查询所有字段</td>
+</tr>
+<tr>
+<td>select 字段</td>
+<td>查询指定字段</td>
+</tr>
+<tr>
+<td>as</td>
+<td>为字段起别名</td>
+</tr>
+<tr>
+<td>or</td>
+<td>并集（或）</td>
+</tr>
+<tr>
+<td>and</td>
+<td>交集（且）</td>
+</tr>
+<tr>
+<td>in</td>
+<td>并集（或）</td>
+</tr>
+<tr>
+<td>like</td>
+<td>模糊查询</td>
+</tr>
+<tr>
+<td>=</td>
+<td>精确查询</td>
+</tr>
+<tr>
+<td>order by</td>
+<td>排序</td>
+</tr>
+<tr>
+<td>asc</td>
+<td>升序</td>
+</tr>
+<tr>
+<td>desc</td>
+<td>降序</td>
+</tr>
+<tr>
+<td>between and</td>
+<td>区间</td>
+</tr>
+<tr>
+<td>大于号和小于号</td>
+<td>区间</td>
+</tr>
+<tr>
+<td>is NULL</td>
+<td>字段值是否为NULL</td>
+</tr>
+<tr>
+<td>is not NULL</td>
+<td>字段值是否不为NULL</td>
+</tr>
+<tr>
+<td>count (*)</td>
+<td>获取符合查询结果的总记录条数</td>
+</tr>
+<tr>
+<td>left join</td>
+<td>以左边的表中的字段进行合并查询</td>
+</tr>
+<tr>
+<td>limit x, y</td>
+<td>根据下标过滤（下标从0开始），从下标x开始（包含x），查询y条记录</td>
+</tr>
+</tbody>
+</table>
+<h2 id="使用Sql语句对数据库执行基本操作"><a href="#使用Sql语句对数据库执行基本操作" class="headerlink" title="使用Sql语句对数据库执行基本操作"></a>使用Sql语句对数据库执行基本操作</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div></pre></td><td class="code"><pre><div class="line">-- 这是注释</div><div class="line"></div><div class="line">-- 插入一条数据</div><div class="line">-- 写入一条数据，用户名是 小红 年龄是 13 性别是 女 地址是 深圳</div><div class="line">-- 插入数据的语法 INSERT INTO 表名 (字段1, 字段2,...) VALUES (字段1的值, 字段2的值,....)</div><div class="line">-- INSERT INTO users (name, age, gender, address) VALUES (&apos;小红&apos;, 13, &apos;女&apos;, &apos;深圳&apos;)</div><div class="line"></div><div class="line">-- 插入数据  用户名 大红 年龄26 性别 女 地址 上海</div><div class="line">-- INSERT INTO users (name, age, gender, address) VALUES (&apos;大红&apos;, 26, &apos;女&apos;, &apos;上海&apos;)</div><div class="line"></div><div class="line">-- 插入数据 用户名 escook  年龄 30</div><div class="line">-- INSERT into users (name, age)  VALUES (&apos;escook&apos;, 30)</div><div class="line"></div><div class="line">-- 修改数据</div><div class="line">-- UPDATE 表名称 SET 列名称 = 新值 WHERE 列名称 = 某值</div><div class="line">-- UPDATE users set gender=&apos;男&apos; WHERE id=5</div><div class="line"></div><div class="line">-- 修改 id 为 5 的那一条数据，将 性别改为女 ， 地址改为 铁岭， isdel改为 1</div><div class="line">-- update users set gender=&apos;女&apos;, address=&apos;铁岭&apos;, isdel=1 where id=5</div><div class="line"></div><div class="line">-- 删除数据  语法：DELETE FROM 表名称 WHERE 列名称 = 值</div><div class="line">-- 删除id 为5 的这一条数据</div><div class="line">-- delete from users where id=5</div><div class="line"></div><div class="line">-- 查询 指定的列（字段）</div><div class="line">-- select name, age, gender from users</div><div class="line"></div><div class="line">-- 查询表中的所有数据  * 代表所有字段</div><div class="line">-- select * from users</div><div class="line"></div><div class="line">-- 查询表中 名字为 zs 的用户</div><div class="line">-- select id, name, age from users where name=&apos;zs&apos;</div><div class="line"></div><div class="line">-- 查询表中 name 为 zs 和 name 为 ls 的数据</div><div class="line">-- SELECT * from users where name=&apos;zs&apos; or name=&apos;ls&apos;</div><div class="line"></div><div class="line">-- 查询 表中，name 为 zs 并且 age 为 12 的数据</div><div class="line">-- select * from users where name=&apos;zs&apos; and age=12</div><div class="line"></div><div class="line">-- 查询表中，name 为zs 或者 address 为 广州 的用户</div><div class="line">-- select * from users where name=&apos;zs&apos; or address=&apos;广州&apos;</div><div class="line"></div><div class="line">-- 查询 表中 年龄 以 2开头 的用户</div><div class="line">-- select * from users where age like &apos;2%&apos;</div><div class="line"></div><div class="line">-- 查询表中，name 以 红 结尾的数据 【模糊查询用 like， 精确查询用 =】</div><div class="line">-- select * from users where name like &apos;%红&apos;</div><div class="line"></div><div class="line">-- 查询表中，名字中有 s 的用户</div><div class="line">-- select * from users WHERE name like &apos;%s%&apos;</div><div class="line"></div><div class="line">-- 查询表中所有用户，并按照 年龄 从小到大排序</div><div class="line">-- 注意：使用 order by 进行排序，默认是升序排序，升序排序用 asc  降序排序用 desc</div><div class="line">-- select * from users ORDER BY age asc</div><div class="line"></div><div class="line">-- 查询表中所有数据，按照age 降序排序</div><div class="line">-- select * from users ORDER BY age desc</div><div class="line"></div><div class="line">-- 查询表中 性别为女的用户，并按照 age 降序排序</div><div class="line">-- 注意：如果一条语句中同时涉及到了 where 和 order by ，则先写 where 后写 order by</div><div class="line">-- select * from users where gender=&apos;女&apos; ORDER BY age desc</div><div class="line"></div><div class="line">-- 查询表中，gender 不为 女 的用户</div><div class="line">-- select * from users where gender!=&apos;女&apos;</div><div class="line"></div><div class="line">-- 查询表中，所有 address 不为 null 的用户</div><div class="line">-- select * from users where address is not NULL</div><div class="line"></div><div class="line">-- 查询表中 gender 为 null 的数据</div><div class="line">-- select * from users where gender is NULL</div><div class="line"></div><div class="line">-- 查询 id 在 3 ~ 6 区间内的所有数据</div><div class="line">-- select * from users where id &gt;=3 and id &lt;=6</div><div class="line">-- 注意：BETWEEN AND 必须把小值写的前面，大值写到后面，而且查询时候，是包含这两个区间的</div><div class="line">-- select * from users where id BETWEEN 3 and 6</div><div class="line"></div><div class="line">-- 根据订单表中的用户Id，查询出来每个订单所属的用户名</div><div class="line">-- select orders.orderid, orders.ordertitle, users.name from orders LEFT JOIN users ON orders.userId=users.id</div></pre></td></tr></table></figure>
+<h2 id="使用node-js代码的方式进行增删改查"><a href="#使用node-js代码的方式进行增删改查" class="headerlink" title="使用node.js代码的方式进行增删改查"></a>使用<code>node.js</code>代码的方式进行增删改查</h2><p>使用命令行执行<code>npm install mysql --save</code>安装操作MySQL数据库的模块；</p>
+<h3 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// 导入MySQL模块</div><div class="line">var mysql = require(&apos;mysql&apos;);</div><div class="line"></div><div class="line">// 创建一个数据库连接</div><div class="line">var connection = mysql.createConnection(&#123;</div><div class="line">    user: &apos;root&apos;,</div><div class="line">    password: &apos;123456&apos;,</div><div class="line">    database: &apos;mydb&apos;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">// 连接数据库</div><div class="line">connection.connect();</div></pre></td></tr></table></figure>
+<h3 id="基本查询操作"><a href="#基本查询操作" class="headerlink" title="基本查询操作"></a>基本查询操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var sqlStr = &apos;select * from heros&apos;;</div><div class="line">connection.query(sqlStr, function (err, results, fields) &#123;</div><div class="line">    if (err) throw err;</div><div class="line">    console.log(results.length);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="在查询语句中使用参数"><a href="#在查询语句中使用参数" class="headerlink" title="在查询语句中使用参数"></a>在查询语句中使用参数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 获取客户端传递过来的查询参数</div><div class="line">var id = 8;</div><div class="line">var name = &apos;小红&apos;;</div><div class="line"></div><div class="line">// 拼接查询参数</div><div class="line">connection.query(&apos;select * from heros where id=&quot;&apos; + id + &apos;&quot; and name=&quot;&apos; + name + &apos;&quot;&apos;, function (err, results, fields) &#123;</div><div class="line">    if (err) throw err;</div><div class="line">    console.log(results.length);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="使用参数化查询语句"><a href="#使用参数化查询语句" class="headerlink" title="使用参数化查询语句"></a>使用参数化查询语句</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">// 通过问号的形式拼接查询参数，问号相当于占位符，将来，传递的真实的数据会替换掉问号所在的区域</div><div class="line">// 真实参数列表可以通过数组的形式进行传递，问号占位符所代表的参数顺序，就是实际数组中每一项的作用</div><div class="line">const sqlStr = &apos;select count(*) from heros where id=? and name=?&apos;;</div><div class="line">connection.query(sqlStr, [id, name], function (err, results, fields) &#123;</div><div class="line">    if (err) throw err;</div><div class="line">    console.log(results[0][&apos;count(*)&apos;]);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="添加数据"><a href="#添加数据" class="headerlink" title="添加数据"></a>添加数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 插入数据</div><div class="line">var sqlStr = &apos;insert into heros (name, gender, avatar) values (?, ?, ?)&apos;;</div><div class="line">connection.query(sqlStr, [&apos;小小&apos;, &apos;女&apos;, &apos;img/119.jpg&apos;], function(err, results, fields)&#123;</div><div class="line">    if(err) throw err;</div><div class="line">    console.log(results);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>便捷的插入数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var user = &#123; name: &apos;尼古拉斯凯奇&apos;, age: 54, gender: &apos;男&apos;, address: &apos;美国&apos; &#125;;</div><div class="line">connection.query(&apos;insert into users set ?&apos;,user , function (err, result, fields) &#123;</div><div class="line">  if (err) throw err;</div><div class="line">  console.log(result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var sqlStr = &apos;update heros set name=?, gender=? where id=?&apos;;</div><div class="line">connection.query(sqlStr, [&apos;大大&apos;, &apos;男&apos;, 12], function(err, results, fields)&#123;</div><div class="line">    if(err) throw err;</div><div class="line">    console.log(results);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>便捷的更新数据：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">var user = &#123;</div><div class="line">  id:6,</div><div class="line">  age:9,</div><div class="line">  name:&apos;OK&apos;</div><div class="line">&#125;</div><div class="line">connection.query(&apos;update users_copy set ? where id=?&apos;, [user, 6], function(err, results)&#123;</div><div class="line">  if(err) throw err;</div><div class="line">  console.log(results);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="删除数据"><a href="#删除数据" class="headerlink" title="删除数据"></a>删除数据</h3><h4 id="硬删除"><a href="#硬删除" class="headerlink" title="硬删除"></a>硬删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">// 数据硬删除，执行成功之后，匹配到的数据记录，将会从表中删除</div><div class="line">connection.query(&apos;delete from heros where id=12&apos;, function(err, results, fields)&#123;</div><div class="line">    if(err) throw err;</div><div class="line">    console.log(results);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h4 id="软删除"><a href="#软删除" class="headerlink" title="软删除"></a>软删除</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 数据软删除，通过给表添加isdel字段，来标识数据记录是否被删除，true表示被删除，false表示未删除</div><div class="line">// 数据软删除的好处：能最大限度地保留数据的原始性</div><div class="line">connection.query(&apos;update heros set isdel=? where id=?&apos;, [true, 10], function(err, results, fields)&#123;</div><div class="line">    if(err) throw err;</div><div class="line">    console.log(results);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h2 id="用户列表案例"><a href="#用户列表案例" class="headerlink" title="用户列表案例"></a>用户列表案例</h2><h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="external">MDN - JSON.stringify()</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FileReader" target="_blank" rel="external">MDN - FileReader</a></li>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/FormData" target="_blank" rel="external">MDN - FormData</a></li>
+<li><a href="http://www.expressjs.com.cn/" target="_blank" rel="external">Express - 中文网</a></li>
+<li><a href="http://expressjs.com/" target="_blank" rel="external">Express - 英文官网</a></li>
+<li><a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank" rel="external">Node.js 教程</a></li>
+<li><a href="https://www.runoob.com/w3cnote/express-4-x-api.html" target="_blank" rel="external">菜鸟教程 - Express 4.x API 中文文档</a></li>
+<li><a href="https://blog.gtwang.org/programming/learn-to-use-the-new-router-in-expressjs-4/" target="_blank" rel="external">Express.js 4.0 的路由（Router）功能用法教學</a></li>
+<li><a href="https://github.com/aui/art-template" target="_blank" rel="external">github - art-template</a></li>
+<li><a href="https://github.com/aui/express-art-template" target="_blank" rel="external">github - express-art-template</a></li>
+<li><a href="https://github.com/mde/ejs" target="_blank" rel="external">github - ejs</a></li>
+<li><a href="http://www.w3school.com.cn/sql/sql_insert.asp" target="_blank" rel="external">W3School - Sql教程</a></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Node/" rel="tag"><i class="fa fa-tag"></i> Node</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/20/17.Node.js投缘/" rel="next" title="Node-投缘">
+                <i class="fa fa-chevron-left"></i> Node-投缘
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/15/19.express/" rel="prev" title="Node-express">
+                Node-express <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Node-js-挥别"><span class="nav-number">1.</span> <span class="nav-text">Node.js - 挥别</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express中使用art-template"><span class="nav-number">1.1.</span> <span class="nav-text">express中使用art-template</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库介绍"><span class="nav-number">1.2.</span> <span class="nav-text">数据库介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关系型数据库的整体介绍"><span class="nav-number">1.3.</span> <span class="nav-text">关系型数据库的整体介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装配置PHPStudy、navicat"><span class="nav-number">1.4.</span> <span class="nav-text">安装配置PHPStudy、navicat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库可视化工具navicat的基本使用"><span class="nav-number">1.5.</span> <span class="nav-text">数据库可视化工具navicat的基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库中常见的字段类型"><span class="nav-number">1.6.</span> <span class="nav-text">数据库中常见的字段类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sql语句的基本学习"><span class="nav-number">1.7.</span> <span class="nav-text">Sql语句的基本学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Sql语句对数据库执行基本操作"><span class="nav-number">1.8.</span> <span class="nav-text">使用Sql语句对数据库执行基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用node-js代码的方式进行增删改查"><span class="nav-number">1.9.</span> <span class="nav-text">使用node.js代码的方式进行增删改查</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连接数据库"><span class="nav-number">1.9.1.</span> <span class="nav-text">连接数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本查询操作"><span class="nav-number">1.9.2.</span> <span class="nav-text">基本查询操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在查询语句中使用参数"><span class="nav-number">1.9.3.</span> <span class="nav-text">在查询语句中使用参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用参数化查询语句"><span class="nav-number">1.9.4.</span> <span class="nav-text">使用参数化查询语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#添加数据"><span class="nav-number">1.9.5.</span> <span class="nav-text">添加数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新数据"><span class="nav-number">1.9.6.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据"><span class="nav-number">1.9.7.</span> <span class="nav-text">删除数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#硬删除"><span class="nav-number">1.9.7.1.</span> <span class="nav-text">硬删除</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#软删除"><span class="nav-number">1.9.7.2.</span> <span class="nav-text">软删除</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#用户列表案例"><span class="nav-number">1.10.</span> <span class="nav-text">用户列表案例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关文章"><span class="nav-number">1.11.</span> <span class="nav-text">相关文章</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

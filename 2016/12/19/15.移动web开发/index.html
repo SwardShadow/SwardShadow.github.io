@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="移动web," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="流式布局其实，流式布局就是百分百布局，通过把盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。这样的布局方式，就是移动web开发使用的常用布局方式。   viewport(视口)在移动端用来承载网页的这个区域，就是视觉窗口，这个区域可以设置高度宽度，可以按比例缩放，而且能设置是否允许用户自行缩放。    属性 参数     width 设置的是viewport的">
+<meta name="keywords" content="移动web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="移动web开发">
+<meta property="og:url" content="http://yoursite.com/2016/12/19/15.移动web开发/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="流式布局其实，流式布局就是百分百布局，通过把盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。这样的布局方式，就是移动web开发使用的常用布局方式。   viewport(视口)在移动端用来承载网页的这个区域，就是视觉窗口，这个区域可以设置高度宽度，可以按比例缩放，而且能设置是否允许用户自行缩放。    属性 参数     width 设置的是viewport的">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-09-08T03:07:28.964Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="移动web开发">
+<meta name="twitter:description" content="流式布局其实，流式布局就是百分百布局，通过把盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。这样的布局方式，就是移动web开发使用的常用布局方式。   viewport(视口)在移动端用来承载网页的这个区域，就是视觉窗口，这个区域可以设置高度宽度，可以按比例缩放，而且能设置是否允许用户自行缩放。    属性 参数     width 设置的是viewport的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/12/19/15.移动web开发/"/>
+
+
+
+
+
+  <title>移动web开发 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/12/19/15.移动web开发/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">移动web开发</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-12-19T00:34:14+08:00">
+                2016-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动端开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动端开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="流式布局"><a href="#流式布局" class="headerlink" title="流式布局"></a>流式布局</h3><p>其实，流式布局就是百分百布局，通过把盒子的宽度设置成百分比来根据屏幕的宽度来进行伸缩，不受固定像素的限制，内容向两侧填充。这样的布局方式，就是移动web开发使用的常用布局方式。  </p>
+<h3 id="viewport-视口"><a href="#viewport-视口" class="headerlink" title="viewport(视口)"></a>viewport(视口)</h3><p>在移动端用来承载网页的这个区域，就是视觉窗口，这个区域可以设置高度宽度，可以按比例缩放，而且能设置是否允许用户自行缩放。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width</td>
+<td>设置的是viewport的宽度，可以设置device-width特殊值。</td>
+</tr>
+<tr>
+<td>initial-scale</td>
+<td>初始缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>maximum-scale</td>
+<td>最大缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>minimum-scale</td>
+<td>最小缩放比，大于0的数字</td>
+</tr>
+<tr>
+<td>user-scalable</td>
+<td>用户是否可以缩放，yes或no（1或者是0）</td>
+</tr>
+</tbody>
+</table>
+<p>用meta标签把viewport的宽度设置为device-width，同时initial-scale=1，user-scalable=0就构建了一个标准的移动web页面。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--快捷方式 meta:vp--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width,               user-scalable=no,                  initial-scale=1.0,                 maximum-scale=1.0,                 minimum-scale=1.0"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="Retina屏"><a href="#Retina屏" class="headerlink" title="Retina屏"></a>Retina屏</h4><p>就是视网膜屏或者高清显示屏的意思，它可以把更多的像素点压缩在一块屏幕里，从而达到更高的分辨率，并且提高屏幕显示的细腻程度。<br>但是在移动web的网页中图片容易失真，因为目前的主流移动设备都配备了高清显示屏，它把图像更多的放到像素点里，但是每个像素点并未达到饱和，所以导致图片显示容易失真。<br>所以淘宝网的手机版没有采用主流的处理方法，而是采用了二倍图三倍图的方法来解决图片失真的问题，很值得借鉴。<br>==百分比的宽高都是基于父容器的大小的百分比。==<br>==fixed定位是基于浏览器的定位。==  </p>
+<h3 id="私有前缀"><a href="#私有前缀" class="headerlink" title="私有前缀"></a>私有前缀</h3><p>为什么会有私有前缀：css3的新属性刚出来，浏览器的厂商为了去支持它，约定加个前缀，确保在自己开发的浏览器下能够正常运行。</p>
+<table>
+<thead>
+<tr>
+<th>浏览器</th>
+<th>前缀</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>谷歌，safari</td>
+<td>webkit（移动端主流）</td>
+</tr>
+<tr>
+<td>火狐</td>
+<td>moz</td>
+</tr>
+<tr>
+<td>ie</td>
+<td>ms</td>
+</tr>
+<tr>
+<td>欧朋</td>
+<td>o   </td>
+</tr>
+</tbody>
+</table>
+<p>兼容更多版本的浏览器加私有前缀。PC兼容的时候，最好所有都加上。<br>移动端浏览器大部分为webkit，所以只需要加上他就可以与市面上的主流浏览器兼容。  </p>
+<h3 id="touch事件"><a href="#touch事件" class="headerlink" title="touch事件"></a>touch事件</h3><p>移动端的触摸事件。指的是触摸事件组。  </p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>作用</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>touchstart</td>
+<td>触摸开始的事件</td>
+<td>当屏幕被触摸的时候触发</td>
+</tr>
+<tr>
+<td> touchmove</td>
+<td>触摸滑动事件</td>
+<td>当在屏幕上来回的滑动的时候触发（一直触发）调用preventDefault()可以阻止滚动</td>
+</tr>
+<tr>
+<td>touchend</td>
+<td>触摸结束事件</td>
+<td>当离开屏幕的时候触发</td>
+<td></td>
+</tr>
+<tr>
+<td>touchcancel</td>
+<td>取消触摸事件</td>
+<td>被迫终止触摸，才会触发（例如来电）</td>
+</tr>
+</tbody>
+</table>
+<p>绑定touch事件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">div.addEventListener(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'touchstart'</span>);</span></div><div class="line"><span class="undefined">&#125;);</span></div><div class="line"><span class="javascript">div.addEventListener(<span class="string">'touchmove'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'touchmove'</span>);</span></div><div class="line"><span class="undefined">&#125;);</span></div><div class="line"><span class="javascript">div.addEventListener(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">    <span class="built_in">console</span>.log(<span class="string">'touchend'</span>);</span></div><div class="line"><span class="undefined">&#125;);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>触摸点：和屏幕接触的点的集合。通过事件对象去获取触摸点集合的TouchEvent回调函数当中的event。<br>touches相关的集合，触摸点集合。<br>==changedTouches==<br>页面上改变了的（无到有，有到无，位置变化） 触摸点集合，全程记录<br>==targetTouches==<br>目标元素上面的触摸点集合，在触摸离开的时候不会去记录。<br>==touches==<br>页面上所有的触摸点集合，在触摸离开的时候不会去记录<br>三对坐标</p>
+<table>
+<thead>
+<tr>
+<th>坐标</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>clientX</td>
+<td>基于视口的X坐标</td>
+</tr>
+<tr>
+<td>clientY</td>
+<td>基于视口的Y坐标</td>
+</tr>
+<tr>
+<td>screenX</td>
+<td>基于屏幕的X坐标</td>
+</tr>
+<tr>
+<td>screenY</td>
+<td>基于屏幕的Y坐标</td>
+</tr>
+<tr>
+<td>pageX</td>
+<td>基于页面的X坐标</td>
+</tr>
+<tr>
+<td>pageY</td>
+<td>基于页面的Y坐标</td>
+</tr>
+</tbody>
+</table>
+<p>在滑动过程中，使用什么坐标没有关系，记录的是坐标值之间的差值，两个位置的距离。  </p>
+<h4 id="tap事件"><a href="#tap事件" class="headerlink" title="tap事件"></a>tap事件</h4><p>tap轻击，是一个事件。源生js不支持，tap是通过touch衍生过来的（封装得来）。<br>tap的相应更快（150ms以内），click在移动端有300ms的延时（用户的体验不好，应该提高响应速度）。<br>==不能滑动，响应在150ms以内，才叫tap。==<br>可以使用移动端的库，提供tap相关事件。zepto.js。<br>tap还可以有singleTap，doubleTap，longTap等。<br>click在移动端有300ms的延迟，解决方法</p>
+<ol>
+<li>使用移动端的库当中的tap事件</li>
+<li>使用移动端的插件fastclick.js，click的响应速度就提升。  <figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> startTime = <span class="number">0</span>;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> isMove = <span class="literal">false</span>;</span></div><div class="line"><span class="javascript">        <span class="comment">/*绑定touch事件*/</span></span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'touchstart'</span>);</span></div><div class="line"><span class="javascript">            <span class="comment">/*记录开始触摸的时候*/</span></span></div><div class="line"><span class="javascript">            startTime = <span class="built_in">Date</span>.now();</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchmove'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'touchmove'</span>);</span></div><div class="line"><span class="javascript">            isMove = <span class="literal">true</span>;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'touchend'</span>);</span></div><div class="line"><span class="javascript">            <span class="comment">/*获取当前的事件去比较之前的时间  150ms*/</span></span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="built_in">Date</span>.now()-startTime);</span></div><div class="line"><span class="javascript">            <span class="keyword">if</span>(!isMove &amp;&amp; (<span class="built_in">Date</span>.now()-startTime) &lt; <span class="number">150</span>)&#123;</span></div><div class="line"><span class="javascript">                <span class="comment">/*tap*/</span></span></div><div class="line"><span class="javascript">                <span class="built_in">console</span>.log(<span class="string">'tap事件'</span>)</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="built_in">console</span>.log(<span class="string">'click'</span>);</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="swipe事件"><a href="#swipe事件" class="headerlink" title="swipe事件"></a>swipe事件</h4><p>swipe滑动事件（手势事件），源生js不支持，是通过touch衍生过来的（封装得到）。<br>==swipe一定滑动过，滑动的距离50px==<br>在zepto这个库中可以直接使用。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> isMove = <span class="literal">false</span>;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> startY = <span class="number">0</span>;</span></div><div class="line"><span class="javascript">        <span class="keyword">var</span> distance = <span class="number">0</span>;</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="undefined">            startY = e.touches[0].clientY;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchmove'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            isMove = <span class="literal">true</span>;</span></div><div class="line"><span class="javascript">            <span class="keyword">var</span> moveY = e.touches[<span class="number">0</span>].clientY;</span></div><div class="line"><span class="undefined">            distance = moveY - startY;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="javascript">        div.addEventListener(<span class="string">'touchend'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">            <span class="keyword">if</span>(isMove)&#123;</span></div><div class="line"><span class="javascript">                <span class="keyword">if</span>(<span class="built_in">Math</span>.abs(distance) &gt; <span class="number">50</span>)&#123;</span></div><div class="line"><span class="javascript">                    <span class="comment">/*滑动手势*/</span></span></div><div class="line"><span class="javascript">                    <span class="comment">/*上滑手势*/</span></span></div><div class="line"><span class="javascript">                    <span class="keyword">if</span>(distance &lt; <span class="number">0</span>)&#123;</span></div><div class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'swipeUp'</span>);</span></div><div class="line"><span class="undefined">                    &#125;</span></div><div class="line"><span class="javascript">                    <span class="comment">/*下滑手势*/</span></span></div><div class="line"><span class="javascript">                    <span class="keyword">else</span> &#123;</span></div><div class="line"><span class="javascript">                        <span class="built_in">console</span>.log(<span class="string">'swipeDown'</span>);</span></div><div class="line"><span class="undefined">                    &#125;</span></div><div class="line"><span class="undefined">                &#125;</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined"></span></div><div class="line"><span class="javascript">            isMove = <span class="literal">false</span>;</span></div><div class="line"><span class="undefined">            startY = 0;</span></div><div class="line"><span class="undefined">            distance = 0;</span></div><div class="line"><span class="undefined">        &#125;);</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="插件-iscroll-js-区域滚动"><a href="#插件-iscroll-js-区域滚动" class="headerlink" title="插件 iscroll.js 区域滚动"></a>插件 iscroll.js 区域滚动</h4><p>初始化  </p>
+<ol>
+<li>结构一定是父容器装一个子容器。</li>
+<li>如果是横向滚动，宽度一定大于父容器。纵向类似于横向，高度一定大于父容器。</li>
+<li>默认的是初始纵向滚动。</li>
+<li>通过参数去初始化。</li>
+<li>在部分谷歌浏览器模拟器上失效，真机不会有问题。<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="keyword">var</span> rightScroll=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span></div><div class="line"><span class="javascript">        <span class="keyword">new</span> IScroll(<span class="string">".jd_cate_right"</span>,&#123;</span></div><div class="line"><span class="javascript">            scrollY:<span class="literal">true</span>;</span></div><div class="line"><span class="javascript">            <span class="comment">//注意一定到大于父容器的高度和宽度</span></span></div><div class="line"><span class="javascript">            scrollX:<span class="literal">true</span>;</span></div><div class="line"><span class="undefined">        &#125;)</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>移动端网页的顶级对象仍然是window。viewport仅仅是模拟的东西，不是对象。</li>
+<li>==给盒子设置overflow：hidden后，他会变为绝缘盒子，内容不会受浮动的影响。==<h4 id="全屏容器的设置方法"><a href="#全屏容器的设置方法" class="headerlink" title="全屏容器的设置方法"></a>全屏容器的设置方法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    //第一种方法</span></div><div class="line"><span class="undefined">    html,body&#123;</span></div><div class="line"><span class="undefined">        height:100%;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">    .container&#123;</span></div><div class="line"><span class="undefined">        width:100%;</span></div><div class="line"><span class="undefined">        height:100%;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined">    //单纯给容器设置宽高百分百是无效的，因为html和body并没有撑开，所以需要给二者设置百分百高度。</span></div><div class="line"><span class="undefined">    //第二种方法</span></div><div class="line"><span class="undefined">    .container1&#123;</span></div><div class="line"><span class="undefined">        width:100%;</span></div><div class="line"><span class="undefined">        height:100%;</span></div><div class="line"><span class="xml">        <span class="comment">&lt;!--position:fixed;--&gt;</span></span></div><div class="line"><span class="undefined">        //absolute基于祖上有定位的容器，relative，absolute，fixed，只要不是static就行</span></div><div class="line"><span class="undefined">        //fixed直接基于window</span></div><div class="line"><span class="undefined">        position:absolute;</span></div><div class="line"><span class="undefined">    &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h1><p>原理：通过h5的属性媒体查询来确定当前设备的屏幕的大小来自动适配设备的布局方式。<br>==媒体查询的使用==  </p>
+<ol>
+<li>使用关键字@media</li>
+<li>查询屏幕窗口的宽度</li>
+<li>and接条件</li>
+<li>写样式</li>
+<li>满足条件，代码生效</li>
+<li>默认查询的就是screen<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    @media screen and (max-width: 768px)&#123;</span></div><div class="line"><span class="undefined">            /*4.写样式*/</span></div><div class="line"><span class="undefined">            .container&#123;</span></div><div class="line"><span class="undefined">                width: 100%;</span></div><div class="line"><span class="undefined">                background: pink;</span></div><div class="line"><span class="undefined">            &#125;</span></div><div class="line"><span class="undefined">            /*5.满足条件 代码生效*/</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>==基本模版==<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--h5文档申明--&gt;</span></div><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="comment">&lt;!--语言中文简体--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--设置字符编码--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--让IE浏览器用最新的渲染引擎去解析页面 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 视口   标准化设置 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ --&gt;</span></div><div class="line">    <span class="comment">&lt;!--优先解析 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- Bootstrap css--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--</span></div><div class="line"><span class="comment">        html5shiv  IE8 支持语义化标签</span></div><div class="line"><span class="comment">        respond    IE8 支持媒体查询</span></div><div class="line"><span class="comment">    --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 警告：你不能使用file://这个种形式打开网页   http:// --&gt;</span></div><div class="line">    <span class="comment">&lt;!-- WARNING: Respond.js doesn't work if you view the page via file:// --&gt;</span></div><div class="line">    <span class="comment">&lt;!--条件注释  在IE9以下  加载--&gt;</span></div><div class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/respond/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--TODO--&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">&lt;!-- 基于jquery --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>==常见的屏幕比例==  </p>
+<ol>
+<li>在超小屏设备      0 -768px     容器 宽度百分百   </li>
+<li>在小屏设备    768px-992px     容器 750px      </li>
+<li>在中屏设备    992px-1200px    容器 970px       </li>
+<li>在大屏设备    1200px-         容器 1170px <h2 id="栅格系统"><a href="#栅格系统" class="headerlink" title="栅格系统"></a>栅格系统</h2>Bootstrap提供了一套响应式、移动设备有限的流式栅格系统，随着屏幕或视口尺寸的增加，系统会自动分为最多12列。它包含了易于使用的预定义类，还有强大的mixin用于生成更具语义的布局。<br>定义：栅格系统用于通过一系列的行（row）与列（column）的组合来创建页面布局。  </li>
+</ol>
+<ul>
+<li>“行（row）”必须包含在 .container （固定宽度）或 .container-fluid （100% 宽度）中，以便为其赋予合适的排列（aligment）和内补（padding）。</li>
+<li>通过“行（row）”在水平方向创建一组“列（column）”。</li>
+<li>你的内容应当放置于“列（column）”内，并且，只有“列（column）”可以作为行（row）”的直接子元素。</li>
+<li>类似 .row 和 .col-xs-4 这种预定义的类，可以用来快速创建栅格布局。Bootstrap 源码中定义的 mixin 也可以用来创建语义化的布局。</li>
+<li>通过为“列（column）”设置 padding 属性，从而创建列与列之间的间隔（gutter）。通过为 .row 元素设置负值 margin 从而抵消掉为 .container 元素设置的 padding，也就间接为“行（row）”所包含的“列（column）”抵消掉了padding。</li>
+<li>负值的 margin就是下面的示例为什么是向外突出的原因。在栅格列中的内容排成一行。</li>
+<li>栅格系统中的列是通过指定1到12的值来表示其跨越的范围。例如，三个等宽的列可以使用三个 .col-xs-4 来创建。</li>
+<li>如果一“行（row）”中包含了的“列（column）”大于 12，多余的“列（column）”所在的元素将被作为一个整体另起一行排列。</li>
+<li>栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 .col-md-<em> 栅格类适用于与屏幕宽度大于或等于分界点大小的设备 ， 并且针对小屏幕设备覆盖栅格类。 因此，在元素上应用任何 .col-lg-</em> 不存在， 也影响大屏幕设备。<h3 id="container"><a href="#container" class="headerlink" title="container"></a>container</h3>==布局容器==<br>响应式布局容器 <div class="container"><div><br>流式布局容器 <div class="container-fluid"><div>  <h4 id="响应式布局容器"><a href="#响应式布局容器" class="headerlink" title="响应式布局容器"></a>响应式布局容器</h4>有一个高度100px的块级元素平均三等份<br>container:15px 两边的边距<br>row：可以清除父容器的15px的两边的边距，当然使用左右margin也可以，如（margin-left:-15px,margin-right:-15px;)<br>colmd-4:在中等屏幕以上（包含自己）当前元素占4份默认把一行分成12份。<br>==col-==  ==第一个参数：在什么屏幕下生效==  </div></div></div></div></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>屏幕</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>lg:大屏设备</td>
+<td>在大屏幕以上（包含自己）</td>
+</tr>
+<tr>
+<td>ma:中等屏幕</td>
+<td>在中等屏幕以上（包含自己）</td>
+</tr>
+<tr>
+<td>sm:小屏设备</td>
+<td>在小屏幕以上（包括自己）</td>
+</tr>
+<tr>
+<td>xs:超小屏设备</td>
+<td>r在超小屏幕以上（包括自己）</td>
+</tr>
+</tbody>
+</table>
+<p>第二个参数：默认把一行分成12份，取值范围1-12.这个数值可以改，把一行分成其他各种份数。<br>==列偏移== offset 往右偏移<br>==列排序== pull 往前拉几份，push往后推几份。<br>==hidden只对某个屏幕的隐藏，其他的就是显示（推荐）==<br>==visible只对某个屏幕的显示，其他的就是隐藏，（3.2.0 不推荐）==<br>浮动：pull-left，pull-right；<br>间对齐：text-left，text-right，text-center。</p>
+<h3 id="导航条"><a href="#导航条" class="headerlink" title="导航条"></a>导航条</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/respond/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="comment">&lt;!--</span></div><div class="line"><span class="comment">navbar 指定是一个导航栏</span></div><div class="line"><span class="comment">navbar-default 默认样式的导航栏</span></div><div class="line"><span class="comment">模块</span></div><div class="line"><span class="comment">--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">nav</span> <span class="attr">class</span>=<span class="string">"navbar navbar-default"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--响应式容器--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 商标区域 和 切换按钮  这个组合  在移动端显示比较好（完全显示） --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"navbar-header"</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!--切换按钮--&gt;</span></div><div class="line">            <span class="comment">&lt;!--</span></div><div class="line"><span class="comment">            自定义属性</span></div><div class="line"><span class="comment">            data-toggle="collapse" 在初始化的时候  初始化成折叠js插件</span></div><div class="line"><span class="comment">            data-target="#bs-example-navbar-collapse-1" 折叠的目标元素</span></div><div class="line"><span class="comment">            盲人阅读器属性  aria-*</span></div><div class="line"><span class="comment">            aria-expanded="false"</span></div><div class="line"><span class="comment">            sr-only  screen read only 仅提供屏幕阅读器使用</span></div><div class="line"><span class="comment">            --&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">class</span>=<span class="string">"navbar-toggle collapsed"</span> <span class="attr">data-toggle</span>=<span class="string">"collapse"</span> <span class="attr">data-target</span>=<span class="string">"#bs-example-navbar-collapse-1"</span> &gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"icon-bar"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">            <span class="comment">&lt;!--商标区域--&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"navbar-brand"</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Brand<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="comment">&lt;!-- 导航链接 表单 都是被控制切换的内容 --&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"collapse navbar-collapse"</span> <span class="attr">id</span>=<span class="string">"bs-example-navbar-collapse-1"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"nav navbar-nav navbar-right"</span>&gt;</span></div><div class="line">                <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Link<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">            <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li>data-toggle=”collapse”  指定js插件</li>
+<li>data-target=”div” 控制目标元素</li>
+<li>选择器如果是a 控制目标元素  href<h4 id="轮播图容器"><a href="#轮播图容器" class="headerlink" title="轮播图容器"></a>轮播图容器</h4>模块 carousel<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    class="carousel slide"</span></div><div class="line"><span class="undefined">    slide:加动画效果</span></div><div class="line"><span class="undefined">    data-ride="carousel":初始轮播图组件</span></div><div class="line"><span class="undefined">    date-slide="prev"</span></div><div class="line"><span class="undefined">    data-slide="next"</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>适配小中大屏幕的轮播图<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/respond/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"carousel-example-generic"</span> <span class="attr">class</span>=<span class="string">"carousel slide"</span> <span class="attr">data-ride</span>=<span class="string">"carousel"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ol</span> <span class="attr">class</span>=<span class="string">"carousel-indicators"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"0"</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--准备一个高度固定的容器宽度百分百  背景居中平铺 完全铺满--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        .pc_imgBox&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">            height: 410px;</span></div><div class="line"><span class="undefined">            background: url("../images/slide_01_2000x410.jpg") no-repeat center/cover;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-inner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item active"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"left carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"prev"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"right carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"next"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>适配超小屏幕<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/respond/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"carousel-example-generic"</span> <span class="attr">class</span>=<span class="string">"carousel slide"</span> <span class="attr">data-ride</span>=<span class="string">"carousel"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ol</span> <span class="attr">class</span>=<span class="string">"carousel-indicators"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"0"</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!-- 设置图片宽度百分百  自适应的了 --&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        .m_imgBox&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        .m_imgBox img&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-inner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item active"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_01_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_02_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_03_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_04_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"left carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"prev"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"right carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"next"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>静态的响应式轮播图<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"zh-CN"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1,user-scalable=0"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>template<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"../lib/bootstrap/css/bootstrap.min.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--[if lt IE 9]&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/html5shiv/html5shiv.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;script src="../lib/respond/respond.min.js"&gt;&lt;/script&gt;</span></div><div class="line"><span class="comment">    &lt;![endif]--&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"carousel-example-generic"</span> <span class="attr">class</span>=<span class="string">"carousel slide"</span> <span class="attr">data-ride</span>=<span class="string">"carousel"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">ol</span> <span class="attr">class</span>=<span class="string">"carousel-indicators"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"0"</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"2"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">data-target</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide-to</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">ol</span>&gt;</span></div><div class="line">    <span class="comment">&lt;!--准备一个高度固定的容器宽度百分百  背景居中平铺 完全铺满--&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">        .pc_imgBox&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">            height: 410px;</span></div><div class="line"><span class="undefined">            background: url("../images/slide_01_2000x410.jpg") no-repeat center/cover;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        .m_imgBox&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        .m_imgBox img&#123;</span></div><div class="line"><span class="undefined">            display: block;</span></div><div class="line"><span class="undefined">            width: 100%;</span></div><div class="line"><span class="undefined">        &#125;</span></div><div class="line"><span class="undefined">        /*使用nth-child  不利于维护*/</span></div><div class="line"><span class="undefined">        /*.item:nth-child(1) .pc_imgBox&#123;</span></div><div class="line"><span class="undefined">            background-image: url("../images/slide_01_2000x410.jpg");</span></div><div class="line"><span class="undefined">        &#125;*/</span></div><div class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"carousel-inner"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item active"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox hidden-xs"</span> <span class="attr">style</span>=<span class="string">"background-image: url(../images/slide_01_2000x410.jpg)"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox hidden-sm hidden-md hidden-lg"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_01_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox hidden-xs"</span> <span class="attr">style</span>=<span class="string">"background-image: url(../images/slide_02_2000x410.jpg)"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox hidden-sm hidden-md hidden-lg"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_02_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox hidden-xs"</span> <span class="attr">style</span>=<span class="string">"background-image: url(../images/slide_03_2000x410.jpg)"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox hidden-sm hidden-md hidden-lg"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_03_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"pc_imgBox hidden-xs"</span> <span class="attr">style</span>=<span class="string">"background-image: url(../images/slide_04_2000x410.jpg)"</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">class</span>=<span class="string">"m_imgBox hidden-sm hidden-md hidden-lg"</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"../images/slide_04_640x340.jpg"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"left carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"prev"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-left"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"right carousel-control"</span> <span class="attr">href</span>=<span class="string">"#carousel-example-generic"</span> <span class="attr">data-slide</span>=<span class="string">"next"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"glyphicon glyphicon-chevron-right"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/jquery/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"../lib/bootstrap/js/bootstrap.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h4 id="轮播图设置思路"><a href="#轮播图设置思路" class="headerlink" title="轮播图设置思路"></a>轮播图设置思路</h4><ol>
+<li>准备数据，图片地址数据（用于动态加载图片或者是背景图）。大小中屏幕用背景图，超小屏使用图片。  </li>
+<li>通过jQuery或者DOM方法获取当前设备的屏幕窗口的宽度，小于768px则是移动端。  </li>
+<li>根据设备和数据，生成html格式的代码。  </li>
+<li>通过拼接字符串的方式把html格式的代码，追加到对应的容器，进行渲染。 </li>
+<li>为了去测试，当页面尺寸发生改变的时候，重新渲染页面。</li>
+<li>移动端，手势切换，调用IScroll插件来实现上一张和下一张滑动切换的效果。<br>==jQuery中用originalEvent记录原生的js事件对象==<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">     $(<span class="string">'.wjs_banner'</span>).on(<span class="string">'touchstart'</span>,<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span></div><div class="line"><span class="javascript">        <span class="comment">/*注意：jquery  originalEvent 记录 原生js事件对象 */</span></span></div><div class="line"><span class="undefined">        startX = e.originalEvent.touches[0].clientX;</span></div><div class="line"><span class="undefined">    &#125;);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>==jQuery获取宽度的方法==</p>
+<table>
+<thead>
+<tr>
+<th>代码</th>
+<th>意义</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>width()</td>
+<td>获取宽度</td>
+<td>内容</td>
+</tr>
+<tr>
+<td>innerWidth()</td>
+<td>获取宽度</td>
+<td>内容+内边距</td>
+</tr>
+<tr>
+<td>outerWidth()</td>
+<td>获取宽度</td>
+<td>内容+内边距+边框</td>
+</tr>
+<tr>
+<td>outerWidth(true)</td>
+<td>获取宽度</td>
+<td>内容+内边距+边框+外边距</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="javascript">    <span class="comment">//第一种方法</span></span></div><div class="line"><span class="javascript">    $.each(data,<span class="function"><span class="keyword">function</span> (<span class="params">i,item</span>)</span>&#123;&#125;);</span></div><div class="line"><span class="javascript">    <span class="comment">//第二种方法</span></span></div><div class="line"><span class="javascript">    $(<span class="string">"a"</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i,item</span>)</span>&#123;&#125;);</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>==第二种方法是jQuery对象的方法，上面的是工具箱。第二种方法只能是jQuery元素集才能使用，第一种方法的方法数组对象都可以使用。==</p>
+<h4 id="补充的选择器方法"><a href="#补充的选择器方法" class="headerlink" title="补充的选择器方法"></a>补充的选择器方法</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></div><div class="line"><span class="undefined">    p:first-of-type</span></div><div class="line"><span class="undefined">    p:last-of-type</span></div><div class="line"><span class="undefined">    p:nth-of-type()</span></div><div class="line"><span class="undefined">    p:nth-last-of-type()</span></div><div class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>type是选择性的控制类型。</p>
+<h2 id="less的应用"><a href="#less的应用" class="headerlink" title="less的应用"></a>less的应用</h2><p>由于css需要书写大量看似没有逻辑的代码，不方便维护以及扩展，不利于复用，难以维护。所以，less在css的语法基础之上，引入了变量，Mixin(混入)，运算以及函数等功能，大大简化了css的编写，并且降低了css的维护成本。做到了write less，do more。  </p>
+<ol>
+<li>原理：本质上，LESS包含一套自定义的语法以及一个解析器(webstorm可以自动解析),用户根据这些语法定义自己的样式规则，这些规则最终会通过解析器，编译生成对应的css文件。</li>
+<li>说明：LESS并没有裁剪CSS原有的特性，更不是用来取代CSS的，而是在现有的CSS语法的基础上，为CSS加入程序式语言的特性。</li>
+<li>语法：</li>
+</ol>
+<ul>
+<li>Mixin  混入</li>
+<li>嵌套</li>
+<li>Import 引入</li>
+<li>函数（内置函数，运算）</li>
+</ul>
+<ol>
+<li>变量：LESS允许开发者自定义变量，变量可以在全局样式中使用，变量使得样式修改起来更加简单。</li>
+<li>Mixin(混入)功能是多重继承的一种实现，在LESS中，混入是指在一个CLASS中引入另外一个已经定义的CLASS，就像在当前CLASS中增加一个属性一样。</li>
+<li>嵌套：在书写标准CSS的时候，遇到多层的元素嵌套这种情况时，我们要么采用从外到内的选择器嵌套定义，要么采用给特定元素加CLASS或ID的方式。</li>
+<li><p>Import(引入)</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">@import</span> <span class="string">"base"</span>;</div><div class="line"><span class="selector-class">.f_left</span>&#123;</div><div class="line">    <span class="attribute">float</span>:<span class="variable">@right</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>运算以及函数：</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>escape(@string);</td>
+<td>通过 URL-encoding 编码字符串</td>
+</tr>
+<tr>
+<td>e(@string);</td>
+<td>对字符串转义</td>
+</tr>
+<tr>
+<td>%(@string, values…);</td>
+<td>格式化字符串</td>
+</tr>
+<tr>
+<td>unit(@dimension, [@unit: “”]);</td>
+<td>移除或替换属性值的单位</td>
+</tr>
+<tr>
+<td>color(@string);</td>
+<td>将字符串解析为颜色值</td>
+</tr>
+<tr>
+<td>data-uri([mimetype,] url);</td>
+<td>* 将资源内嵌到css中，可能回退到url()</td>
+</tr>
+<tr>
+<td>ceil(@number);</td>
+<td>向上取整</td>
+</tr>
+<tr>
+<td>floor(@number);</td>
+<td>向下取整</td>
+</tr>
+<tr>
+<td>percentage(@number);</td>
+<td>将数字转换为百分比，例如 0.5 -&gt; 50%</td>
+</tr>
+<tr>
+<td>round(number, [places: 0]);</td>
+<td>四舍五入取整</td>
+</tr>
+<tr>
+<td>sqrt(number);</td>
+<td>* 计算数字的平方根</td>
+</tr>
+<tr>
+<td>abs(number);</td>
+<td>* 数字的绝对值</td>
+</tr>
+<tr>
+<td>sin(number);</td>
+<td>* sin函数</td>
+</tr>
+<tr>
+<td>asin(number);</td>
+<td>* arcsin函数</td>
+</tr>
+<tr>
+<td>cos(number);</td>
+<td>* cos函数</td>
+</tr>
+<tr>
+<td>acos(number);</td>
+<td>* arccos函数</td>
+</tr>
+<tr>
+<td>tan(number);</td>
+<td>* tan函数</td>
+</tr>
+<tr>
+<td>atan(number);</td>
+<td>* arctan函数</td>
+</tr>
+<tr>
+<td>pi();</td>
+<td>* 返回PI</td>
+</tr>
+<tr>
+<td>pow(@base, @exponent);</td>
+<td>* 返回@base的@exponent次方</td>
+</tr>
+<tr>
+<td>mod(number, number);</td>
+<td>* 第一个参数对第二个参数取余</td>
+</tr>
+<tr>
+<td>convert(number, units);</td>
+<td>* 在数字之间转换</td>
+</tr>
+<tr>
+<td>unit(number, units);</td>
+<td>* 不转换的情况下替换数字的单位</td>
+</tr>
+<tr>
+<td>color(string);</td>
+<td>将字符串或者转义后的值转换成颜色</td>
+</tr>
+<tr>
+<td>rgb(@r, @g, @b);</td>
+<td>转换为颜色值</td>
+</tr>
+<tr>
+<td>rgba(@r, @g, @b, @a);</td>
+<td>转换为颜色值</td>
+</tr>
+<tr>
+<td>argb(@color);</td>
+<td>创建 #AARRGGBB 格式的颜色值</td>
+</tr>
+<tr>
+<td>hsl(@hue, @saturation, @lightness);</td>
+<td>创建颜色值</td>
+</tr>
+<tr>
+<td>hsla(@hue, @saturation, @lightness, @alpha);</td>
+<td>创建颜色值</td>
+</tr>
+<tr>
+<td>hsv(@hue, @saturation, @value);</td>
+<td>创建颜色值</td>
+</tr>
+<tr>
+<td>hsva(@hue, @saturation, @value, @alpha);</td>
+<td>创建颜色值</td>
+</tr>
+<tr>
+<td>hue(@color);</td>
+<td>从颜色值中提取 hue 值（色相）</td>
+</tr>
+<tr>
+<td>saturation(@color);</td>
+<td>从颜色值中提取 saturation 值（饱和度）</td>
+</tr>
+<tr>
+<td>lightness(@color);</td>
+<td>从颜色值中提取 ‘lightness’ 值（亮度）</td>
+</tr>
+<tr>
+<td>hsvhue(@color);</td>
+<td>* 从颜色中提取 hue 值，以HSV色彩空间表示（色相）</td>
+</tr>
+<tr>
+<td>hsvsaturation(@color);</td>
+<td>* 从颜色中提取 saturation 值，以HSV色彩空间表示（饱和度）</td>
+</tr>
+<tr>
+<td>hsvvalue(@color);</td>
+<td>* 从颜色中提取 value 值，以HSV色彩空间表示（色调）</td>
+</tr>
+<tr>
+<td>red(@color);</td>
+<td>从颜色值中提取 ‘red’ 值（红色）</td>
+</tr>
+<tr>
+<td>green(@color);</td>
+<td>从颜色值中提取 ‘green’ 值（绿色）</td>
+</tr>
+<tr>
+<td>blue(@color);</td>
+<td>从颜色值中提取 ‘blue’ 值（蓝色）</td>
+</tr>
+<tr>
+<td>alpha(@color);</td>
+<td>从颜色值中提取 ‘alpha’ 值（透明度）</td>
+</tr>
+<tr>
+<td>luma(@color);</td>
+<td>从颜色值中提取 ‘luma’ 值（亮度的百分比表示法）</td>
+</tr>
+<tr>
+<td>saturate(@color, 10%);</td>
+<td>饱和度增加 10%</td>
+</tr>
+<tr>
+<td>desaturate(@color, 10%);</td>
+<td>饱和度降低 10%</td>
+</tr>
+<tr>
+<td>lighten(@color, 10%);</td>
+<td>亮度增加 10%</td>
+</tr>
+<tr>
+<td>darken(@color, 10%);</td>
+<td>亮度降低 10%</td>
+</tr>
+<tr>
+<td>fadein(@color, 10%);</td>
+<td>透明度增加 10%</td>
+</tr>
+<tr>
+<td>fadeout(@color, 10%);</td>
+<td>透明度降低 10%</td>
+</tr>
+<tr>
+<td>fade(@color, 50%);</td>
+<td>设定透明度为 50%</td>
+</tr>
+<tr>
+<td>spin(@color, 10);</td>
+<td>色相值增加 10</td>
+</tr>
+<tr>
+<td>mix(@color1, @color2, [@weight: 50%]);</td>
+<td>混合两种颜色</td>
+</tr>
+<tr>
+<td>greyscale(@color);</td>
+<td>完全移除饱和度，输出灰色</td>
+</tr>
+<tr>
+<td>contrast(@color1, [@darkcolor: black], [@lightcolor: white], [@threshold: 43%]);</td>
+<td>如果 @color1 的 luma 值 &gt; 43% 输出 @darkcolor，否则输出 @lightcolor</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>multiply(@color1, @color2);</li>
+<li>screen(@color1, @color2);</li>
+<li>overlay(@color1, @color2);</li>
+<li>softlight(@color1, @color2);</li>
+<li>hardlight(@color1, @color2);</li>
+<li>difference(@color1, @color2);</li>
+<li>exclusion(@color1, @color2);</li>
+<li>average(@color1, @color2);</li>
+<li>negation(@color1, @color2);</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>函数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iscolor(@colorOrAnything);</td>
+<td>判断一个值是否是颜色</td>
+</tr>
+<tr>
+<td>isnumber(@numberOrAnything);</td>
+<td>判断一个值是否是数字（可含单位）</td>
+</tr>
+<tr>
+<td>isstring(@stringOrAnything);</td>
+<td>判断一个值是否是字符串</td>
+</tr>
+<tr>
+<td>iskeyword(@keywordOrAnything);</td>
+<td>判断一个值是否是关键字</td>
+</tr>
+<tr>
+<td>isurl(@urlOrAnything);</td>
+<td>判断一个值是否是url</td>
+</tr>
+<tr>
+<td>ispixel(@pixelOrAnything);</td>
+<td>判断一个值是否是以px为单位的数值</td>
+</tr>
+<tr>
+<td>ispercentage(@percentageOrAnything);</td>
+<td>判断一个值是否是百分数</td>
+</tr>
+<tr>
+<td>isem(@emOrAnything);</td>
+<td>判断一个值是否是以em为单位的数值</td>
+</tr>
+<tr>
+<td>isunit(@numberOrAnything, “rem”);</td>
+<td>* 判断一个值是否是指定单位的数值</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/移动web/" rel="tag"><i class="fa fa-tag"></i> 移动web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/11/14.canvas/" rel="next" title="canvas">
+                <i class="fa fa-chevron-left"></i> canvas
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/11/16.Node.js初识/" rel="prev" title="Node-初识">
+                Node-初识 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#流式布局"><span class="nav-number">1.</span> <span class="nav-text">流式布局</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#viewport-视口"><span class="nav-number">2.</span> <span class="nav-text">viewport(视口)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Retina屏"><span class="nav-number">2.1.</span> <span class="nav-text">Retina屏</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#私有前缀"><span class="nav-number">3.</span> <span class="nav-text">私有前缀</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#touch事件"><span class="nav-number">4.</span> <span class="nav-text">touch事件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#tap事件"><span class="nav-number">4.1.</span> <span class="nav-text">tap事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#swipe事件"><span class="nav-number">4.2.</span> <span class="nav-text">swipe事件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插件-iscroll-js-区域滚动"><span class="nav-number">4.3.</span> <span class="nav-text">插件 iscroll.js 区域滚动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#全屏容器的设置方法"><span class="nav-number">4.4.</span> <span class="nav-text">全屏容器的设置方法</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#响应式布局"><span class="nav-number"></span> <span class="nav-text">响应式布局</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#栅格系统"><span class="nav-number"></span> <span class="nav-text">栅格系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#container"><span class="nav-number">1.</span> <span class="nav-text">container</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应式布局容器"><span class="nav-number">1.1.</span> <span class="nav-text">响应式布局容器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#导航条"><span class="nav-number">2.</span> <span class="nav-text">导航条</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#轮播图容器"><span class="nav-number">2.1.</span> <span class="nav-text">轮播图容器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#轮播图设置思路"><span class="nav-number">2.2.</span> <span class="nav-text">轮播图设置思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#补充的选择器方法"><span class="nav-number">2.3.</span> <span class="nav-text">补充的选择器方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less的应用"><span class="nav-number"></span> <span class="nav-text">less的应用</span></a></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

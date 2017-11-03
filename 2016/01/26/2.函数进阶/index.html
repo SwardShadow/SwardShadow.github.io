@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.useso.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="函数," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="归墟" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="函数进阶1.函数的定义方式 函数声明 function nick (){};最大的特性就是具有函数提升。 函数表达式 var nick=function (){}; 函数声明与函数表达式的区别： 函数声明会使变量提升，在与解析阶段就已经创建，声明前后都可以调用 函数表达式类似于变量赋值 函数表达式可以没有名字，例如匿名函数 函数表达式没有变量提升，在执行阶段床架，必须在表达式执行之后才可以调用。">
+<meta name="keywords" content="函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数进阶">
+<meta property="og:url" content="http://yoursite.com/2016/01/26/2.函数进阶/index.html">
+<meta property="og:site_name" content="归墟">
+<meta property="og:description" content="函数进阶1.函数的定义方式 函数声明 function nick (){};最大的特性就是具有函数提升。 函数表达式 var nick=function (){}; 函数声明与函数表达式的区别： 函数声明会使变量提升，在与解析阶段就已经创建，声明前后都可以调用 函数表达式类似于变量赋值 函数表达式可以没有名字，例如匿名函数 函数表达式没有变量提升，在执行阶段床架，必须在表达式执行之后才可以调用。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-11-03T09:03:06.746Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="函数进阶">
+<meta name="twitter:description" content="函数进阶1.函数的定义方式 函数声明 function nick (){};最大的特性就是具有函数提升。 函数表达式 var nick=function (){}; 函数声明与函数表达式的区别： 函数声明会使变量提升，在与解析阶段就已经创建，声明前后都可以调用 函数表达式类似于变量赋值 函数表达式可以没有名字，例如匿名函数 函数表达式没有变量提升，在执行阶段床架，必须在表达式执行之后才可以调用。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.2',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/26/2.函数进阶/"/>
+
+
+
+
+
+  <title>函数进阶 | 归墟</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/SwardShadow"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">归墟</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Catch the Timer</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/26/2.函数进阶/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵文元">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/bzt.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归墟">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">函数进阶</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-01-26T08:14:14+08:00">
+                2016-01-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/函数/" itemprop="url" rel="index">
+                    <span itemprop="name">函数</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="函数进阶"><a href="#函数进阶" class="headerlink" title="函数进阶"></a>函数进阶</h2><h3 id="1-函数的定义方式"><a href="#1-函数的定义方式" class="headerlink" title="1.函数的定义方式"></a>1.函数的定义方式</h3><ul>
+<li>函数声明 function nick (){};最大的特性就是具有函数提升。</li>
+<li>函数表达式 var nick=function (){};</li>
+<li>函数声明与函数表达式的区别：<ul>
+<li>函数声明会使变量提升，在与解析阶段就已经创建，声明前后都可以调用</li>
+<li>函数表达式类似于变量赋值</li>
+<li>函数表达式可以没有名字，例如匿名函数</li>
+<li>函数表达式没有变量提升，在执行阶段床架，必须在表达式执行之后才可以调用。</li>
+</ul>
+</li>
+</ul>
+<p>函数的调用方式：普通函数，构造函数，对象方法<br><strong>函数内this指向的不同场景</strong></p>
+<table>
+<thead>
+<tr>
+<th>调用方式</th>
+<th>非严格模式</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> 普通函数调用</td>
+<td>window</td>
+<td>严格模式下是undefined</td>
+</tr>
+<tr>
+<td> 构造函数调用</td>
+<td>实例对象</td>
+<td>原型方法中this也是实例对象</td>
+</tr>
+<tr>
+<td> 对象方法调用</td>
+<td>该方法所属对象</td>
+<td>紧挨着对象</td>
+</tr>
+<tr>
+<td> 事件绑定方法</td>
+<td>绑定事件对象(DOM元素)</td>
+<td></td>
+</tr>
+<tr>
+<td> 定时器函数</td>
+<td>window</td>
+<td>和位置没有关系，始终指向window</td>
+</tr>
+</tbody>
+</table>
+<p>函数也是对象，所有函数都是Function的实例。（Function是函数的最顶级函数，母亲）   </p>
+<ol>
+<li>call():方法调用一个函数，其具有一个指定的this值和分别地提供的参数（参数的列表）。  </li>
+</ol>
+<p>==注意：该方法的作用和apply()方法类似，只要一个区别，就是call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组。==<br>语法： fun.call(thisArg[,arg1[,arg2[,…]]]);<br>参数：  </p>
+<ul>
+<li>thisArg <ul>
+<li>在fun函数运行时指定的this值</li>
+<li>如果指定了null或者undefined则内部this指向window</li>
+</ul>
+</li>
+<li>arg1,arg2,…<ul>
+<li>指定的参数列表</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>apply()方法调用一个函数，其具有一个指定的this值，以及作为一个数组(或类似数组的对象)提供的参数。  </li>
+</ol>
+<p>==注意：该方法的作用和call()方法类似，只有一个区别，就是call()方法接受的是若干个参数的列表，而apply()方法接受的是一个包含多个参数的数组==<br>语法：fun.apply(thisArg,[argArray]);<br>参数：thisArg，argArray  </p>
+<ol>
+<li>bind()，函数会创建一个新函数（称为绑定函数），新函数与被调函数（绑定函数的目标函数）具有相同的函数体(在ECMAScript 5 规范中内置的call属性)。当目标函数被调用时this值绑定到bind()的第一个参数，该参数不能被重写。绑定函数被调用时，bind()也接受预设的参数提供给原函数。一个绑定函数也能使用new操作符创建对象：这种行为就像把原函数当成构造器。提供的this值被忽略，同时调用时的参数被提供给模拟函数。  </li>
+</ol>
+<p>语法：fun.bind(thisArg[,arg1[,arg[,…]]]);<br>参数：  </p>
+<ul>
+<li>thisArg:当绑定函数被调用时，该参数会作为原函数运行时的this指向。当使用new操作符调用绑定函数时，该参数无效。</li>
+<li>arg1,arg2,…：当绑定函数被调用时，这些参数将置于实参之前传递给被绑定的方法。  </li>
+</ul>
+<p>返回值： 返回由指定的this值和初始化参数改造的原函数拷贝。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">this.x=9;</div><div class="line">var module=&#123;</div><div class="line">    x:81;</div><div class="line">    getX:<span class="function"><span class="title">function</span></span> () &#123; <span class="built_in">return</span> this.x; &#125;</div><div class="line">&#125;;</div><div class="line">module.getX();//返回81</div><div class="line"></div><div class="line">var retrieveX=module.getX;</div><div class="line">retrieveX();//返回9，在这种情况下，this指向全局作用域</div><div class="line"></div><div class="line">//创建一个新函数，将this绑定到module对象</div><div class="line">//新手可能会被全局的x变量和module里的属性x所迷惑</div><div class="line">var boundGetX=retrieveX.bind(module);</div><div class="line">boundGetX();//返回81</div></pre></td></tr></table></figure></p>
+<p>例子2<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">LateBloomer</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.petaCount=Ma.ceil(<span class="built_in">Math</span>.random()*<span class="number">12</span>)+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Declare bloom after a delay of 1 second</span></div><div class="line">LateBloomer.prototype.bloom=<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">window</span>.setTimeout(<span class="keyword">this</span>.declare.bind(<span class="keyword">this</span>),<span class="number">1000</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">LateBloomer.prototype.declare=<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'I am a beautiful flower with'</span>+<span class="keyword">this</span>.petalCount+<span class="string">'patals!'</span>);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> flower=<span class="keyword">new</span> LateBloomer();</div><div class="line"><span class="comment">//一秒钟后调用declare方法</span></div><div class="line">flower.bloom();</div></pre></td></tr></table></figure></p>
+<p><strong>小结</strong>  </p>
+<ul>
+<li>call和apply特性一样<ul>
+<li>都是用来调用函数，而且是立即调用</li>
+<li>但是可以再调用函数的同时，通过第一个参数指定函数内部this的指向</li>
+<li>call调用的时候，参数必须以参数列表<h3 id="把伪数组转换为数组"><a href="#把伪数组转换为数组" class="headerlink" title="把伪数组转换为数组"></a>把伪数组转换为数组</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    <span class="built_in">Array</span>.prototype.mySlice = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="comment">// 参数个数为 0 则从 0 截到最后</span></div><div class="line">      <span class="comment">// 参数个数为 1 则从 第一个参数开始的索引 截到最后</span></div><div class="line">      <span class="comment">// 参数个数为 2 则从 第一个参数开始的索引 截到第二个参数截止的索引</span></div><div class="line">      <span class="keyword">var</span> start = <span class="number">0</span></div><div class="line">      <span class="keyword">var</span> end = <span class="keyword">this</span>.length</div><div class="line">      <span class="built_in">arguments</span>.length === <span class="number">1</span> &amp;&amp; (start = <span class="built_in">arguments</span>[<span class="number">0</span>])</div><div class="line">      <span class="comment">// arguments.length === 2 &amp;&amp; (start === arguments[0], end = arguments[1])</span></div><div class="line">      <span class="keyword">if</span> (<span class="built_in">arguments</span>.length == <span class="number">2</span>) &#123;</div><div class="line">        start = <span class="built_in">arguments</span>[<span class="number">0</span>]</div><div class="line">        end = <span class="built_in">arguments</span>[<span class="number">1</span>]</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">var</span> tmp = []</div><div class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = start; i &lt; end; i++) &#123;</div><div class="line">        tmp.push(<span class="keyword">this</span>[i])</div><div class="line">      &#125;</div><div class="line">      <span class="keyword">return</span> tmp</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</div><div class="line">      <span class="comment">// 借用数组的 slice 得到一个数组</span></div><div class="line">      <span class="keyword">var</span> args = [].mySlice.call(<span class="built_in">arguments</span>, <span class="number">1</span>)</div><div class="line">      <span class="comment">// arguments[0]</span></div><div class="line">      <span class="comment">// arguments[1]</span></div><div class="line">      args.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">item, index</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(item, index)</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    fn(<span class="number">21</span>, <span class="number">3</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">21</span>)</div><div class="line">  &lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="数组借用Math的max和min方法"><a href="#数组借用Math的max和min方法" class="headerlink" title="数组借用Math的max和min方法"></a>数组借用Math的max和min方法</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">    <span class="keyword">var</span> myMath = &#123;</div><div class="line">      max: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> max = <span class="built_in">arguments</span>[<span class="number">0</span>]</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="built_in">arguments</span>.length; i++) &#123;</div><div class="line">          <span class="keyword">if</span> (<span class="built_in">arguments</span>[i] &gt; max) &#123;</div><div class="line">            max = <span class="built_in">arguments</span>[i]</div><div class="line">          &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> max</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">var</span> arr = [<span class="number">32</span>, <span class="number">1</span>, <span class="number">32</span>, <span class="number">13</span>, <span class="number">2</span>, <span class="number">4321</span>, <span class="number">13</span>, <span class="number">21</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line">    <span class="comment">// 第一个参数用来指定内部 this 的指向</span></div><div class="line">    <span class="comment">// apply 会把数组给展开，也就是把里面的元素一个一个的拿出来传递给方法</span></div><div class="line">    <span class="comment">// apply 要求传递一个数组或者伪数组，apply 会帮你把数组展开再一个一个的传递到方法内部</span></div><div class="line">    <span class="comment">// 这里 apply 的第一个参数传什么都无所谓，因为 max 方法内部没有使用 this</span></div><div class="line">    <span class="comment">// 所以这里的第一个参数随便传，但是建议传递一个 null 表示不指定内部 this 指向</span></div><div class="line">    <span class="keyword">var</span> max = myMath.max.apply(<span class="literal">null</span>, arr)</div><div class="line">    <span class="built_in">console</span>.log(max)</div><div class="line">  &lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="call，apply和bind的总结"><a href="#call，apply和bind的总结" class="headerlink" title="call，apply和bind的总结"></a>call，apply和bind的总结</h3><p>call，apply，bind都可以改变函数内部this的指向，call和apply在改变this的同时直接调用该函数。</p>
+<ul>
+<li>call是通过以”,”分隔进行传参的。  </li>
+<li>apply则是要求传递一个数组或者伪数组，进行传参，apply会把数组中的元素一个一个的拿出来作为函数的参数。</li>
+<li>bind也是用来改变函数内部this的指向的，但是它不调用，而是返回一个指定了this环境的新的函数。bind可以传参数，但是不调用。得到bind之后的新函数在调用的时候也可以传参数。当你在爱调用通过bind得到的新函数的时候，实际上会把你在bind的时候传递的参数和你调用新函数传递的参数进行合并，然后作为函数的参数。  </li>
+</ul>
+<h3 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a>高阶函数</h3><p>所谓的高阶函数就是指，函数可以：</p>
+<ol>
+<li>当做参数进行传递</li>
+<li>当做返回值进行返回</li>
+<li><h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3>全局作用域，函数作用域。注意在Javascript中没有块(花括号)作用域。<br>函数的作用域链以定义时所处的作用域为准，而不是调用时。<br>伪数组可以理解为对象。<br>当预解析的是前后同名函数和变量的话，在预解析的时候以函数为准。<br>借用的原理就是改变内部this的指向。<br>对于数组的一些遍历方法:例如foreach、map、filter、some等，内部的this都指向window，无论这个diamante的执行处于什么环境都是window，也不受外部的影响。<h4 id="杂记"><a href="#杂记" class="headerlink" title="杂记"></a>杂记</h4>伪数组转化伪数组方法（小路）<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">toString</span>(<span class="params"></span>) </span>&#123;[native code]&#125;;</div><div class="line"><span class="built_in">Object</span>.prototype.toString();</div><div class="line"><span class="string">"[object Object]"</span>;</div><div class="line"><span class="built_in">Object</span>.prototype.toString.call([]);</div><div class="line"><span class="string">"[object Array]"</span></div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>Object.prototype.toString这个是获取原始数据类型的，而[].toString不是一个方法，只能把数组转化为一个字符串。<br><strong>函数体的概念</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"><span class="string">"x"</span>,<span class="string">"y"</span>,<span class="string">"return x+y"</span></span>);</span></div><div class="line"><span class="function">//这个函数就相当于</span></div><div class="line"><span class="function"><span class="title">function</span> <span class="title">add</span>(<span class="params">x,y</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> x+y;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数体，前两个都是形参，所以代码是字符串的形式。这种方式很少用，执行效率比较低，因为它是在执行阶段根据你传递的字符串来创建函数，所以效率比较低，具体可以参看MDN。  </p>
+<h4 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h4><p>当预解析的时候，同名函数和变量以函数为准。说白了就是，同名成员，函数优先。函数声明最大的特性就是具有函数提升。<br>提升阶段是以函数为主，但是在执行阶段，除非你调用fn。 </p>
+<h4 id="杂七杂八的方法"><a href="#杂七杂八的方法" class="headerlink" title="杂七杂八的方法"></a>杂七杂八的方法</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">toArray:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="comment">//this就是jQuery的实例对象</span></div><div class="line">    <span class="comment">//实例对象是一个伪数组，这里就是在伪数组借用数组的slice方法，然后返回一个数组</span></div><div class="line">    <span class="keyword">return</span> slice.call(<span class="keyword">this</span>,<span class="number">0</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+	
+	  <div> 
+        
+1
+	  </div>
+	
+	
+    
+	
+	
+	  <div>
+		<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+	  </div>
+	
+	
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/函数/" rel="tag"><i class="fa fa-tag"></i> 函数</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/19/1.寒窑赋/" rel="next" title="寒窑赋">
+                <i class="fa fa-chevron-left"></i> 寒窑赋
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/09/3.闭包简单理解/" rel="prev" title="关于闭包的一些理解">
+                关于闭包的一些理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/bzt.png"
+               alt="赵文元" />
+          <p class="site-author-name" itemprop="name">赵文元</p>
+           
+              <p class="site-description motion-element" itemprop="description">心若空了，到哪里都是流浪。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+            
+              <a href="/archives/">
+            
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/SwardShadow" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/2359004161/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zhihu.com/people/zhao-wen-yuan-79" target="_blank" title="Zhihu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                    
+                      Zhihu
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数进阶"><span class="nav-number">1.</span> <span class="nav-text">函数进阶</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-函数的定义方式"><span class="nav-number">1.1.</span> <span class="nav-text">1.函数的定义方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把伪数组转换为数组"><span class="nav-number">1.2.</span> <span class="nav-text">把伪数组转换为数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组借用Math的max和min方法"><span class="nav-number">1.3.</span> <span class="nav-text">数组借用Math的max和min方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#call，apply和bind的总结"><span class="nav-number">1.4.</span> <span class="nav-text">call，apply和bind的总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高阶函数"><span class="nav-number">1.5.</span> <span class="nav-text">高阶函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">1.6.</span> <span class="nav-text">作用域</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#杂记"><span class="nav-number">1.6.1.</span> <span class="nav-text">杂记</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#预解析"><span class="nav-number">1.6.2.</span> <span class="nav-text">预解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#杂七杂八的方法"><span class="nav-number">1.6.3.</span> <span class="nav-text">杂七杂八的方法</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-star"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">赵文元</span>
+
+  
+</div>
+
+<!-- 
+  <div class="powered-by">由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+  <span class="post-meta-divider">|</span>
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.2</div> -->
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/love.js"></script>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three.min.js"></script>
+
+  
+  <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
